@@ -2,9 +2,9 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using NuGet.Common;
-using Pustok.Areas.Admin.ViewModels.Account;
 using Pustok.Models;
 using Pustok.Services.Interfaces;
+using Pustok.ViewModels.Account;
 
 namespace Pustok.Areas.Admin.Controllers
 {
@@ -162,7 +162,7 @@ namespace Pustok.Areas.Admin.Controllers
 
             var us = await _userManager.FindByNameAsync(user);
             await _userManager.ConfirmEmailAsync(us, token);
-            return Content("Email Confirmed");
+            return RedirectToAction("Login");
         }
 
 

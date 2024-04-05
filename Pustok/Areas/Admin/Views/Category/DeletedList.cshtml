@@ -48,7 +48,7 @@
             deleteLinks.forEach(function (link) {
                 link.addEventListener("click", function (e) {
                     e.preventDefault();
-
+                    console.log("click")
                     var categoryId = link.getAttribute("data-id");
 
                     fetch(`/Admin/Category/HardDelete/${categoryId}`, {

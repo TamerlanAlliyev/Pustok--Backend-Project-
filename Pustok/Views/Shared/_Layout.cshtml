@@ -20,7 +20,7 @@
                 <div class="container">
                     <div class="row align-items-center">
                         <div class="col-lg-3 ">
-                            <a href="~/cilent/index.html" class="site-brand">
+                            <a asp-controller="home" asp-action="index" class="site-brand">
                                 <img src="~/cilent/image/logo.png" alt="">
                             </a>
                         </div>
@@ -318,13 +318,26 @@
                                 <button>Search</button>
                             </div>
                         </div>
+
                         <div class="col-lg-4">
                             <div class="main-navigation flex-lg-right">
                                 <div class="cart-widget">
                                     <div class="login-block">
-                                        <a href="~/cilent/login-register.html" class="font-weight-bold">Login</a> <br>
-                                        <span>or</span><a href="~/cilent/login-register.html">Register</a>
+                                        <a asp-action="login" asp-controller="Account" class="font-weight-bold">Login</a> <br>
+                                        <span>or</span><a asp-action="Register" asp-controller="Account">Register</a>
                                     </div>
+                                    @if (User.Identity != null)
+                                    {
+                                        @if (User.Identity.Name != null)
+                                        {
+                                            <div class="login-block">
+                                                <a asp-action="login" asp-controller="Account" class="font-weight-bold">@User.Identity.Name</a> <br>
+                                                <a asp-action="Logout" asp-controller="Account">Log out</a>
+                                            </div>
+                                        }
+                                    }
+
+
                                     <div class="cart-block">
                                         <div class="cart-total">
                                             <span class="text-number">

@@ -3,8 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\ROG\\Desktop\\Tamerlan\\CODE ACADEMY\\BACK-END\\Project\\Back-End Project\\Pustok\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{C45228BC-C88C-49E1-A616-BE8EED22F20C}|Pustok\\Pustok.csproj|c:\\users\\rog\\desktop\\tamerlan\\code academy\\back-end\\project\\back-end project\\pustok\\pustok\\areas\\admin\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C45228BC-C88C-49E1-A616-BE8EED22F20C}|Pustok\\Pustok.csproj|solutionrelative:pustok\\areas\\admin\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C45228BC-C88C-49E1-A616-BE8EED22F20C}|Pustok\\Pustok.csproj|c:\\users\\rog\\desktop\\tamerlan\\code academy\\back-end\\project\\back-end project\\pustok\\pustok\\areas\\admin\\controllers\\tagcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C45228BC-C88C-49E1-A616-BE8EED22F20C}|Pustok\\Pustok.csproj|solutionrelative:pustok\\areas\\admin\\controllers\\tagcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C45228BC-C88C-49E1-A616-BE8EED22F20C}|Pustok\\Pustok.csproj|c:\\users\\rog\\desktop\\tamerlan\\code academy\\back-end\\project\\back-end project\\pustok\\pustok\\models\\tag.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C45228BC-C88C-49E1-A616-BE8EED22F20C}|Pustok\\Pustok.csproj|solutionrelative:pustok\\models\\tag.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -27,14 +31,27 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "AccountController.cs",
-              "DocumentMoniker": "C:\\Users\\ROG\\Desktop\\Tamerlan\\CODE ACADEMY\\BACK-END\\Project\\Back-End Project\\Pustok\\Pustok\\Areas\\Admin\\Controllers\\AccountController.cs",
-              "RelativeDocumentMoniker": "Pustok\\Areas\\Admin\\Controllers\\AccountController.cs",
-              "ToolTip": "C:\\Users\\ROG\\Desktop\\Tamerlan\\CODE ACADEMY\\BACK-END\\Project\\Back-End Project\\Pustok\\Pustok\\Areas\\Admin\\Controllers\\AccountController.cs",
-              "RelativeToolTip": "Pustok\\Areas\\Admin\\Controllers\\AccountController.cs",
-              "ViewState": "AQIAANQAAAAAAAAAAAAuwNgAAAAJAAAA",
+              "Title": "TagController.cs",
+              "DocumentMoniker": "C:\\Users\\ROG\\Desktop\\Tamerlan\\CODE ACADEMY\\BACK-END\\Project\\Back-End Project\\Pustok\\Pustok\\Areas\\Admin\\Controllers\\TagController.cs",
+              "RelativeDocumentMoniker": "Pustok\\Areas\\Admin\\Controllers\\TagController.cs",
+              "ToolTip": "C:\\Users\\ROG\\Desktop\\Tamerlan\\CODE ACADEMY\\BACK-END\\Project\\Back-End Project\\Pustok\\Pustok\\Areas\\Admin\\Controllers\\TagController.cs",
+              "RelativeToolTip": "Pustok\\Areas\\Admin\\Controllers\\TagController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-05T09:32:52.268Z",
+              "WhenOpened": "2024-04-05T17:37:51.7Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Tag.cs",
+              "DocumentMoniker": "C:\\Users\\ROG\\Desktop\\Tamerlan\\CODE ACADEMY\\BACK-END\\Project\\Back-End Project\\Pustok\\Pustok\\Models\\Tag.cs",
+              "RelativeDocumentMoniker": "Pustok\\Models\\Tag.cs",
+              "ToolTip": "C:\\Users\\ROG\\Desktop\\Tamerlan\\CODE ACADEMY\\BACK-END\\Project\\Back-End Project\\Pustok\\Pustok\\Models\\Tag.cs",
+              "RelativeToolTip": "Pustok\\Models\\Tag.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-05T17:03:57.26Z",
               "EditorCaption": ""
             }
           ]
