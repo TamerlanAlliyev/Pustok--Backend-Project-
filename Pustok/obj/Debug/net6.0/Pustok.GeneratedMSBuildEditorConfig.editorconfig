@@ -22,12 +22,28 @@ build_property._RazorSourceGeneratorDebug =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQ2F0ZWdvcnlcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/ROG/Desktop/Tamerlan/CODE ACADEMY/BACK-END/Project/Back-End Project/Pustok/Pustok/Areas/Admin/Views/Category/DeletedList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQ2F0ZWdvcnlcRGVsZXRlZExpc3QuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ROG/Desktop/Tamerlan/CODE ACADEMY/BACK-END/Project/Back-End Project/Pustok/Pustok/Areas/Admin/Views/Category/Detail.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQ2F0ZWdvcnlcRGV0YWlsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/ROG/Desktop/Tamerlan/CODE ACADEMY/BACK-END/Project/Back-End Project/Pustok/Pustok/Areas/Admin/Views/Category/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQ2F0ZWdvcnlcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/ROG/Desktop/Tamerlan/CODE ACADEMY/BACK-END/Project/Back-End Project/Pustok/Pustok/Areas/Admin/Views/Category/Update.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQ2F0ZWdvcnlcVXBkYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/ROG/Desktop/Tamerlan/CODE ACADEMY/BACK-END/Project/Back-End Project/Pustok/Pustok/Areas/Admin/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ROG/Desktop/Tamerlan/CODE ACADEMY/BACK-END/Project/Back-End Project/Pustok/Pustok/Areas/Admin/Views/Shared/Components/CategoryDeletedListVC/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2hhcmVkXENvbXBvbmVudHNcQ2F0ZWdvcnlEZWxldGVkTGlzdFZDXERlZmF1bHQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/ROG/Desktop/Tamerlan/CODE ACADEMY/BACK-END/Project/Back-End Project/Pustok/Pustok/Areas/Admin/Views/Shared/Components/CategoryListVC/Default.cshtml]

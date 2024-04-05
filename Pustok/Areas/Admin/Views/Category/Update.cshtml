@@ -1,4 +1,4 @@
-﻿@model CategoryListVM
+﻿@model CategoryUpdateVM
 
 
 
@@ -6,17 +6,18 @@
 <div class="container " style=" height:75vh;">
     <div class="row h-100 d-flex justify-content-center align-items-center">
         <div class="col-md-12 p-5" style="border-radius: 15px; border:1px solid dodgerblue; color: black; max-width: 500px;">
-            <form method="post" >
+            <form method="post">
                 <div class="d-flex justify-content-between gap-3">
                     <div class="form-group mb-3">
                         <label>Name</label>
-                        <input class="form-control" asp-for="CreatVM.Name" />
-                        <span class="text-danger" asp-validation-for="CreatVM.Name"></span>
+                        <input class="form-control" asp-for="Name" />
+                        <span class="text-danger" asp-validation-for="Name"></span>
                     </div>
                     <div class="form-group mb-3">
                         <label>Parent Categories</label>
-                        <select asp-for="CreatVM.CategoryId" asp-items="@ViewBag.Categories" class="form-select" id="categories">
+                        <select asp-for="CategoryId" asp-items="@ViewBag.Categories" class="form-select" id="categories">
                             <option selected disabled>Select Category</option>
+                            <option value="" class="bg-danger">Delete Category</option>
                         </select>
                     </div>
                 </div>

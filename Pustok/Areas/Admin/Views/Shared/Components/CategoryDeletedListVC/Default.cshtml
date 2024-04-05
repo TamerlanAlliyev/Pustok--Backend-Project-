@@ -1,0 +1,15 @@
+﻿@model CategoryListVM
+
+@foreach (Category category in Model.Categories)
+{
+    <tr class="even  align-items-center ">
+        <td style="vertical-align: middle;" class="align-items-center">@category.Name</td>
+
+        <td style="vertical-align: middle;" class="align-items-center">
+            <a href="#" class="btn btn-sm btn-success return-category" data-id="@category.Id">Return It</a>
+        </td>
+        <td style="vertical-align: middle;" class="align-items-center">
+            <a href="#" class="btn btn-sm btn-danger delete-category" data-id="@category.Id">Permanent delete</a>
+        </td>
+    </tr>
+}

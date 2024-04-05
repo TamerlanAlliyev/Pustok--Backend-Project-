@@ -2,15 +2,14 @@
 using Microsoft.EntityFrameworkCore;
 using Pustok.Areas.Admin.ViewModels.Categories;
 using Pustok.Data;
-using System.Threading.Tasks;
 
 namespace Pustok.Areas.Admin.ViewComponents
 {
-    public class CategoryListVC : ViewComponent
+    public class CategoryDeletedListVC : ViewComponent
     {
-        private readonly PustokContext _context;
+        readonly PustokContext _context;
 
-        public CategoryListVC(PustokContext context)
+        public CategoryDeletedListVC(PustokContext context)
         {
             _context = context;
         }
@@ -19,15 +18,14 @@ namespace Pustok.Areas.Admin.ViewComponents
         {
             CategoryListVM category = new CategoryListVM
             {
-                Categories = await _context.Categories.Where(c => !c.IsDeleted)
-                                                      .OrderBy(c => c.Id)
-                                                      .ToListAsync()
+                Categories = await _context.Categories.Where(c => c.IsDeleted).ToListAsync()
+            };
 
-        };
             if (category.Categories.Count == 0)
             {
-                return Content("Category not found.");
+                return Content("Category not found."); 
             }
+
             return View(category);
         }
     }
