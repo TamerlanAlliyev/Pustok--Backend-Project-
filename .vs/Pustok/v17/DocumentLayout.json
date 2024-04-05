@@ -3,64 +3,8 @@
   "WorkspaceRootPath": "C:\\Users\\ROG\\Desktop\\Tamerlan\\CODE ACADEMY\\BACK-END\\Project\\Back-End Project\\Pustok\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{C45228BC-C88C-49E1-A616-BE8EED22F20C}|Pustok\\Pustok.csproj|c:\\users\\rog\\desktop\\tamerlan\\code academy\\back-end\\project\\back-end project\\pustok\\pustok\\areas\\admin\\views\\shared\\components\\categorylistvc\\default.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{C45228BC-C88C-49E1-A616-BE8EED22F20C}|Pustok\\Pustok.csproj|solutionrelative:pustok\\areas\\admin\\views\\shared\\components\\categorylistvc\\default.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C45228BC-C88C-49E1-A616-BE8EED22F20C}|Pustok\\Pustok.csproj|c:\\users\\rog\\desktop\\tamerlan\\code academy\\back-end\\project\\back-end project\\pustok\\pustok\\areas\\admin\\controllers\\categorycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C45228BC-C88C-49E1-A616-BE8EED22F20C}|Pustok\\Pustok.csproj|solutionrelative:pustok\\areas\\admin\\controllers\\categorycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C45228BC-C88C-49E1-A616-BE8EED22F20C}|Pustok\\Pustok.csproj|c:\\users\\rog\\desktop\\tamerlan\\code academy\\back-end\\project\\back-end project\\pustok\\pustok\\areas\\admin\\views\\category\\detail.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{C45228BC-C88C-49E1-A616-BE8EED22F20C}|Pustok\\Pustok.csproj|solutionrelative:pustok\\areas\\admin\\views\\category\\detail.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C45228BC-C88C-49E1-A616-BE8EED22F20C}|Pustok\\Pustok.csproj|c:\\users\\rog\\desktop\\tamerlan\\code academy\\back-end\\project\\back-end project\\pustok\\pustok\\areas\\admin\\views\\category\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{C45228BC-C88C-49E1-A616-BE8EED22F20C}|Pustok\\Pustok.csproj|solutionrelative:pustok\\areas\\admin\\views\\category\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C45228BC-C88C-49E1-A616-BE8EED22F20C}|Pustok\\Pustok.csproj|c:\\users\\rog\\desktop\\tamerlan\\code academy\\back-end\\project\\back-end project\\pustok\\pustok\\areas\\admin\\views\\category\\update.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{C45228BC-C88C-49E1-A616-BE8EED22F20C}|Pustok\\Pustok.csproj|solutionrelative:pustok\\areas\\admin\\views\\category\\update.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C45228BC-C88C-49E1-A616-BE8EED22F20C}|Pustok\\Pustok.csproj|c:\\users\\rog\\desktop\\tamerlan\\code academy\\back-end\\project\\back-end project\\pustok\\pustok\\areas\\admin\\viewcomponents\\categorylistvc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C45228BC-C88C-49E1-A616-BE8EED22F20C}|Pustok\\Pustok.csproj|solutionrelative:pustok\\areas\\admin\\viewcomponents\\categorylistvc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C45228BC-C88C-49E1-A616-BE8EED22F20C}|Pustok\\Pustok.csproj|c:\\users\\rog\\desktop\\tamerlan\\code academy\\back-end\\project\\back-end project\\pustok\\pustok\\areas\\admin\\viewmodels\\categories\\categoryupdatevm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C45228BC-C88C-49E1-A616-BE8EED22F20C}|Pustok\\Pustok.csproj|solutionrelative:pustok\\areas\\admin\\viewmodels\\categories\\categoryupdatevm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C45228BC-C88C-49E1-A616-BE8EED22F20C}|Pustok\\Pustok.csproj|c:\\users\\rog\\desktop\\tamerlan\\code academy\\back-end\\project\\back-end project\\pustok\\pustok\\areas\\admin\\viewmodels\\categories\\categorycreatvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C45228BC-C88C-49E1-A616-BE8EED22F20C}|Pustok\\Pustok.csproj|solutionrelative:pustok\\areas\\admin\\viewmodels\\categories\\categorycreatvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C45228BC-C88C-49E1-A616-BE8EED22F20C}|Pustok\\Pustok.csproj|c:\\users\\rog\\desktop\\tamerlan\\code academy\\back-end\\project\\back-end project\\pustok\\pustok\\areas\\admin\\views\\category\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{C45228BC-C88C-49E1-A616-BE8EED22F20C}|Pustok\\Pustok.csproj|solutionrelative:pustok\\areas\\admin\\views\\category\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C45228BC-C88C-49E1-A616-BE8EED22F20C}|Pustok\\Pustok.csproj|c:\\users\\rog\\desktop\\tamerlan\\code academy\\back-end\\project\\back-end project\\pustok\\pustok\\areas\\admin\\views\\category\\deletedlist.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{C45228BC-C88C-49E1-A616-BE8EED22F20C}|Pustok\\Pustok.csproj|solutionrelative:pustok\\areas\\admin\\views\\category\\deletedlist.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C45228BC-C88C-49E1-A616-BE8EED22F20C}|Pustok\\Pustok.csproj|c:\\users\\rog\\desktop\\tamerlan\\code academy\\back-end\\project\\back-end project\\pustok\\pustok\\areas\\admin\\viewmodels\\categories\\categorylistvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C45228BC-C88C-49E1-A616-BE8EED22F20C}|Pustok\\Pustok.csproj|solutionrelative:pustok\\areas\\admin\\viewmodels\\categories\\categorylistvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C45228BC-C88C-49E1-A616-BE8EED22F20C}|Pustok\\Pustok.csproj|c:\\users\\rog\\desktop\\tamerlan\\code academy\\back-end\\project\\back-end project\\pustok\\pustok\\areas\\admin\\viewmodels\\categories\\categorydetailvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C45228BC-C88C-49E1-A616-BE8EED22F20C}|Pustok\\Pustok.csproj|solutionrelative:pustok\\areas\\admin\\viewmodels\\categories\\categorydetailvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C45228BC-C88C-49E1-A616-BE8EED22F20C}|Pustok\\Pustok.csproj|c:\\users\\rog\\desktop\\tamerlan\\code academy\\back-end\\project\\back-end project\\pustok\\pustok\\areas\\admin\\viewcomponents\\categorydeletedlistvc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C45228BC-C88C-49E1-A616-BE8EED22F20C}|Pustok\\Pustok.csproj|solutionrelative:pustok\\areas\\admin\\viewcomponents\\categorydeletedlistvc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C45228BC-C88C-49E1-A616-BE8EED22F20C}|Pustok\\Pustok.csproj|c:\\users\\rog\\desktop\\tamerlan\\code academy\\back-end\\project\\back-end project\\pustok\\pustok\\models\\category.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C45228BC-C88C-49E1-A616-BE8EED22F20C}|Pustok\\Pustok.csproj|solutionrelative:pustok\\models\\category.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C45228BC-C88C-49E1-A616-BE8EED22F20C}|Pustok\\Pustok.csproj|c:\\users\\rog\\desktop\\tamerlan\\code academy\\back-end\\project\\back-end project\\pustok\\pustok\\areas\\admin\\views\\shared\\components\\categorydeletedlistvc\\default.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{C45228BC-C88C-49E1-A616-BE8EED22F20C}|Pustok\\Pustok.csproj|solutionrelative:pustok\\areas\\admin\\views\\shared\\components\\categorydeletedlistvc\\default.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{C45228BC-C88C-49E1-A616-BE8EED22F20C}|Pustok\\Pustok.csproj|c:\\users\\rog\\desktop\\tamerlan\\code academy\\back-end\\project\\back-end project\\pustok\\pustok\\areas\\admin\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C45228BC-C88C-49E1-A616-BE8EED22F20C}|Pustok\\Pustok.csproj|solutionrelative:pustok\\areas\\admin\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -70,7 +14,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 154,
-          "SelectedChildIndex": 13,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Bookmark",
@@ -82,197 +26,15 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "CategoryUpdateVM.cs",
-              "DocumentMoniker": "C:\\Users\\ROG\\Desktop\\Tamerlan\\CODE ACADEMY\\BACK-END\\Project\\Back-End Project\\Pustok\\Pustok\\Areas\\Admin\\ViewModels\\Categories\\CategoryUpdateVM.cs",
-              "RelativeDocumentMoniker": "Pustok\\Areas\\Admin\\ViewModels\\Categories\\CategoryUpdateVM.cs",
-              "ToolTip": "C:\\Users\\ROG\\Desktop\\Tamerlan\\CODE ACADEMY\\BACK-END\\Project\\Back-End Project\\Pustok\\Pustok\\Areas\\Admin\\ViewModels\\Categories\\CategoryUpdateVM.cs",
-              "RelativeToolTip": "Pustok\\Areas\\Admin\\ViewModels\\Categories\\CategoryUpdateVM.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAAhAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-05T08:52:16.362Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Update.cshtml",
-              "DocumentMoniker": "C:\\Users\\ROG\\Desktop\\Tamerlan\\CODE ACADEMY\\BACK-END\\Project\\Back-End Project\\Pustok\\Pustok\\Areas\\Admin\\Views\\Category\\Update.cshtml",
-              "RelativeDocumentMoniker": "Pustok\\Areas\\Admin\\Views\\Category\\Update.cshtml",
-              "ToolTip": "C:\\Users\\ROG\\Desktop\\Tamerlan\\CODE ACADEMY\\BACK-END\\Project\\Back-End Project\\Pustok\\Pustok\\Areas\\Admin\\Views\\Category\\Update.cshtml",
-              "RelativeToolTip": "Pustok\\Areas\\Admin\\Views\\Category\\Update.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABMAAAA9AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-04-05T08:38:32.558Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "CategoryCreatVM.cs",
-              "DocumentMoniker": "C:\\Users\\ROG\\Desktop\\Tamerlan\\CODE ACADEMY\\BACK-END\\Project\\Back-End Project\\Pustok\\Pustok\\Areas\\Admin\\ViewModels\\Categories\\CategoryCreatVM.cs",
-              "RelativeDocumentMoniker": "Pustok\\Areas\\Admin\\ViewModels\\Categories\\CategoryCreatVM.cs",
-              "ToolTip": "C:\\Users\\ROG\\Desktop\\Tamerlan\\CODE ACADEMY\\BACK-END\\Project\\Back-End Project\\Pustok\\Pustok\\Areas\\Admin\\ViewModels\\Categories\\CategoryCreatVM.cs",
-              "RelativeToolTip": "Pustok\\Areas\\Admin\\ViewModels\\Categories\\CategoryCreatVM.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAuwAYAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-05T07:44:17.688Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "CategoryListVM.cs",
-              "DocumentMoniker": "C:\\Users\\ROG\\Desktop\\Tamerlan\\CODE ACADEMY\\BACK-END\\Project\\Back-End Project\\Pustok\\Pustok\\Areas\\Admin\\ViewModels\\Categories\\CategoryListVM.cs",
-              "RelativeDocumentMoniker": "Pustok\\Areas\\Admin\\ViewModels\\Categories\\CategoryListVM.cs",
-              "ToolTip": "C:\\Users\\ROG\\Desktop\\Tamerlan\\CODE ACADEMY\\BACK-END\\Project\\Back-End Project\\Pustok\\Pustok\\Areas\\Admin\\ViewModels\\Categories\\CategoryListVM.cs",
-              "RelativeToolTip": "Pustok\\Areas\\Admin\\ViewModels\\Categories\\CategoryListVM.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAuwAcAAAAZAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-05T07:08:33.848Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "CategoryDetailVM.cs",
-              "DocumentMoniker": "C:\\Users\\ROG\\Desktop\\Tamerlan\\CODE ACADEMY\\BACK-END\\Project\\Back-End Project\\Pustok\\Pustok\\Areas\\Admin\\ViewModels\\Categories\\CategoryDetailVM.cs",
-              "RelativeDocumentMoniker": "Pustok\\Areas\\Admin\\ViewModels\\Categories\\CategoryDetailVM.cs",
-              "ToolTip": "C:\\Users\\ROG\\Desktop\\Tamerlan\\CODE ACADEMY\\BACK-END\\Project\\Back-End Project\\Pustok\\Pustok\\Areas\\Admin\\ViewModels\\Categories\\CategoryDetailVM.cs",
-              "RelativeToolTip": "Pustok\\Areas\\Admin\\ViewModels\\Categories\\CategoryDetailVM.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-05T07:08:28.738Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "Category.cs",
-              "DocumentMoniker": "C:\\Users\\ROG\\Desktop\\Tamerlan\\CODE ACADEMY\\BACK-END\\Project\\Back-End Project\\Pustok\\Pustok\\Models\\Category.cs",
-              "RelativeDocumentMoniker": "Pustok\\Models\\Category.cs",
-              "ToolTip": "C:\\Users\\ROG\\Desktop\\Tamerlan\\CODE ACADEMY\\BACK-END\\Project\\Back-End Project\\Pustok\\Pustok\\Models\\Category.cs",
-              "RelativeToolTip": "Pustok\\Models\\Category.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAA/AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-05T07:03:32.456Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Detail.cshtml",
-              "DocumentMoniker": "C:\\Users\\ROG\\Desktop\\Tamerlan\\CODE ACADEMY\\BACK-END\\Project\\Back-End Project\\Pustok\\Pustok\\Areas\\Admin\\Views\\Category\\Detail.cshtml",
-              "RelativeDocumentMoniker": "Pustok\\Areas\\Admin\\Views\\Category\\Detail.cshtml",
-              "ToolTip": "C:\\Users\\ROG\\Desktop\\Tamerlan\\CODE ACADEMY\\BACK-END\\Project\\Back-End Project\\Pustok\\Pustok\\Areas\\Admin\\Views\\Category\\Detail.cshtml",
-              "RelativeToolTip": "Pustok\\Areas\\Admin\\Views\\Category\\Detail.cshtml",
-              "ViewState": "AQIAAAUAAAAAAAAAAAAvwBsAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-04-05T06:45:24.503Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "Default.cshtml",
-              "DocumentMoniker": "C:\\Users\\ROG\\Desktop\\Tamerlan\\CODE ACADEMY\\BACK-END\\Project\\Back-End Project\\Pustok\\Pustok\\Areas\\Admin\\Views\\Shared\\Components\\CategoryDeletedListVC\\Default.cshtml",
-              "RelativeDocumentMoniker": "Pustok\\Areas\\Admin\\Views\\Shared\\Components\\CategoryDeletedListVC\\Default.cshtml",
-              "ToolTip": "C:\\Users\\ROG\\Desktop\\Tamerlan\\CODE ACADEMY\\BACK-END\\Project\\Back-End Project\\Pustok\\Pustok\\Areas\\Admin\\Views\\Shared\\Components\\CategoryDeletedListVC\\Default.cshtml",
-              "RelativeToolTip": "Pustok\\Areas\\Admin\\Views\\Shared\\Components\\CategoryDeletedListVC\\Default.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAABAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-04-05T06:12:48.356Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "CategoryDeletedListVC.cs",
-              "DocumentMoniker": "C:\\Users\\ROG\\Desktop\\Tamerlan\\CODE ACADEMY\\BACK-END\\Project\\Back-End Project\\Pustok\\Pustok\\Areas\\Admin\\ViewComponents\\CategoryDeletedListVC.cs",
-              "RelativeDocumentMoniker": "Pustok\\Areas\\Admin\\ViewComponents\\CategoryDeletedListVC.cs",
-              "ToolTip": "C:\\Users\\ROG\\Desktop\\Tamerlan\\CODE ACADEMY\\BACK-END\\Project\\Back-End Project\\Pustok\\Pustok\\Areas\\Admin\\ViewComponents\\CategoryDeletedListVC.cs",
-              "RelativeToolTip": "Pustok\\Areas\\Admin\\ViewComponents\\CategoryDeletedListVC.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABcAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-05T06:08:45.541Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "DeletedList.cshtml",
-              "DocumentMoniker": "C:\\Users\\ROG\\Desktop\\Tamerlan\\CODE ACADEMY\\BACK-END\\Project\\Back-End Project\\Pustok\\Pustok\\Areas\\Admin\\Views\\Category\\DeletedList.cshtml",
-              "RelativeDocumentMoniker": "Pustok\\Areas\\Admin\\Views\\Category\\DeletedList.cshtml",
-              "ToolTip": "C:\\Users\\ROG\\Desktop\\Tamerlan\\CODE ACADEMY\\BACK-END\\Project\\Back-End Project\\Pustok\\Pustok\\Areas\\Admin\\Views\\Category\\DeletedList.cshtml",
-              "RelativeToolTip": "Pustok\\Areas\\Admin\\Views\\Category\\DeletedList.cshtml",
-              "ViewState": "AQIAAEUAAAAAAAAAAAAAAB0AAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-04-05T06:06:45.155Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "Create.cshtml",
-              "DocumentMoniker": "C:\\Users\\ROG\\Desktop\\Tamerlan\\CODE ACADEMY\\BACK-END\\Project\\Back-End Project\\Pustok\\Pustok\\Areas\\Admin\\Views\\Category\\Create.cshtml",
-              "RelativeDocumentMoniker": "Pustok\\Areas\\Admin\\Views\\Category\\Create.cshtml",
-              "ToolTip": "C:\\Users\\ROG\\Desktop\\Tamerlan\\CODE ACADEMY\\BACK-END\\Project\\Back-End Project\\Pustok\\Pustok\\Areas\\Admin\\Views\\Category\\Create.cshtml",
-              "RelativeToolTip": "Pustok\\Areas\\Admin\\Views\\Category\\Create.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABsAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-04-04T21:03:34.922Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Default.cshtml",
-              "DocumentMoniker": "C:\\Users\\ROG\\Desktop\\Tamerlan\\CODE ACADEMY\\BACK-END\\Project\\Back-End Project\\Pustok\\Pustok\\Areas\\Admin\\Views\\Shared\\Components\\CategoryListVC\\Default.cshtml",
-              "RelativeDocumentMoniker": "Pustok\\Areas\\Admin\\Views\\Shared\\Components\\CategoryListVC\\Default.cshtml",
-              "ToolTip": "C:\\Users\\ROG\\Desktop\\Tamerlan\\CODE ACADEMY\\BACK-END\\Project\\Back-End Project\\Pustok\\Pustok\\Areas\\Admin\\Views\\Shared\\Components\\CategoryListVC\\Default.cshtml",
-              "RelativeToolTip": "Pustok\\Areas\\Admin\\Views\\Shared\\Components\\CategoryListVC\\Default.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAABHAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-04-04T21:02:32.413Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "CategoryListVC.cs",
-              "DocumentMoniker": "C:\\Users\\ROG\\Desktop\\Tamerlan\\CODE ACADEMY\\BACK-END\\Project\\Back-End Project\\Pustok\\Pustok\\Areas\\Admin\\ViewComponents\\CategoryListVC.cs",
-              "RelativeDocumentMoniker": "Pustok\\Areas\\Admin\\ViewComponents\\CategoryListVC.cs",
-              "ToolTip": "C:\\Users\\ROG\\Desktop\\Tamerlan\\CODE ACADEMY\\BACK-END\\Project\\Back-End Project\\Pustok\\Pustok\\Areas\\Admin\\ViewComponents\\CategoryListVC.cs",
-              "RelativeToolTip": "Pustok\\Areas\\Admin\\ViewComponents\\CategoryListVC.cs",
-              "ViewState": "AQIAAAcAAAAAAAAAAADwvx8AAAAIAAAA",
+              "Title": "AccountController.cs",
+              "DocumentMoniker": "C:\\Users\\ROG\\Desktop\\Tamerlan\\CODE ACADEMY\\BACK-END\\Project\\Back-End Project\\Pustok\\Pustok\\Areas\\Admin\\Controllers\\AccountController.cs",
+              "RelativeDocumentMoniker": "Pustok\\Areas\\Admin\\Controllers\\AccountController.cs",
+              "ToolTip": "C:\\Users\\ROG\\Desktop\\Tamerlan\\CODE ACADEMY\\BACK-END\\Project\\Back-End Project\\Pustok\\Pustok\\Areas\\Admin\\Controllers\\AccountController.cs",
+              "RelativeToolTip": "Pustok\\Areas\\Admin\\Controllers\\AccountController.cs",
+              "ViewState": "AQIAANQAAAAAAAAAAAAuwNgAAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-04T20:57:33.911Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\ROG\\Desktop\\Tamerlan\\CODE ACADEMY\\BACK-END\\Project\\Back-End Project\\Pustok\\Pustok\\Areas\\Admin\\Views\\Category\\Index.cshtml",
-              "RelativeDocumentMoniker": "Pustok\\Areas\\Admin\\Views\\Category\\Index.cshtml",
-              "ToolTip": "C:\\Users\\ROG\\Desktop\\Tamerlan\\CODE ACADEMY\\BACK-END\\Project\\Back-End Project\\Pustok\\Pustok\\Areas\\Admin\\Views\\Category\\Index.cshtml",
-              "RelativeToolTip": "Pustok\\Areas\\Admin\\Views\\Category\\Index.cshtml",
-              "ViewState": "AQIAABAAAAAAAAAAAAAQwCEAAABMAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-04-04T20:55:27.424Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "CategoryController.cs",
-              "DocumentMoniker": "C:\\Users\\ROG\\Desktop\\Tamerlan\\CODE ACADEMY\\BACK-END\\Project\\Back-End Project\\Pustok\\Pustok\\Areas\\Admin\\Controllers\\CategoryController.cs",
-              "RelativeDocumentMoniker": "Pustok\\Areas\\Admin\\Controllers\\CategoryController.cs",
-              "ToolTip": "C:\\Users\\ROG\\Desktop\\Tamerlan\\CODE ACADEMY\\BACK-END\\Project\\Back-End Project\\Pustok\\Pustok\\Areas\\Admin\\Controllers\\CategoryController.cs",
-              "RelativeToolTip": "Pustok\\Areas\\Admin\\Controllers\\CategoryController.cs",
-              "ViewState": "AQIAAKEAAAAAAAAAAAAcwK4AAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-04T19:44:35.529Z",
+              "WhenOpened": "2024-04-05T09:32:52.268Z",
               "EditorCaption": ""
             }
           ]

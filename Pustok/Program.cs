@@ -2,6 +2,8 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Pustok.Data;
 using Pustok.Models;
+using Pustok.Services.Implements;
+using Pustok.Services.Interfaces;
 
 namespace Pustok;
 
@@ -16,16 +18,23 @@ public class Program
 			cfg.UseSqlServer(builder.Configuration.GetConnectionString("MSSQL"))
 			);
 
-		builder.Services.AddIdentity<AppUser, IdentityRole>(option =>
+        builder.Services.AddTransient<IEmailService, EmailService>();
+
+        builder.Services.AddIdentity<AppUser, IdentityRole>(option =>
 		{
 			option.User.RequireUniqueEmail = true;
 			option.Password.RequireUppercase = true;
 			option.Password.RequireDigit = true;
 			option.Password.RequiredLength = 8;
 			option.Password.RequireNonAlphanumeric = true;
-		}).AddEntityFrameworkStores<PustokContext>().AddDefaultTokenProviders();
+            option.SignIn.RequireConfirmedEmail = true;
 
-		var app = builder.Build();
+        }).AddEntityFrameworkStores<PustokContext>().AddDefaultTokenProviders();
+
+
+
+
+        var app = builder.Build();
 
 		if (!app.Environment.IsDevelopment())
 		{
@@ -37,10 +46,13 @@ public class Program
 
 		app.UseRouting();
 
-		app.MapControllerRoute(
+        app.UseAuthentication();
+        app.UseAuthorization();
+
+        app.MapControllerRoute(
 			  name: "areas",
-			  pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
-			);
+			  pattern: "{area:exists}/{controller=Dashboard}/{action=Index}/{id?}"
+            );
 
 		app.MapControllerRoute(
 			name: "default",

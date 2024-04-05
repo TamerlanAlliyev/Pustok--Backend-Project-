@@ -20,7 +20,7 @@ namespace Pustok.Areas.Admin.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var categories = await _context.Categories.Where(c => !c.IsDeleted).ToListAsync();
+            var categories = await _context.Categories.Where(c => !c.IsDeleted && c.ParentCategoryId == null).ToListAsync();
             ViewBag.Categories = new SelectList(categories, "Id", "Name");
             return View();
         }
@@ -29,7 +29,7 @@ namespace Pustok.Areas.Admin.Controllers
 
         public async Task<IActionResult> Create()
         {
-            var categories = await _context.Categories.Where(c => !c.IsDeleted).ToListAsync();
+            var categories = await _context.Categories.Where(c => !c.IsDeleted&&c.ParentCategoryId==null).ToListAsync();
             ViewBag.Categories = new SelectList(categories, "Id", "Name");
             return View();
         }
@@ -39,7 +39,7 @@ namespace Pustok.Areas.Admin.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(CategoryListVM categoryVM)
         {
-            var categories = await _context.Categories.Where(c => !c.IsDeleted).ToListAsync();
+            var categories = await _context.Categories.Where(c => !c.IsDeleted && c.ParentCategoryId == null).ToListAsync();
             ViewBag.Categories = new SelectList(categories, "Id", "Name");
 
 
@@ -77,7 +77,7 @@ namespace Pustok.Areas.Admin.Controllers
 
             var categories = await _context.Categories.FindAsync(id);
 
-            if (categories == null) return NotFound();
+            if (categories == null) return View("Error404");
 
             _context.Categories.Remove(categories);
             await _context.SaveChangesAsync();
@@ -92,7 +92,7 @@ namespace Pustok.Areas.Admin.Controllers
 
             var categories = await _context.Categories.FindAsync(id);
 
-            if (categories == null) return NotFound();
+            if (categories == null) return View("Error404");
 
             categories.IsDeleted = true;
             await _context.SaveChangesAsync();
@@ -107,7 +107,7 @@ namespace Pustok.Areas.Admin.Controllers
 
             var categories = await _context.Categories.FindAsync(id);
 
-            if (categories == null) return NotFound();
+            if (categories == null) return View("Error404");
 
             categories.IsDeleted = false;
             await _context.SaveChangesAsync();
@@ -126,7 +126,7 @@ namespace Pustok.Areas.Admin.Controllers
 
             var sub = await _context.Categories.Where(c => !c.IsDeleted && c.ParentCategoryId == id).ToListAsync();
 
-            if (category == null) return NotFound();
+            if (category == null) return View("Error404");
 
             var categoryDetailVM = new CategoryDetailVM
             {
@@ -141,9 +141,9 @@ namespace Pustok.Areas.Admin.Controllers
         {
             if (id < 1 && id == null) return BadRequest();
             var category = await _context.Categories.FindAsync(id);
-            var categories = await _context.Categories.Where(c => !c.IsDeleted).ToListAsync();
+            var categories = await _context.Categories.Where(c => !c.IsDeleted&&c.ParentCategoryId==null).ToListAsync();
             ViewBag.Categories = new SelectList(categories, "Id", "Name");
-            if (category == null) return NotFound();
+            if (category == null) return View("Error404");
 
             CategoryUpdateVM categoryCreat = new CategoryUpdateVM
             {
@@ -161,7 +161,7 @@ namespace Pustok.Areas.Admin.Controllers
 
             if (string.IsNullOrEmpty(categoryVM.Name))
             {
-                var categories = await _context.Categories.Where(c => !c.IsDeleted).ToListAsync();
+                var categories = await _context.Categories.Where(c => !c.IsDeleted && c.ParentCategoryId == null).ToListAsync();
                 ViewBag.Categories = new SelectList(categories, "Id", "Name");
                 ModelState.AddModelError("Name", "Category name cannot be empty.");
                 return View(categoryVM);
@@ -170,7 +170,7 @@ namespace Pustok.Areas.Admin.Controllers
             var category = await _context.Categories.FindAsync(categoryVM.Id);
             if (category == null)
             {
-                return NotFound();
+                return View("Error404");
             }
 
             category.Id = categoryVM.Id;
