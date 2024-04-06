@@ -1,0 +1,190 @@
+﻿@model Tag
+
+
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800 mt-3">Tags</h1>
+    <p class="mb-4">
+    </p>
+
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Categories Example</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
+                    <div class="col-sm-12">
+                        <table class="table table-bordered table-hover  dataTable align-text-center" id="dataTable" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%;">
+                            <thead>
+
+                                <tr role="row" style="text-align:center;">
+                                    <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 150px;">Name</th>
+                                    <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 10px;">Details</th>
+                                    <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 10px;">Edit</th>
+                                    <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 10px;">Remove</th>
+                            </thead>
+                            <tfoot>
+                                <tr style="text-align:center;">
+                                    <th rowspan="1" colspan="1">Name</th>
+                                    <th rowspan="1" colspan="1">Details</th>
+                                    <th rowspan="1" colspan="1">Edit</th>
+                                    <th rowspan="1" colspan="1">Remove</th>
+                            </tfoot>
+                            <tbody style="text-align:center;">
+
+                                @await Component.InvokeAsync("TagListVC")
+
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="d-flex justify-content-center align-items-center flex-column text-center">
+        <a class="creat btn btn-success mt-3 mb-5 w-25">New Category Creat</a>
+
+        <div class="creat-list container  h-100  justify-content-center align-items-center" style="display:none;">
+            <div class="">
+                <div class="col-md-12 p-5" style="border-radius: 15px; border:1px solid dodgerblue; color: black; max-width: 500px;">
+                    <form asp-action="Create" method="post">
+                        <div class="form-group mb-3 w-100">
+                            <label>Name</label>
+                            <input class="form-control" asp-for="Name" />
+                            <span class="text-danger" asp-validation-for="Name"></span>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+@section Script {
+    @*  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script>
+        const swalWithBootstrapButtons = Swal.mixin({
+            customClass: {
+                confirmButton: "btn btn-success",
+                cancelButton: "btn btn-danger"
+            },
+            buttonsStyling: false
+        });
+
+        const deleteBtns = document.querySelectorAll(".deleteBtn");
+
+        deleteBtns.forEach(btn => {
+            btn.addEventListener("click", async (e) => {
+                e.preventDefault();
+
+                const categoryId = btn.dataset.id;
+
+                const confirmDelete = await swalWithBootstrapButtons.fire({
+                    title: "Are you sure?",
+                    text: "You won't be able to revert this!",
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonText: "Yes, delete it!",
+                    cancelButtonText: "No, cancel!",
+                    reverseButtons: true
+                });
+
+                if (confirmDelete.isConfirmed) {
+                    $.ajax({
+                        type: "POST",
+                        url: `/Admin/Category/Delete/${categoryId}`,
+                        success: (response) => {
+                            if (response.success) {
+                                // Remove the row from the table
+                                btn.closest("tr").remove();
+
+                                swalWithBootstrapButtons.fire({
+                                    title: "Deleted!",
+                                    text: response.message,
+                                    icon: "success"
+                                });
+                            } else {
+                                swalWithBootstrapButtons.fire({
+                                    title: "Error!",
+                                    text: response.message,
+                                    icon: "error"
+                                });
+                            }
+                        },
+                        error: (error) => {
+                            console.error(error);
+                        }
+                    });
+                }
+            });
+        });
+    </script> *@
+
+
+
+    <script>
+        const creat = document.querySelector(".creat");
+        const creatList = document.querySelector(".creat-list");
+        let toggle = false;
+        creat.addEventListener('click', () => {
+            if (toggle == false) {
+                creatList.style.display = 'flex';
+                toggle = true;
+            } else {
+                creatList.style.display = 'none';
+                toggle = false;
+            }
+        });
+    </script>
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var deleteLinks = document.querySelectorAll(".delete-category");
+
+            deleteLinks.forEach(function (link) {
+                link.addEventListener("click", function (e) {
+                    e.preventDefault();
+
+                    var categoryId = link.getAttribute("data-id");
+
+                    fetch(`/Admin/Tag/SoftDelete/${categoryId}`, {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json"
+                        }
+                    })
+                        .then(function (response) {
+                            if (response.ok) {
+                                link.closest("tr").remove();
+                            } else {
+                                console.error("Failed to delete category!");
+                            }
+                        })
+                        .catch(function (error) {
+                            console.error("Error:", error);
+                            alert("An error occurred while deleting category!");
+                        });
+                });
+            });
+        });
+    </script>
+
+
+    <script src="~/admin/vendor/jquery/jquery.min.js"></script>
+
+    <!-- Page level plugins -->
+    <script src="~/admin/vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="~/admin/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="~/admin/js/demo/datatables-demo.js"></script>
+}

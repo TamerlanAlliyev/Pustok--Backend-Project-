@@ -1,0 +1,15 @@
+﻿@model List<Tag>
+
+@foreach (Tag tag in Model)
+{
+    <tr class="even  align-items-center ">
+        <td style="vertical-align: middle;" class="align-items-center">@tag.Name</td>
+
+        <td style="vertical-align: middle;" class="align-items-center">
+            <a href="#" class="btn btn-sm btn-success return-category" data-id="@tag.Id">Return It</a>
+        </td>
+        <td style="vertical-align: middle;" class="align-items-center">
+            <a href="#" class="btn btn-sm btn-danger delete-category" data-id="@tag.Id">Permanent delete</a>
+        </td>
+    </tr>
+}

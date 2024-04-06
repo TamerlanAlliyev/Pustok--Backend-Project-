@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -12,10 +13,11 @@ namespace Pustok.Areas.Admin.Controllers
     public class CategoryController : Controller
     {
         readonly PustokContext _context;
-
-        public CategoryController(PustokContext context)
+        readonly UserManager<AppUser> _userManager;
+        public CategoryController(PustokContext context, UserManager<AppUser> userManager)
         {
             _context = context;
+            _userManager = userManager;
         }
 
         public async Task<IActionResult> Index()
@@ -49,12 +51,16 @@ namespace Pustok.Areas.Admin.Controllers
                 return View(categoryVM);
             }
             var ipAddress = HttpContext.Connection.RemoteIpAddress?.ToString();
+
+            var user = await _userManager.GetUserAsync(User);
+            string CreatedBy = user?.FullName ?? "Unknown Person";
+
             Category category = new Category
             {
                 Name = categoryVM.CreatVM.Name,
                 ParentCategoryId = categoryVM.CreatVM.CategoryId,
                 Created = DateTime.UtcNow,
-                CreatedBy = 1,
+                CreatedBy = CreatedBy,
                 IPAddress = ipAddress,
             };
 
@@ -79,6 +85,7 @@ namespace Pustok.Areas.Admin.Controllers
 
             if (categories == null) return View("Error404");
 
+
             _context.Categories.Remove(categories);
             await _context.SaveChangesAsync();
 
@@ -93,8 +100,14 @@ namespace Pustok.Areas.Admin.Controllers
             var categories = await _context.Categories.FindAsync(id);
 
             if (categories == null) return View("Error404");
+            var user = await _userManager.GetUserAsync(User);
+            string ModifiedBy = user?.FullName ?? "Unknown Person";
 
             categories.IsDeleted = true;
+            categories.IPAddress = "";
+            categories.ModifiedBy = ModifiedBy;
+            categories.Modified = DateTime.UtcNow;
+
             await _context.SaveChangesAsync();
 
             return RedirectToAction("Index");
@@ -109,7 +122,14 @@ namespace Pustok.Areas.Admin.Controllers
 
             if (categories == null) return View("Error404");
 
+            var user = await _userManager.GetUserAsync(User);
+            string ModifiedBy = user?.FullName ?? "Unknown Person";
+
             categories.IsDeleted = false;
+            categories.IPAddress = "";
+            categories.ModifiedBy = ModifiedBy;
+            categories.Modified = DateTime.UtcNow;
+
             await _context.SaveChangesAsync();
 
             return RedirectToAction("Index");
@@ -173,10 +193,14 @@ namespace Pustok.Areas.Admin.Controllers
                 return View("Error404");
             }
 
+            var user = await _userManager.GetUserAsync(User);
+            string ModifiedBy = user?.FullName ?? "Unknown Person";
+
             category.Id = categoryVM.Id;
             category.Name = categoryVM.Name;
             category.ParentCategoryId = categoryVM.CategoryId;
-
+            category.Modified = DateTime.UtcNow;
+            category.ModifiedBy = ModifiedBy;
 
             await _context.SaveChangesAsync();
 

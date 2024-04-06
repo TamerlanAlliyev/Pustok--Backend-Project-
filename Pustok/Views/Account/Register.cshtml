@@ -14,30 +14,36 @@
                                 <label for="email"> Name</label>
                                 <input asp-for="Name" class="mb-0 form-control" type="text" id="name"
                                        placeholder="Enter your  Name">
+                                <span class="text-danger" asp-validation-for="Name"></span>
                             </div>
                             <div class="col-lg-6 mb--20">
                                 <label for="email">Surname</label>
                                 <input asp-for="Surname" class="mb-0 form-control" type="text" id="name"
                                        placeholder="Enter your Surname">
+                                <span class="text-danger" asp-validation-for="Surname"></span>
                             </div>
                             <div class="col-lg-6 mb--20">
                                 <label for="email">Username</label>
                                 <input asp-for="Username" class="mb-0 form-control" type="text" id="email" placeholder="Enter your Username">
+                                <span class="text-danger" asp-validation-for="Username"></span>
                             </div>
                             <div class="col-lg-6 mb--20">
                                 <label for="email">Email</label>
                                 <input asp-for="Email" class="mb-0 form-control" type="email" id="email" placeholder="Enter Your Email Address Here..">
+                                <span class="text-danger" asp-validation-for="Email"></span>
                             </div>
 
                             <div class="col-lg-6 mb--20">
                                 <label for="password">Password</label>
                                 <input asp-for="Password" class="mb-0 form-control" type="password" id="password" placeholder="Enter your password">
+                                <span class="text-danger" asp-validation-for="Password"></span>
                             </div>
                             <div class="col-lg-6 mb--20">
                                 <label for="password">Repeat Password</label>
                                 <input asp-for="ConfirmPassword" class="mb-0 form-control" type="password" id="repeat-password" placeholder="Repeat your password">
+                                <span class="text-danger" asp-validation-for="ConfirmPassword"></span>
                             </div>
-
+                            <div class="text-danger" asp-validation-summary="ModelOnly"></div>
 
 
 

@@ -33,6 +33,7 @@ namespace Pustok.Controllers
         [HttpPost]
         public async Task<IActionResult> Login(string ReturnUrl, AccountLoginVM LoginVM)
         {
+
             var user = await _userManager.FindByNameAsync(LoginVM.UsernameOrEmail);
             if (user == null)
             {
@@ -40,7 +41,7 @@ namespace Pustok.Controllers
                 if (user == null)
                 {
                     ModelState.AddModelError("", "Username or Email  already exist");
-                    return View();
+                    return View(LoginVM);
                 }
             }
 
@@ -171,7 +172,10 @@ namespace Pustok.Controllers
         [HttpPost]
         public async Task<IActionResult> ForgotPassword(ForgotPasswordVM passwordVM)
         {
-
+            if (!ModelState.IsValid)
+            {
+                return View(passwordVM);
+            }
             var userEmail = await _userManager.FindByEmailAsync(passwordVM.Email);
             if (userEmail == null)
             {

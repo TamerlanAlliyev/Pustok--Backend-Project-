@@ -14,11 +14,14 @@
 
                         <div class="mr-5">
                             <h3 class="box-title mb-4">@Model.Category.Name</h3>
+                            <div class="mr-5 d-flex gap-2">
+
                             <div class="text-center">
                                 <a asp-area="Admin" asp-controller="Category" asp-action="Update" asp-route-id="@Model.Category.Id" class="btn btn-sm btn-warning">Edit</a>
                             </div>
                             <div class="text-center">
                                 <a asp-area="Admin" asp-controller="Category" asp-action="SoftDelete" asp-route-id="@Model.Category.Id" class="btn btn-sm btn-danger">Remove</a>
+                            </div>
                             </div>
                         </div>
 

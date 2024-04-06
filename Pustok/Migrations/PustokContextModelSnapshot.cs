@@ -299,11 +299,12 @@ namespace Pustok.Migrations
                     b.Property<DateTime>("Created")
                         .HasColumnType("datetime");
 
-                    b.Property<int>("CreatedBy")
-                        .HasColumnType("int");
+                    b.Property<string>("CreatedBy")
+                        .IsRequired()
+                        .HasMaxLength(300)
+                        .HasColumnType("varchar(300)");
 
                     b.Property<string>("IPAddress")
-                        .IsRequired()
                         .HasColumnType("varchar(100)");
 
                     b.Property<bool>("IsDeleted")
@@ -312,8 +313,9 @@ namespace Pustok.Migrations
                     b.Property<DateTime?>("Modified")
                         .HasColumnType("datetime");
 
-                    b.Property<int?>("ModifiedBy")
-                        .HasColumnType("int");
+                    b.Property<string>("ModifiedBy")
+                        .HasMaxLength(300)
+                        .HasColumnType("varchar(300)");
 
                     b.Property<int>("ProductId")
                         .HasColumnType("int");
@@ -342,11 +344,12 @@ namespace Pustok.Migrations
                     b.Property<DateTime>("Created")
                         .HasColumnType("datetime");
 
-                    b.Property<int>("CreatedBy")
-                        .HasColumnType("int");
+                    b.Property<string>("CreatedBy")
+                        .IsRequired()
+                        .HasMaxLength(300)
+                        .HasColumnType("varchar(300)");
 
                     b.Property<string>("IPAddress")
-                        .IsRequired()
                         .HasColumnType("varchar(100)");
 
                     b.Property<bool>("IsDeleted")
@@ -355,8 +358,9 @@ namespace Pustok.Migrations
                     b.Property<DateTime?>("Modified")
                         .HasColumnType("datetime");
 
-                    b.Property<int?>("ModifiedBy")
-                        .HasColumnType("int");
+                    b.Property<string>("ModifiedBy")
+                        .HasMaxLength(300)
+                        .HasColumnType("varchar(300)");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -384,8 +388,10 @@ namespace Pustok.Migrations
                     b.Property<DateTime>("Created")
                         .HasColumnType("datetime");
 
-                    b.Property<int>("CreatedBy")
-                        .HasColumnType("int");
+                    b.Property<string>("CreatedBy")
+                        .IsRequired()
+                        .HasMaxLength(300)
+                        .HasColumnType("varchar(300)");
 
                     b.Property<string>("Description")
                         .IsRequired()
@@ -393,7 +399,6 @@ namespace Pustok.Migrations
                         .HasColumnType("nvarchar(700)");
 
                     b.Property<string>("IPAddress")
-                        .IsRequired()
                         .HasColumnType("varchar(100)");
 
                     b.Property<string>("ImageUrl")
@@ -407,8 +412,9 @@ namespace Pustok.Migrations
                     b.Property<DateTime?>("Modified")
                         .HasColumnType("datetime");
 
-                    b.Property<int?>("ModifiedBy")
-                        .HasColumnType("int");
+                    b.Property<string>("ModifiedBy")
+                        .HasMaxLength(300)
+                        .HasColumnType("varchar(300)");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -446,8 +452,10 @@ namespace Pustok.Migrations
                     b.Property<DateTime>("Created")
                         .HasColumnType("datetime");
 
-                    b.Property<int>("CreatedBy")
-                        .HasColumnType("int");
+                    b.Property<string>("CreatedBy")
+                        .IsRequired()
+                        .HasMaxLength(300)
+                        .HasColumnType("varchar(300)");
 
                     b.Property<string>("Description")
                         .HasMaxLength(700)
@@ -460,7 +468,6 @@ namespace Pustok.Migrations
                         .HasColumnType("decimal");
 
                     b.Property<string>("IPAddress")
-                        .IsRequired()
                         .HasColumnType("varchar(100)");
 
                     b.Property<bool>("IsDeleted")
@@ -469,8 +476,9 @@ namespace Pustok.Migrations
                     b.Property<DateTime?>("Modified")
                         .HasColumnType("datetime");
 
-                    b.Property<int?>("ModifiedBy")
-                        .HasColumnType("int");
+                    b.Property<string>("ModifiedBy")
+                        .HasMaxLength(300)
+                        .HasColumnType("varchar(300)");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -526,11 +534,12 @@ namespace Pustok.Migrations
                     b.Property<DateTime>("Created")
                         .HasColumnType("datetime");
 
-                    b.Property<int>("CreatedBy")
-                        .HasColumnType("int");
+                    b.Property<string>("CreatedBy")
+                        .IsRequired()
+                        .HasMaxLength(300)
+                        .HasColumnType("varchar(300)");
 
                     b.Property<string>("IPAddress")
-                        .IsRequired()
                         .HasColumnType("varchar(100)");
 
                     b.Property<bool>("IsDeleted")
@@ -545,8 +554,9 @@ namespace Pustok.Migrations
                     b.Property<DateTime?>("Modified")
                         .HasColumnType("datetime");
 
-                    b.Property<int?>("ModifiedBy")
-                        .HasColumnType("int");
+                    b.Property<string>("ModifiedBy")
+                        .HasMaxLength(300)
+                        .HasColumnType("varchar(300)");
 
                     b.Property<int>("ProductId")
                         .HasColumnType("int");
@@ -579,8 +589,9 @@ namespace Pustok.Migrations
                     b.Property<DateTime>("Created")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("CreatedBy")
-                        .HasColumnType("int");
+                    b.Property<string>("CreatedBy")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("IPAddress")
                         .HasColumnType("nvarchar(max)");
@@ -591,8 +602,8 @@ namespace Pustok.Migrations
                     b.Property<DateTime?>("Modified")
                         .HasColumnType("datetime2");
 
-                    b.Property<int?>("ModifiedBy")
-                        .HasColumnType("int");
+                    b.Property<string>("ModifiedBy")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("ProductId")
                         .HasColumnType("int");
@@ -651,11 +662,12 @@ namespace Pustok.Migrations
                     b.Property<DateTime>("Created")
                         .HasColumnType("datetime");
 
-                    b.Property<int>("CreatedBy")
-                        .HasColumnType("int");
+                    b.Property<string>("CreatedBy")
+                        .IsRequired()
+                        .HasMaxLength(300)
+                        .HasColumnType("varchar(300)");
 
                     b.Property<string>("IPAddress")
-                        .IsRequired()
                         .HasColumnType("varchar(100)");
 
                     b.Property<bool>("IsDeleted")
@@ -664,8 +676,9 @@ namespace Pustok.Migrations
                     b.Property<DateTime?>("Modified")
                         .HasColumnType("datetime");
 
-                    b.Property<int?>("ModifiedBy")
-                        .HasColumnType("int");
+                    b.Property<string>("ModifiedBy")
+                        .HasMaxLength(300)
+                        .HasColumnType("varchar(300)");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -692,11 +705,12 @@ namespace Pustok.Migrations
                     b.Property<DateTime>("Created")
                         .HasColumnType("datetime");
 
-                    b.Property<int>("CreatedBy")
-                        .HasColumnType("int");
+                    b.Property<string>("CreatedBy")
+                        .IsRequired()
+                        .HasMaxLength(300)
+                        .HasColumnType("varchar(300)");
 
                     b.Property<string>("IPAddress")
-                        .IsRequired()
                         .HasColumnType("varchar(100)");
 
                     b.Property<bool>("IsDeleted")
@@ -705,8 +719,9 @@ namespace Pustok.Migrations
                     b.Property<DateTime?>("Modified")
                         .HasColumnType("datetime");
 
-                    b.Property<int?>("ModifiedBy")
-                        .HasColumnType("int");
+                    b.Property<string>("ModifiedBy")
+                        .HasMaxLength(300)
+                        .HasColumnType("varchar(300)");
 
                     b.Property<int>("ProductId")
                         .HasColumnType("int");

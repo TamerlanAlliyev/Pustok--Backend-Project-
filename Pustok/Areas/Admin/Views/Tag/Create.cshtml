@@ -1,0 +1,19 @@
+﻿@model TagCreateVM
+
+
+
+
+<div class="container " style=" height:75vh;">
+    <div class="row h-100 d-flex justify-content-center align-items-center">
+        <div class="col-md-12 p-5" style="border-radius: 15px; border:1px solid dodgerblue; color: black; max-width: 500px;">
+            <form method="post">
+                    <div class="form-group mb-3 w-100">
+                        <label>Name</label>
+                        <input class="form-control" asp-for="Name" />
+                        <span class="text-danger" asp-validation-for="Name"></span>
+                    </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>

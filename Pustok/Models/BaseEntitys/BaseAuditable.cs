@@ -2,9 +2,9 @@
 
 public class BaseAuditable: BaseEntity
 {
-    public int CreatedBy { get; set; }
+    public string CreatedBy { get; set; } = null!;
     public DateTime Created { get; set; }
-    public int? ModifiedBy { get; set; }
+    public string? ModifiedBy { get; set; }
     public DateTime? Modified { get; set; }
     public string? IPAddress { get; set; }
 }

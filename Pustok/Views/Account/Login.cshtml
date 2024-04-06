@@ -17,10 +17,14 @@
                                     <label for="email">Enter your email address here...</label>
                                     <input asp-for="UsernameOrEmail" class="mb-0 form-control"  id="email1"
                                            placeholder="Enter you email address here...">
+                                           <span class="text-danger" asp-validation-for="UsernameOrEmail"></span>
                                 </div>
                                 <div class="col-12 mb--20">
                                     <label for="password">Password</label>
                                     <input asp-for="Password" class="mb-0 form-control" type="password" id="login-password" placeholder="Enter your password">
+                                    <span class="text-danger" asp-validation-for="Password"></span>
+
+                                    <div class="text-danger" asp-validation-summary="ModelOnly"></div>
                                 </div>
 
                                 <div style="display:flex; justify-content:space-between">

@@ -3,12 +3,20 @@
   "WorkspaceRootPath": "C:\\Users\\ROG\\Desktop\\Tamerlan\\CODE ACADEMY\\BACK-END\\Project\\Back-End Project\\Pustok\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{C45228BC-C88C-49E1-A616-BE8EED22F20C}|Pustok\\Pustok.csproj|c:\\users\\rog\\desktop\\tamerlan\\code academy\\back-end\\project\\back-end project\\pustok\\pustok\\areas\\admin\\controllers\\tagcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C45228BC-C88C-49E1-A616-BE8EED22F20C}|Pustok\\Pustok.csproj|solutionrelative:pustok\\areas\\admin\\controllers\\tagcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C45228BC-C88C-49E1-A616-BE8EED22F20C}|Pustok\\Pustok.csproj|c:\\users\\rog\\desktop\\tamerlan\\code academy\\back-end\\project\\back-end project\\pustok\\pustok\\models\\basket.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C45228BC-C88C-49E1-A616-BE8EED22F20C}|Pustok\\Pustok.csproj|solutionrelative:pustok\\models\\basket.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C45228BC-C88C-49E1-A616-BE8EED22F20C}|Pustok\\Pustok.csproj|c:\\users\\rog\\desktop\\tamerlan\\code academy\\back-end\\project\\back-end project\\pustok\\pustok\\models\\tag.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C45228BC-C88C-49E1-A616-BE8EED22F20C}|Pustok\\Pustok.csproj|solutionrelative:pustok\\models\\tag.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C45228BC-C88C-49E1-A616-BE8EED22F20C}|Pustok\\Pustok.csproj|c:\\users\\rog\\desktop\\tamerlan\\code academy\\back-end\\project\\back-end project\\pustok\\pustok\\areas\\admin\\views\\category\\detail.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{C45228BC-C88C-49E1-A616-BE8EED22F20C}|Pustok\\Pustok.csproj|solutionrelative:pustok\\areas\\admin\\views\\category\\detail.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C45228BC-C88C-49E1-A616-BE8EED22F20C}|Pustok\\Pustok.csproj|c:\\users\\rog\\desktop\\tamerlan\\code academy\\back-end\\project\\back-end project\\pustok\\pustok\\areas\\admin\\views\\tag\\detail.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{C45228BC-C88C-49E1-A616-BE8EED22F20C}|Pustok\\Pustok.csproj|solutionrelative:pustok\\areas\\admin\\views\\tag\\detail.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C45228BC-C88C-49E1-A616-BE8EED22F20C}|Pustok\\Pustok.csproj|c:\\users\\rog\\desktop\\tamerlan\\code academy\\back-end\\project\\back-end project\\pustok\\pustok\\areas\\admin\\controllers\\tagcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C45228BC-C88C-49E1-A616-BE8EED22F20C}|Pustok\\Pustok.csproj|solutionrelative:pustok\\areas\\admin\\controllers\\tagcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -31,27 +39,53 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "TagController.cs",
-              "DocumentMoniker": "C:\\Users\\ROG\\Desktop\\Tamerlan\\CODE ACADEMY\\BACK-END\\Project\\Back-End Project\\Pustok\\Pustok\\Areas\\Admin\\Controllers\\TagController.cs",
-              "RelativeDocumentMoniker": "Pustok\\Areas\\Admin\\Controllers\\TagController.cs",
-              "ToolTip": "C:\\Users\\ROG\\Desktop\\Tamerlan\\CODE ACADEMY\\BACK-END\\Project\\Back-End Project\\Pustok\\Pustok\\Areas\\Admin\\Controllers\\TagController.cs",
-              "RelativeToolTip": "Pustok\\Areas\\Admin\\Controllers\\TagController.cs",
+              "Title": "Basket.cs",
+              "DocumentMoniker": "C:\\Users\\ROG\\Desktop\\Tamerlan\\CODE ACADEMY\\BACK-END\\Project\\Back-End Project\\Pustok\\Pustok\\Models\\Basket.cs",
+              "RelativeDocumentMoniker": "Pustok\\Models\\Basket.cs",
+              "ToolTip": "C:\\Users\\ROG\\Desktop\\Tamerlan\\CODE ACADEMY\\BACK-END\\Project\\Back-End Project\\Pustok\\Pustok\\Models\\Basket.cs",
+              "RelativeToolTip": "Pustok\\Models\\Basket.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-05T17:37:51.7Z",
+              "WhenOpened": "2024-04-06T06:06:41.444Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "Tag.cs",
-              "DocumentMoniker": "C:\\Users\\ROG\\Desktop\\Tamerlan\\CODE ACADEMY\\BACK-END\\Project\\Back-End Project\\Pustok\\Pustok\\Models\\Tag.cs",
-              "RelativeDocumentMoniker": "Pustok\\Models\\Tag.cs",
-              "ToolTip": "C:\\Users\\ROG\\Desktop\\Tamerlan\\CODE ACADEMY\\BACK-END\\Project\\Back-End Project\\Pustok\\Pustok\\Models\\Tag.cs",
-              "RelativeToolTip": "Pustok\\Models\\Tag.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAAAAAA",
+              "Title": "Detail.cshtml",
+              "DocumentMoniker": "C:\\Users\\ROG\\Desktop\\Tamerlan\\CODE ACADEMY\\BACK-END\\Project\\Back-End Project\\Pustok\\Pustok\\Areas\\Admin\\Views\\Category\\Detail.cshtml",
+              "RelativeDocumentMoniker": "Pustok\\Areas\\Admin\\Views\\Category\\Detail.cshtml",
+              "ToolTip": "C:\\Users\\ROG\\Desktop\\Tamerlan\\CODE ACADEMY\\BACK-END\\Project\\Back-End Project\\Pustok\\Pustok\\Areas\\Admin\\Views\\Category\\Detail.cshtml",
+              "RelativeToolTip": "Pustok\\Areas\\Admin\\Views\\Category\\Detail.cshtml",
+              "ViewState": "AQIAAAgAAAAAAAAAAAAAAB0AAAAWAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-04-06T05:51:44.223Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Detail.cshtml",
+              "DocumentMoniker": "C:\\Users\\ROG\\Desktop\\Tamerlan\\CODE ACADEMY\\BACK-END\\Project\\Back-End Project\\Pustok\\Pustok\\Areas\\Admin\\Views\\Tag\\Detail.cshtml",
+              "RelativeDocumentMoniker": "Pustok\\Areas\\Admin\\Views\\Tag\\Detail.cshtml",
+              "ToolTip": "C:\\Users\\ROG\\Desktop\\Tamerlan\\CODE ACADEMY\\BACK-END\\Project\\Back-End Project\\Pustok\\Pustok\\Areas\\Admin\\Views\\Tag\\Detail.cshtml",
+              "RelativeToolTip": "Pustok\\Areas\\Admin\\Views\\Tag\\Detail.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAA7AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-04-06T05:48:18.696Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "TagController.cs",
+              "DocumentMoniker": "C:\\Users\\ROG\\Desktop\\Tamerlan\\CODE ACADEMY\\BACK-END\\Project\\Back-End Project\\Pustok\\Pustok\\Areas\\Admin\\Controllers\\TagController.cs",
+              "RelativeDocumentMoniker": "Pustok\\Areas\\Admin\\Controllers\\TagController.cs",
+              "ToolTip": "C:\\Users\\ROG\\Desktop\\Tamerlan\\CODE ACADEMY\\BACK-END\\Project\\Back-End Project\\Pustok\\Pustok\\Areas\\Admin\\Controllers\\TagController.cs",
+              "RelativeToolTip": "Pustok\\Areas\\Admin\\Controllers\\TagController.cs",
+              "ViewState": "AQIAAEkAAAAAAAAAAAAgwGEAAAA4AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-05T17:03:57.26Z",
+              "WhenOpened": "2024-04-05T20:31:12.918Z",
               "EditorCaption": ""
             }
           ]
