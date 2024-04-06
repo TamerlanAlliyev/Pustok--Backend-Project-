@@ -148,15 +148,15 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", function () {
-            var deleteLinks = document.querySelectorAll(".delete-category");
+            var deleteLinks = document.querySelectorAll(".delete-tag");
 
             deleteLinks.forEach(function (link) {
                 link.addEventListener("click", function (e) {
                     e.preventDefault();
 
-                    var categoryId = link.getAttribute("data-id");
+                    var tagId = link.getAttribute("data-id");
 
-                    fetch(`/Admin/Tag/SoftDelete/${categoryId}`, {
+                    fetch(`/Admin/Tag/SoftDelete/${tagId}`, {
                         method: "POST",
                         headers: {
                             "Content-Type": "application/json"
@@ -166,12 +166,12 @@
                             if (response.ok) {
                                 link.closest("tr").remove();
                             } else {
-                                console.error("Failed to delete category!");
+                                console.error("Failed to delete tag!");
                             }
                         })
                         .catch(function (error) {
                             console.error("Error:", error);
-                            alert("An error occurred while deleting category!");
+                            alert("An error occurred while deleting tag!");
                         });
                 });
             });

@@ -2,8 +2,8 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using NuGet.Common;
+using Pustok.Helpers.Interfaces;
 using Pustok.Models;
-using Pustok.Services.Interfaces;
 using Pustok.ViewModels.Account;
 
 namespace Pustok.Areas.Admin.Controllers

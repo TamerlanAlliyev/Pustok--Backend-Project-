@@ -1,9 +1,11 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Pustok.Areas.Admin.Services.Implements;
+using Pustok.Areas.Admin.Services.Interfaces;
 using Pustok.Data;
+using Pustok.Helpers.Implements;
+using Pustok.Helpers.Interfaces;
 using Pustok.Models;
-using Pustok.Services.Implements;
-using Pustok.Services.Interfaces;
 
 namespace Pustok;
 
@@ -19,6 +21,8 @@ public class Program
 			);
 
         builder.Services.AddTransient<IEmailService, EmailService>();
+		builder.Services.AddScoped<IProductService,ProductService>();
+		builder.Services.AddScoped<ICategoryService, CategoryService>();
 
         builder.Services.AddIdentity<AppUser, IdentityRole>(option =>
 		{

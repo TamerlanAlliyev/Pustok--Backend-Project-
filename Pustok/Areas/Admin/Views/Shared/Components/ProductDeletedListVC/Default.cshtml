@@ -1,0 +1,18 @@
+﻿@model List<Product>
+
+@foreach (Product product in Model)
+{
+    <tr class="even  align-items-center">
+        <td class="d-flex align-items-center justify-content-center" style="vertical-align: middle;">
+            <img class="d-flex align-items-center justify-content-center" style="width:70%; vertical-align: middle" src="~/cilent/image/products/@product.Images.FirstOrDefault()?.Url" alt="Product Image" />
+        </td>
+        <td style="vertical-align: middle;" class="align-items-center">@product.Name</td>
+
+        <td style="vertical-align: middle;" class="align-items-center">
+            <a href="#" class="btn btn-sm btn-success return-product" data-id="@product.Id">Return It</a>
+        </td>
+        <td style="vertical-align: middle;" class="align-items-center">
+            <a href="#" class="btn btn-sm btn-danger delete-product" data-id="@product.Id">Permanent delete</a>
+        </td>
+    </tr>
+}

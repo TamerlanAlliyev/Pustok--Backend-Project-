@@ -1,0 +1,104 @@
+﻿@model List<Product>
+
+
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800 mt-3">Products</h1>
+    <p class="mb-4">
+    </p>
+
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Categories Example</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
+                    <div class="col-sm-12">
+                        <table class="table table-bordered table-hover  dataTable align-text-center" id="dataTable" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%;">
+                            <thead>
+
+                                <tr role="row" style="text-align:center;">
+                                    <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 100px;">Image</th>
+                                    @* <th class="sorting sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 223.333px;  text-align:center;">Name</th> *@
+                                    <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 350px;">Name</th>
+                                    <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 120px;">ProductCode</th>
+                                    <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 100px;">ExTax</th>
+                                    <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 100px;">Price</th>
+                                    <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 80px;">Offer</th>
+                                    <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 80px;">Count</th>
+                                    <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 10px;">Detail</th>
+                                    <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 10px;">Edit</th>
+                                    <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 10px;">Remove</th>
+                            </thead>
+                            <tfoot>
+                                <tr style="text-align:center;">
+                                    <th rowspan="1" colspan="1">Image</th>
+                                    <th rowspan="1" colspan="1">Name</th>
+                                    <th rowspan="1" colspan="1">ProductCode</th>
+                                    <th rowspan="1" colspan="1">ExTax</th>
+                                    <th rowspan="1" colspan="1">Price</th>
+                                    <th rowspan="1" colspan="1">Offer</th>
+                                    <th rowspan="1" colspan="1">Count</th>
+                                    <th rowspan="1" colspan="1">Detail</th>
+                                    <th rowspan="1" colspan="1">Edit</th>
+                                    <th rowspan="1" colspan="1">Remove</th>
+                            </tfoot>
+                            <tbody style="text-align:center;">
+
+                                @await Component.InvokeAsync("ProductListVC")
+
+
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+@section Script {
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var deleteLinks = document.querySelectorAll(".delete-product");
+
+            deleteLinks.forEach(function (link) {
+                link.addEventListener("click", function (e) {
+                    e.preventDefault();
+
+                    var productId = link.getAttribute("data-id");
+
+                    fetch(`/Admin/Product/SoftDelete/${productId}`, {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json"
+                        }
+                    })
+                        .then(function (response) {
+                            if (response.ok) {
+                                link.closest("tr").remove();
+                            } else {
+                                console.error("Failed to delete product!");
+                            }
+                        })
+                        .catch(function (error) {
+                            console.error("Error:", error);
+                            alert("An error occurred while deleting product!");
+                        });
+                });
+            });
+        });
+    </script>
+    <script src="~/admin/vendor/jquery/jquery.min.js"></script>
+
+    <!-- Page level plugins -->
+    <script src="~/admin/vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="~/admin/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="~/admin/js/demo/datatables-demo.js"></script>
+}

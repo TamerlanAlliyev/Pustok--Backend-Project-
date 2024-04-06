@@ -23,7 +23,7 @@ namespace Pustok.Areas.Admin.ViewComponents
                                                       .OrderBy(c => c.Id)
                                                       .ToListAsync()
 
-        };
+            };
             if (category.Categories.Count == 0)
             {
                 return Content("Category not found.");

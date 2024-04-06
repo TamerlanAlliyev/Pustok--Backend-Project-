@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Pustok.Helpers.Interfaces;
 using Pustok.Models;
-using Pustok.Services.Interfaces;
 using Pustok.ViewModels.Account;
 
 namespace Pustok.Controllers
