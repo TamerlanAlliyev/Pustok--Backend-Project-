@@ -4,7 +4,7 @@
 {
     <tr class="even  align-items-center">
         <td class="d-flex align-items-center justify-content-center" style="vertical-align: middle;">
-            <img class="d-flex align-items-center justify-content-center" style="width:100%; vertical-align: middle" src="~/cilent/image/products/@product.Images.FirstOrDefault()?.Url" alt="Product Image" />
+            <img class="d-flex align-items-center justify-content-center" style="width:100%; max-height:100px; vertical-align: middle" src="~/cilent/image/products/@product.Images.FirstOrDefault()?.Url" alt="Product Image" />
         </td>
         <td style="vertical-align: middle;" class="align-items-center">@product.Name</td>
         <td style="vertical-align: middle;" class="align-items-center">@product.ProductCode</td>
@@ -12,7 +12,19 @@
         @if (product.DiscountPrice > 0 && product.DiscountPrice != null)
         {
             <td style="vertical-align: middle;" class="align-items-center"><a style="font-size:18px;color:green; margin:0 5px 0 0">$@product.DiscountPrice</a><del style="font-size:14px;">@product.Price</del></td>
-            <td style="vertical-align: middle;" class="align-items-center">@Math.Round((decimal)(product.Price - product.DiscountPrice) / product.Price * 100)%</td>
+            @if (product.DiscountPrice > 0 && product.DiscountPrice != null && product.Price > 0)
+            {
+                <td style="vertical-align: middle;" class="align-items-center">
+                    @Math.Round((decimal)(product.Price - product.DiscountPrice) / product.Price * 100)%
+                </td>
+            }
+            else
+            {
+                <td style="vertical-align: middle;" class="align-items-center">
+                    0%
+                </td>
+            }
+
         }
         else
         {

@@ -20,8 +20,9 @@ namespace Pustok.Data
 
 		public DbSet<Wish> Wishes { get; set; } = null!;
 		public DbSet<Basket> Baskets { get; set; } = null!;
+		public DbSet<ProductImages> ProductImages { get; set; } = null!;
 
-		public DbSet<ProductCategory> ProductCategories { get; set; } = null!;
+        public DbSet<ProductCategory> ProductCategories { get; set; } = null!;
 		protected override void OnModelCreating(ModelBuilder modelBuilder)
 		{
 			base.OnModelCreating(modelBuilder);

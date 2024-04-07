@@ -10,9 +10,9 @@ namespace Pustok.Data.Configurations
 		{
 			builder.HasKey(t => t.Id);
 
-			builder.Property(t => t.Count)
-				   .HasColumnType("int")
-				   .IsRequired(true);
+			//builder.Property(t => t.Count)
+			//	   .HasColumnType("int")
+			//	   .IsRequired(true);
 
 
 			builder.HasOne(pt => pt.Product)

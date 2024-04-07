@@ -1,0 +1,270 @@
+﻿@model ProductUpdateVM
+@{
+    int categoryOrder = 1;
+    int tagOrder = 1;
+}
+
+<div class="container mb-5 mt-5">
+    <div class="row h-100 d-flex justify-content-center align-items-center">
+        <div class="col-md-12 p-5" style="border-radius: 15px; border:1px solid dodgerblue; color: black; max-width: 900px;">
+            <form method="post" enctype="multipart/form-data">
+                <div class="d-flex justify-content-between gap-5">
+
+                    <div class="form-group mb-3" style="width:550px">
+                        <label for="Name">Name</label>
+                        <input id="Name" class="form-control" asp-for="Name" />
+                        <span class="text-danger" asp-validation-for="Name"></span>
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label for="Count">Count</label>
+                        <input id="Count" type="number" value="0" class="form-control" asp-for="Count" />
+                        <span class="text-danger" asp-validation-for="Count"></span>
+                    </div>
+                </div>
+
+                <div class="form-group mb-3" style="width:350px">
+                    <label for="ProductCode">Product Code</label>
+                    <input id="ProductCode" type="text" class="form-control" asp-for="ProductCode" />
+                    <span class="text-danger" asp-validation-for="ProductCode"></span>
+                </div>
+
+                <div class="form-group mb-3" style="width:150px">
+                    <label for="RewardPoint">Reward Point</label>
+                    <input id="RewardPoint" type="number" class="form-control" asp-for="RewardPoint" />
+                    <span class="text-danger" asp-validation-for="RewardPoint"></span>
+                </div>
+
+                <div class="d-flex justify-content-between gap-3 mt-5 mb-5">
+                    <div class="form-group mb-3">
+                        <label for="ExTax">Ex Tax</label>
+                        <input id="ExTax" type="number" value="0" class="form-control" asp-for="ExTax" />
+                        <span class="text-danger" asp-validation-for="ExTax"></span>
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label for="Price">Sell Price</label>
+                        <input id="Price" type="number" value="0" class="form-control" asp-for="Price" />
+                        <span class="text-danger" asp-validation-for="Price"></span>
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label for="Discount">Discount Price</label>
+                        <input id="Discount" type="number" class="form-control" asp-for="DiscountPrice" />
+                        <span class="text-danger" asp-validation-for="DiscountPrice"></span>
+                    </div>
+                </div>
+
+                <div class="d-flex justify-content-between gap-5 mt-5">
+
+                    <div class="mb-3">
+                        <label for="Main" class="form-label">Main File</label>
+                        <input id="Main" asp-for="MainFile" class="form-control">
+                        <span asp-validation-for="MainFile" class="text-danger"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label for="Hover" class="form-label">Hover File</label>
+                        <input id="Hover" asp-for="HoverFile" class="form-control">
+                        <span asp-validation-for="HoverFile" class="text-danger"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label for="Additional" class="form-label ">Additional Files</label>
+                        <input id="Additional" asp-for="AdditionFiles" class="form-control" type="file" multiple>
+                        <span asp-validation-for="AdditionFiles" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="container mt-5">
+                    <div class="form-group">
+                        <label for="Description">Description</label>
+                        <textarea asp-for="@Model.Description" class="form-control" id="Description" rows="5" placeholder="Write a description..."></textarea>
+                    </div>
+                </div>
+
+
+
+
+
+
+
+
+
+
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Hover File</label>
+                    <input asp-for="MainFile" class="form-control" style="width:250px">
+                    <span asp-validation-for="MainFile" class="text-danger"></span>
+                </div>
+
+                <div class="d-flex g-lg-3">
+                    <div class="image-file mt-3" style="margin-left: 25px;">
+                        <span class="btn btn-danger">X</span>
+                        <p class="image-file" data-id="@Model.HoverFile">
+                            <img style="width:150px;height:150px; object-fit:cover;" src="~/cilent/image/products/@Model.HoverFile" />
+                        </p>
+                    </div>
+                </div>
+
+
+
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Hover File</label>
+                    <input asp-for="HoverFile" class="form-control" style="width:250px">
+                    <span asp-validation-for="HoverFile" class="text-danger"></span>
+                </div>
+
+                <div class="d-flex g-lg-3">
+                    <div class="image-file mt-3" style="margin-left: 25px;">
+                        <span class="btn btn-danger">X</span>
+                        <p class="image-file" data-id="@Model.MainUrl">
+                            <img style="width:150px;height:150px; object-fit:cover;" src="~/cilent/image/products/@Model.MainUrl" />
+                        </p>
+                    </div>
+                </div>
+
+
+
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Additional Files</label>
+                    <input asp-for="AdditionFiles" class="form-control" style="width:250px" type="file" multiple>
+                    <span asp-validation-for="AdditionFiles" class="text-danger"></span>
+                </div>
+
+                <div>
+                    <div class="d-flex g-lg-3">
+                        @if (Model.AdditionUrl != null)
+                        {
+                            @foreach (var image in Model.AdditionUrl)
+                            {
+                                <div class="image-file mt-3" style="margin-left: 25px;">
+                                    <span class="btn btn-danger">X</span>
+                                    <p class="image-file" @* data-id="@image.Id" *@>
+                                        <img style="width:150px;height:150px; object-fit:cover;" src="~/cilent/image/products/@image" />
+                                    </p>
+                                </div>
+                            }
+                        }
+
+                    </div>
+
+                </div>
+
+
+
+
+
+                <div class="d-flex gap-5 mb-5">
+                    <div class=" mb-5 w-50">
+                        <h4 class="mt-5 mb-1 text-center category-head" style="cursor:pointer">
+                            Categories Select
+                        </h4>
+
+                        <div class="row justify-content-center category-body" style="display:none">
+                            <div class="col-xs-8">
+                                <div class="well" style="height: 320px; overflow: auto;">
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>#</th>
+                                                <th>Category</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody style="max-height: 250px; overflow-y: auto;">
+
+                                            @if (Model.Categories != null)
+                                            {
+                                                @for (var index = 0; index < Model.Categories.Count(); index++)
+                                                {
+                                                    <tr>
+                                                        <td>@(categoryOrder++)</td>
+                                                        <td>
+                                                            <div class="form-check">
+                                                                <input type="checkbox" asp-for="@Model.Categories[index].IsChecked" class="form-check-input" />
+                                                                <label class="form-check-label" asp-for="@Model.Categories[index].IsChecked">
+                                                                    @Model.Categories[index].Name
+                                                                </label>
+                                                                <input type="hidden" value="@Model.Categories[index].Id" asp-for="@Model.Categories[index].Id" />
+                                                                <input type="hidden" value="@Model.Categories[index].Name" asp-for="@Model.Categories[index].Name" />
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                }
+                                            }
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <div class=" mb-5 w-50">
+                        <h4 class="mt-5 mb-1 text-center tag-head" style="cursor:pointer">
+                            Tags Select
+                        </h4>
+
+                        <div class="row justify-content-center tag-body" style="display:none">
+                            <div class="col-xs-8">
+                                <div class="well" style="height: 320px; overflow: auto;">
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>#</th>
+                                                <th>Tag</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody style="max-height: 250px; overflow-y: auto;">
+
+                                            @if (Model.Tags != null)
+                                            {
+                                                @for (var index = 0; index < Model.Tags.Count(); index++)
+                                                {
+                                                    <tr>
+                                                        <td>@(tagOrder++)</td>
+                                                        <td>
+                                                            <div class="form-check">
+                                                                <input type="checkbox" asp-for="@Model.Tags[index].IsChecked" class="form-check-input" />
+                                                                <label class="form-check-label" asp-for="@Model.Tags[index].IsChecked">
+                                                                    @Model.Tags[index].Name
+                                                                </label>
+                                                                <input type="hidden" value="@Model.Tags[index].Id" asp-for="@Model.Tags[index].Id" />
+                                                                <input type="hidden" value="@Model.Tags[index].Name" asp-for="@Model.Tags[index].Name" />
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                }
+                                            }
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div asp-validation-summary="ModelOnly" class="text-danger">  </div>
+                <button type="submit" class="btn btn-primary text-center">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Script {
+    <script>
+        $(document).ready(function () {
+            $('.category-head').click(function () {
+                $(this).siblings('.category-body').toggle();
+            });
+        });
+        $(document).ready(function () {
+            $('.tag-head').click(function () {
+                $(this).siblings('.tag-body').toggle();
+            });
+        });
+    </script>
+}

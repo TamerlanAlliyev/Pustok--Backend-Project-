@@ -23,6 +23,7 @@ public class Program
         builder.Services.AddTransient<IEmailService, EmailService>();
 		builder.Services.AddScoped<IProductService,ProductService>();
 		builder.Services.AddScoped<ICategoryService, CategoryService>();
+		builder.Services.AddScoped<IFileService, FileService>();
 
         builder.Services.AddIdentity<AppUser, IdentityRole>(option =>
 		{

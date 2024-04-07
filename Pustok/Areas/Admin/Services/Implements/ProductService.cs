@@ -1,8 +1,13 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Pustok.Areas.Admin.Services.Interfaces;
+using Pustok.Areas.Admin.ViewModels.ProductVM;
 using Pustok.Data;
+using Pustok.Extentsions;
 using Pustok.Models;
 
 namespace Pustok.Areas.Admin.Services.Implements;
@@ -10,10 +15,11 @@ namespace Pustok.Areas.Admin.Services.Implements;
 public class ProductService : IProductService
 {
     readonly PustokContext _context;
-
-    public ProductService(PustokContext context)
+    readonly IWebHostEnvironment _webHostEnvironment;
+    public ProductService(PustokContext context, IWebHostEnvironment webHostEnvironment)
     {
         _context = context;
+        _webHostEnvironment = webHostEnvironment;
     }
     public async Task<List<Product>> GetAllAsync() => await _context.Products.Where(p => !p.IsDeleted)
                                                                              .Include(p => p.Images.Where(i => !i.IsDeleted && i.IsMain))
@@ -100,6 +106,185 @@ public class ProductService : IProductService
         return new OkResult();
 
     }
+
+
+
+
+    public async Task<List<CheckCategory>?> CategorySelectAsync()
+    {
+        var categories = await _context.Categories.Where(c => !c.IsDeleted).ToListAsync();
+
+        List<CheckCategory> categoryList = new List<CheckCategory>();
+
+        foreach (var _category in categories)
+        {
+            categoryList.Add(new CheckCategory
+            {
+                Id = _category.Id,
+                Name = _category.Name,
+                IsChecked = false
+            });
+        }
+
+        return categoryList;
+    }
+
+
+    public async Task<List<CheckTag>?> TagSelectAsync()
+    {
+        var tags = await _context.Tags.Where(t => !t.IsDeleted).ToListAsync();
+
+
+        List<CheckTag> tagList = new List<CheckTag>();
+
+        foreach (var _tag in tags)
+        {
+            tagList.Add(new CheckTag
+            {
+                Id = _tag.Id,
+                Name = _tag.Name,
+                IsChecked = false
+            });
+        }
+
+
+
+        return tagList;
+    }
+
+
+
+    public ProductImages CreatImage(string Url, bool Main, bool Hover, string currentUser, string ipAddress, Product product)
+    {
+        return new ProductImages
+        {
+            Url = Url,
+            IsMain = Main,
+            IsHover = Hover,
+            Product = product,
+            IsDeleted = false,
+            Created = DateTime.UtcNow,
+            CreatedBy = currentUser,
+            IPAddress = ipAddress,
+        };
+    }
+
+
+
+
+
+
+
+
+
+    public async Task<Product?> ProductUpdateGet(int id)
+    {
+        var product = await _context.Products
+                        .Where(p => !p.IsDeleted)
+                        .Include(p => p.Images)
+                        .Include(p => p.ProductCategory)
+                            .ThenInclude(p => p.Category)
+                        .Include(p => p.ProductTag)
+                            .ThenInclude(p => p.Tag)
+                        .FirstOrDefaultAsync(p => p.Id == id);
+
+        if (product == null)
+        {
+            return null;
+        }
+        return product;
+    }
+
+
+
+    public async Task<List<CheckCategory>> ProductSelectedCategories(Product product)
+    {
+        var selectedCategories = product.ProductCategory.Select(pc => pc.Category.Id).ToList();
+
+        var categories = await CategorySelectAsync();
+
+        if (categories != null)
+        {
+            foreach (var category in categories)
+            {
+                if (selectedCategories.Contains(category.Id))
+                {
+                    category.IsChecked = true;
+                }
+            }
+        }
+        else
+        {
+            categories = new List<CheckCategory>();
+        }
+
+        return categories;
+    }
+
+
+    public async Task<List<CheckTag>> ProductSelectedTags(Product product)
+    {
+        var selectedTags = product.ProductTag.Select(pt => pt.Tag.Id).ToList();
+
+        var tags = await TagSelectAsync();
+
+
+        if (tags != null)
+        {
+            foreach (var tag in tags)
+            {
+                if (selectedTags.Contains(tag.Id))
+                {
+                    tag.IsChecked = true;
+                }
+            }
+        }
+        else
+        {
+            tags = new List<CheckTag>();
+        }
+        return tags;
+    }
+
+
+
+
+
+
+ 
+    public string? GetMainImageUrl(Product product)
+    {
+        if (product.Images != null && product.Images.Any(p => p.IsMain))
+        {
+            return product.Images.FirstOrDefault(p => p.IsMain)?.Url;
+        }
+        return null;
+    }
+
+    public string? GetHoverImageUrl(Product product)
+    {
+        if (product.Images != null && product.Images.Any(p => p.IsHover))
+        {
+            return product.Images.FirstOrDefault(p => p.IsHover)?.Url;
+        }
+        return null;
+    }
+
+    public List<string>? GetAdditionalImageUrls(Product product)
+    {
+        List<string> additionUrls = new List<string>();
+
+        if (product.Images != null)
+        {
+            foreach (var image in product.Images.Where(p => !p.IsHover && !p.IsMain))
+            {
+                additionUrls.Add(image.Url);
+            }
+        }
+
+        return additionUrls;
+    }
+
 }
 
 
