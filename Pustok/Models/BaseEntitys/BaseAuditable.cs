@@ -6,5 +6,5 @@ public class BaseAuditable: BaseEntity
     public DateTime Created { get; set; }
     public string? ModifiedBy { get; set; }
     public DateTime? Modified { get; set; }
-    public string? IPAddress { get; set; }
+    public string IPAddress { get; set; } = null!;
 }

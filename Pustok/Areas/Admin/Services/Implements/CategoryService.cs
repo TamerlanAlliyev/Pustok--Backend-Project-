@@ -7,6 +7,8 @@ using Pustok.Areas.Admin.ViewModels.Categories;
 using Pustok.Data;
 using Pustok.Models;
 using System.Net;
+using Pustok.Extentsions;
+
 
 namespace Pustok.Areas.Admin.Services.Implements
 {
@@ -31,13 +33,13 @@ namespace Pustok.Areas.Admin.Services.Implements
 
 
 
-        public async Task<IActionResult> CreateAsync(CategoryListVM categoryVM, string currentUser, string? ipAddress)
+        public async Task<IActionResult> CreateAsync(CategoryListVM categoryVM, string currentUser, string ipAddress)
         {
             Category category = new Category
             {
                 Name = categoryVM.CreatVM.Name,
                 ParentCategoryId = categoryVM.CreatVM.CategoryId,
-                Created = DateTime.UtcNow,
+                Created = DateTime.UtcNow.AddHours(4),
                 CreatedBy = currentUser,
                 IPAddress = ipAddress,
             };
@@ -115,7 +117,7 @@ namespace Pustok.Areas.Admin.Services.Implements
             category.Id = categoryVM.Id;
             category.Name = categoryVM.Name;
             category.ParentCategoryId = categoryVM.CategoryId;
-            category.Modified = DateTime.UtcNow;
+            category.Modified = DateTime.UtcNow.AddHours(4);
             category.ModifiedBy = currentUser;
             category.IPAddress = ipAddress;
 
@@ -143,7 +145,7 @@ namespace Pustok.Areas.Admin.Services.Implements
 
 
 
-        public async Task<IActionResult> SoftDeleteAsync(int? id, string currentUser)
+        public async Task<IActionResult> SoftDeleteAsync(int? id, string currentUser,string ipAddress)
         {
             if (id < 1 || id == null)
                 return new BadRequestResult();
@@ -154,9 +156,9 @@ namespace Pustok.Areas.Admin.Services.Implements
                 return new NotFoundResult();
 
             category.IsDeleted = true;
-            category.IPAddress = "";
+            category.IPAddress = ipAddress;
             category.ModifiedBy = currentUser;
-            category.Modified = DateTime.UtcNow;
+            category.Modified = DateTime.UtcNow.AddHours(4);
 
             await _context.SaveChangesAsync();
 
@@ -165,7 +167,7 @@ namespace Pustok.Areas.Admin.Services.Implements
 
 
 
-        public async Task<IActionResult> ReturnItAsync(int? id, string currentUser)
+        public async Task<IActionResult> ReturnItAsync(int? id, string currentUser,string ipAddress)
         {
             if (id < 1 || id == null)
                 return new BadRequestResult();
@@ -176,9 +178,9 @@ namespace Pustok.Areas.Admin.Services.Implements
                 return new NotFoundResult();
 
             category.IsDeleted = false;
-            category.IPAddress = "";
+            category.IPAddress = ipAddress;
             category.ModifiedBy = currentUser;
-            category.Modified = DateTime.UtcNow;
+            category.Modified = DateTime.UtcNow.AddHours(4);
 
             await _context.SaveChangesAsync();
             return new OkResult();

@@ -305,6 +305,7 @@ namespace Pustok.Migrations
                         .HasColumnType("varchar(300)");
 
                     b.Property<string>("IPAddress")
+                        .IsRequired()
                         .HasColumnType("varchar(100)");
 
                     b.Property<bool>("IsDeleted")
@@ -350,6 +351,7 @@ namespace Pustok.Migrations
                         .HasColumnType("varchar(300)");
 
                     b.Property<string>("IPAddress")
+                        .IsRequired()
                         .HasColumnType("varchar(100)");
 
                     b.Property<bool>("IsDeleted")
@@ -399,6 +401,7 @@ namespace Pustok.Migrations
                         .HasColumnType("nvarchar(700)");
 
                     b.Property<string>("IPAddress")
+                        .IsRequired()
                         .HasColumnType("varchar(100)");
 
                     b.Property<string>("ImageUrl")
@@ -465,6 +468,7 @@ namespace Pustok.Migrations
                         .HasColumnType("decimal");
 
                     b.Property<string>("IPAddress")
+                        .IsRequired()
                         .HasColumnType("varchar(100)");
 
                     b.Property<bool>("IsDeleted")
@@ -537,6 +541,7 @@ namespace Pustok.Migrations
                         .HasColumnType("varchar(300)");
 
                     b.Property<string>("IPAddress")
+                        .IsRequired()
                         .HasColumnType("varchar(100)");
 
                     b.Property<bool>("IsDeleted")
@@ -591,6 +596,7 @@ namespace Pustok.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("IPAddress")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsDeleted")
@@ -662,6 +668,7 @@ namespace Pustok.Migrations
                         .HasColumnType("varchar(300)");
 
                     b.Property<string>("IPAddress")
+                        .IsRequired()
                         .HasColumnType("varchar(100)");
 
                     b.Property<bool>("IsDeleted")
@@ -705,6 +712,7 @@ namespace Pustok.Migrations
                         .HasColumnType("varchar(300)");
 
                     b.Property<string>("IPAddress")
+                        .IsRequired()
                         .HasColumnType("varchar(100)");
 
                     b.Property<bool>("IsDeleted")

@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Pustok.Areas.Admin.ViewModels.Categories;
 using Pustok.Models;
+using System.Net;
 
 namespace Pustok.Areas.Admin.Services.Interfaces
 {
@@ -14,8 +15,8 @@ namespace Pustok.Areas.Admin.Services.Interfaces
         public Task UpdateAsync(CategoryUpdateVM categoryVM, int? id, string ipAddress, string currentUser);
         public Task<IActionResult> CreateAsync(CategoryListVM categoryVM, string currentUser, string ipAddress);
         public Task<IActionResult> HardDeleteAsync(int? id);
-        public Task<IActionResult> SoftDeleteAsync(int? id, string currentUser);
-        public Task<IActionResult> ReturnItAsync(int? id, string currentUser);
+        public Task<IActionResult> SoftDeleteAsync(int? id, string currentUser, string ipAddress);
+        public Task<IActionResult> ReturnItAsync(int? id, string currentUser,string ipAddress);
 
     }
 }

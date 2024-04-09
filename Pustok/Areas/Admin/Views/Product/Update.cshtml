@@ -18,7 +18,7 @@
 
                     <div class="form-group mb-3">
                         <label for="Count">Count</label>
-                        <input id="Count" type="number" value="0" class="form-control" asp-for="Count" />
+                        <input id="Count" type="number" value="@Model.Count" class="form-control" asp-for="Count" />
                         <span class="text-danger" asp-validation-for="Count"></span>
                     </div>
                 </div>
@@ -38,13 +38,13 @@
                 <div class="d-flex justify-content-between gap-3 mt-5 mb-5">
                     <div class="form-group mb-3">
                         <label for="ExTax">Ex Tax</label>
-                        <input id="ExTax" type="number" value="0" class="form-control" asp-for="ExTax" />
+                        <input id="ExTax" type="number"  class="form-control" asp-for="ExTax" />
                         <span class="text-danger" asp-validation-for="ExTax"></span>
                     </div>
 
                     <div class="form-group mb-3">
                         <label for="Price">Sell Price</label>
-                        <input id="Price" type="number" value="0" class="form-control" asp-for="Price" />
+                        <input id="Price" type="number"  class="form-control" asp-for="Price" />
                         <span class="text-danger" asp-validation-for="Price"></span>
                     </div>
 
@@ -55,24 +55,7 @@
                     </div>
                 </div>
 
-                <div class="d-flex justify-content-between gap-5 mt-5">
 
-                    <div class="mb-3">
-                        <label for="Main" class="form-label">Main File</label>
-                        <input id="Main" asp-for="MainFile" class="form-control">
-                        <span asp-validation-for="MainFile" class="text-danger"></span>
-                    </div>
-                    <div class="mb-3">
-                        <label for="Hover" class="form-label">Hover File</label>
-                        <input id="Hover" asp-for="HoverFile" class="form-control">
-                        <span asp-validation-for="HoverFile" class="text-danger"></span>
-                    </div>
-                    <div class="mb-3">
-                        <label for="Additional" class="form-label ">Additional Files</label>
-                        <input id="Additional" asp-for="AdditionFiles" class="form-control" type="file" multiple>
-                        <span asp-validation-for="AdditionFiles" class="text-danger"></span>
-                    </div>
-                </div>
 
                 <div class="container mt-5">
                     <div class="form-group">
@@ -91,16 +74,17 @@
 
 
                 <div class="mb-3">
-                    <label for="exampleInputPassword1" class="form-label">Hover File</label>
+                    <label for="exampleInputPassword1" class="form-label">Main File</label>
                     <input asp-for="MainFile" class="form-control" style="width:250px">
+                    <input asp-for="MainUrl" value="@Model.MainUrl" hidden />
                     <span asp-validation-for="MainFile" class="text-danger"></span>
                 </div>
 
                 <div class="d-flex g-lg-3">
                     <div class="image-file mt-3" style="margin-left: 25px;">
-                        <span class="btn btn-danger">X</span>
-                        <p class="image-file" data-id="@Model.HoverFile">
-                            <img style="width:150px;height:150px; object-fit:cover;" src="~/cilent/image/products/@Model.HoverFile" />
+                        <p class="image-file" data-id="@Model.MainUrl">
+
+                            <img style="width:150px;height:150px; object-fit:cover;" src="~/cilent/image/products/@Model.MainUrl" />
                         </p>
                     </div>
                 </div>
@@ -110,14 +94,14 @@
                 <div class="mb-3">
                     <label for="exampleInputPassword1" class="form-label">Hover File</label>
                     <input asp-for="HoverFile" class="form-control" style="width:250px">
+                    <input asp-for="HoverUrl" value="@Model.HoverUrl" hidden />
                     <span asp-validation-for="HoverFile" class="text-danger"></span>
                 </div>
 
                 <div class="d-flex g-lg-3">
                     <div class="image-file mt-3" style="margin-left: 25px;">
-                        <span class="btn btn-danger">X</span>
-                        <p class="image-file" data-id="@Model.MainUrl">
-                            <img style="width:150px;height:150px; object-fit:cover;" src="~/cilent/image/products/@Model.MainUrl" />
+                        <p class="image-file" data-id="@Model.HoverUrl">
+                            <img style="width:150px;height:150px; object-fit:cover;" src="~/cilent/image/products/@Model.HoverUrl" />
                         </p>
                     </div>
                 </div>
@@ -131,20 +115,12 @@
                 </div>
 
                 <div>
-                    <div class="d-flex g-lg-3">
+
+                    <div class="d-flex g-lg-3 flex-wrap">
                         @if (Model.AdditionUrl != null)
                         {
-                            @foreach (var image in Model.AdditionUrl)
-                            {
-                                <div class="image-file mt-3" style="margin-left: 25px;">
-                                    <span class="btn btn-danger">X</span>
-                                    <p class="image-file" @* data-id="@image.Id" *@>
-                                        <img style="width:150px;height:150px; object-fit:cover;" src="~/cilent/image/products/@image" />
-                                    </p>
-                                </div>
-                            }
+                            <partial name="_ProductPartialImage" model="Model.ProductImages"></partial>
                         }
-
                     </div>
 
                 </div>
@@ -266,5 +242,41 @@
                 $(this).siblings('.tag-body').toggle();
             });
         });
+
+
+
+
+        document.addEventListener("DOMContentLoaded", function () {
+            var deleteLinks = document.querySelectorAll(".deleteImage");
+
+            deleteLinks.forEach(function (link) {
+                link.addEventListener("click", function (e) {
+                    e.preventDefault();
+                    console.log("clicked");
+                    var imageId = link.getAttribute("data-id");
+
+                    fetch(`/Admin/Product/DeleteImages/${imageId}`, {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json"
+                        }
+                    })
+                        .then(function (response) {
+                            if (response.ok) {
+                                link.closest(".image-file").remove();
+                            } else {
+                                console.error("Failed to delete Image!");
+                            }
+                        })
+                        .catch(function (error) {
+                            console.error("Error:", error);
+                            alert("An error occurred while deleting Image!");
+                        });
+                });
+            });
+        });
     </script>
+
+
+
 }

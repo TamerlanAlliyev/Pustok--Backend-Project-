@@ -82,6 +82,8 @@ namespace Pustok.Areas.Admin.Controllers
 
         public async Task<IActionResult> HardDelete(int? id)
         {
+            if (id < 1 || id == null) return View("Error404");
+
             try
             {
                 var result = await _categoryService.HardDeleteAsync(id);
@@ -102,12 +104,15 @@ namespace Pustok.Areas.Admin.Controllers
 
         public async Task<IActionResult> SoftDelete(int? id)
         {
+            if (id < 1 || id == null) return View("Error404");
+
             var user = await _userManager.GetUserAsync(User);
             string currentUser = user?.FullName ?? "Unknown Person";
+            var ipAddress = HttpContext.Connection.RemoteIpAddress?.ToString() ?? "Unknown IP Address";
 
             try
             {
-                var result = await _categoryService.SoftDeleteAsync(id, currentUser);
+                var result = await _categoryService.SoftDeleteAsync(id, currentUser, ipAddress);
             }
             catch
             {
@@ -122,12 +127,15 @@ namespace Pustok.Areas.Admin.Controllers
 
         public async Task<IActionResult> ReturnIt(int? id)
         {
+            if (id < 1 || id == null) return View("Error404");
+
             var user = await _userManager.GetUserAsync(User);
             string currentUser = user?.FullName ?? "Unknown Person";
+            var ipAddress = HttpContext.Connection.RemoteIpAddress?.ToString() ?? "Unknown IP Address";
 
             try
             {
-                var result = await _categoryService.ReturnItAsync(id, currentUser);
+                var result = await _categoryService.ReturnItAsync(id, currentUser,ipAddress);
             }
             catch
             {
@@ -141,6 +149,8 @@ namespace Pustok.Areas.Admin.Controllers
 
         public async Task<IActionResult> Detail(int? id)
         {
+            if (id < 1 || id == null) return View("Error404");
+
             try
             {
                 var result = await _categoryService.DetailAsync(id);
@@ -157,6 +167,7 @@ namespace Pustok.Areas.Admin.Controllers
 
         public async Task<IActionResult> Update(int? id)
         {
+            if (id < 1 || id == null) return View("Error404");
             ViewBag.Categories = await _categoryService.SelectCategoriesAsync();
 
             try
@@ -185,10 +196,9 @@ namespace Pustok.Areas.Admin.Controllers
             string currentUser = user?.FullName ?? "Unknown Person";
 
             var ipAddress = HttpContext.Connection.RemoteIpAddress?.ToString() ?? "Unknown IP Address";
-
             try
             {
-                await _categoryService.UpdateAsync(categoryVM, id, currentUser, ipAddress);
+                await _categoryService.UpdateAsync(categoryVM, id, ipAddress, currentUser);
                 return RedirectToAction("Index");
             }
             catch

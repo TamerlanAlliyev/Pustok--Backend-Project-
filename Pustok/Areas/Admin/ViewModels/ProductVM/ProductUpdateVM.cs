@@ -28,6 +28,7 @@ namespace Pustok.Areas.Admin.ViewModels.ProductVM
         public List<string>? AdditionUrl { get; set; }
 
 
+        public List<ProductImages> ProductImages { get; set; } = null!;
 
 
         [NotMapped]

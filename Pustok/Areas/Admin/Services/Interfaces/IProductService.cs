@@ -17,9 +17,14 @@ namespace Pustok.Areas.Admin.Services.Interfaces
         public ProductImages CreatImage(string Url, bool Main, bool Hover, string currentUser, string ipAddress, Product product);
         public Task<List<CheckCategory>> ProductSelectedCategories(Product product);
         public Task<List<CheckTag>> ProductSelectedTags(Product product);
-        public Task<Product?> ProductUpdateGet(int id);
+        public Task<Product?> ProductGetAsync(int id);
         public string? GetMainImageUrl(Product product);
         public string? GetHoverImageUrl(Product product);
         public List<string>? GetAdditionalImageUrls(Product product);
+        public void DeleteImagesService(string path,string fileName);
+        public Task<Product?> DetailGetAsync(int? id);
+        public ProductDetailVM ProductDetailVM(Product product);
+
+
     }
 }

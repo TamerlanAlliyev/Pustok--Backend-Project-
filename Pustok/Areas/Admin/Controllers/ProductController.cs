@@ -10,6 +10,7 @@ using Pustok.Extentsions;
 using Pustok.Helpers.Interfaces;
 using Pustok.Models;
 using System.Net;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 namespace Pustok.Areas.Admin.Controllers;
 
 
@@ -43,7 +44,18 @@ public class ProductController : Controller
 
 
 
+    public async Task<IActionResult> Detail(int? id)
+    {
+        if (id < 1 || id == null) return View("Error404");
 
+        var product = await _productService.DetailGetAsync(id);
+
+        if (product == null) return View("Error404");
+
+        var vm = _productService.ProductDetailVM(product);
+
+        return View(vm);
+    }
 
 
 
@@ -58,6 +70,8 @@ public class ProductController : Controller
 
     public async Task<IActionResult> HardDelete(int? id)
     {
+        if (id < 1 || id == null) return View("Error404");
+
         var result = await _productService.HardDeleteAsync(id);
 
         if (result is NotFoundResult)
@@ -70,6 +84,8 @@ public class ProductController : Controller
 
     public async Task<IActionResult> SoftDelete(int? id)
     {
+        if (id < 1 || id == null) return View("Error404");
+
         var user = await _userManager.GetUserAsync(User);
         string currentUser = user?.FullName ?? "Unknown Person";
 
@@ -85,6 +101,8 @@ public class ProductController : Controller
 
     public async Task<IActionResult> ReturnIt(int? id)
     {
+        if (id < 1 || id == null) return View("Error404");
+
         var user = await _userManager.GetUserAsync(User);
         string currentUser = user?.FullName ?? "Unknown Person";
 
@@ -265,12 +283,43 @@ public class ProductController : Controller
 
 
 
+    public async Task<IActionResult> DeleteImages(int? id)
+    {
+        if (id < 1 || id == null) return View("Error404");
+
+        var path = Path.Combine(_webHostEnvironment.WebRootPath, "cilent", "image", "products");
+
+        ProductImages? productImage = await _context.ProductImages.FirstOrDefaultAsync(pi => pi.Id == id);
+
+        if (productImage == null)
+            return View("Error404");
+
+        string fileName = productImage.Url;
+
+        if (fileName == null)
+            return View("Error404");
+
+        _productService.DeleteImagesService(path, fileName);
+
+        var deleteImage = await _context.ProductImages.FirstOrDefaultAsync(pi => pi.Url == fileName);
+        if (deleteImage != null)
+            _context.ProductImages.Remove(deleteImage);
+
+        await _context.SaveChangesAsync();
+        var product = await _context.ProductImages.Where(pi => !pi.IsDeleted && !pi.IsMain && !pi.IsHover && pi.ProductId == productImage.ProductId).ToListAsync();
+
+        return PartialView("_ProductPartialImage", product);
+    }
+
+
+
+
     public async Task<IActionResult> Update(int? id)
     {
         if (id == null || id < 1)
             return View("Error404");
 
-        var product = await _productService.ProductUpdateGet(id.Value);
+        var product = await _productService.ProductGetAsync(id.Value);
 
         if (product == null)
         {
@@ -289,6 +338,7 @@ public class ProductController : Controller
         List<string>? additionUrls = _productService.GetAdditionalImageUrls(product);
 
 
+
         ProductUpdateVM vm = new ProductUpdateVM
         {
             Id = product.Id,
@@ -303,6 +353,8 @@ public class ProductController : Controller
             Categories = categories,
             Tags = tags
         };
+
+        vm.ProductImages = await _context.ProductImages.Where(pi => !pi.IsDeleted && !pi.IsMain && !pi.IsHover && pi.ProductId == id).ToListAsync();
 
         if (mainUrl != null)
         {
@@ -321,6 +373,184 @@ public class ProductController : Controller
 
         return View(vm);
     }
+
+
+
+    [HttpPost]
+    public async Task<IActionResult> Update(int? id, ProductUpdateVM updateVM)
+    {
+        if (id < 1 || id != updateVM.Id || id == null)
+            return View("Error404");
+
+        //if (!ModelState.IsValid)
+        //    return View(updateVM);
+
+        var product = await _productService.ProductGetAsync(id.Value);
+
+        if (product == null)
+            return View("Error404");
+
+        var ipAddress = HttpContext.Connection.RemoteIpAddress?.ToString() ?? "Unknown IP Address";
+
+        var user = await _userManager.GetUserAsync(User);
+        string currentUser = user?.FullName ?? "Unknown Person";
+
+
+        product.Name = updateVM.Name;
+        product.Description = updateVM.Description;
+        product.ExTax = updateVM.ExTax;
+        product.Price = updateVM.Price;
+        product.DiscountPrice = updateVM.DiscountPrice;
+        product.Count = updateVM.Count;
+        product.ProductCode = updateVM.ProductCode;
+        product.RewardPoint = updateVM.RewardPoint;
+        product.Created = DateTime.UtcNow.AddHours(4);
+        product.CreatedBy = currentUser;
+        product.IPAddress = ipAddress;
+
+
+
+        List<ProductCategory> productCategories = new List<ProductCategory>();
+
+        if (updateVM.Categories != null)
+        {
+            foreach (var category in updateVM.Categories)
+            {
+                if (category.IsChecked)
+                {
+                    productCategories.Add(new ProductCategory
+                    {
+                        Product = product,
+                        CategoryId = category.Id,
+                    });
+                }
+            }
+        }
+        await _context.ProductCategories.AddRangeAsync(productCategories);
+
+
+        List<ProductTag> productTags = new List<ProductTag>();
+
+        if (updateVM.Tags != null)
+        {
+            foreach (var tag in updateVM.Tags)
+            {
+                if (tag.IsChecked)
+                {
+                    productTags.Add(new ProductTag
+                    {
+                        Product = product,
+                        TagId = tag.Id,
+                    });
+                }
+            }
+        }
+
+        await _context.ProductTag.AddRangeAsync(productTags);
+
+
+        if (updateVM.MainFile == null && updateVM.MainUrl == null)
+            return View(updateVM);
+
+        List<ProductImages> images = new List<ProductImages>();
+
+        if (updateVM.MainFile != null)
+        {
+            if (!updateVM.MainFile.FileSize(2))
+            {
+                ModelState.AddModelError("MainFile", "Files cannot be more than 2mb");
+                return View(updateVM);
+
+            }
+            if (!updateVM.MainFile.FileTypeAsync("image"))
+            {
+                ModelState.AddModelError("MainFile", "Files must be image type!");
+                return View(updateVM);
+            }
+            var path = Path.Combine(_webHostEnvironment.WebRootPath, "cilent", "image", "products");
+            var fileName = await updateVM.MainFile.SaveToAsync(path);
+
+            _productService.DeleteImagesService(path, updateVM.MainUrl);
+
+            var deleteImage = await _context.ProductImages.FirstOrDefaultAsync(pi => pi.Url == updateVM.MainUrl);
+            if (deleteImage != null)
+                _context.ProductImages.Remove(deleteImage);
+
+            var productImage = _productService.CreatImage(fileName, true, false, currentUser, ipAddress, product);
+            images.Add(productImage);
+        }
+
+
+
+
+
+
+
+        if (updateVM.MainFile == null && updateVM.MainUrl == null)
+            return View(updateVM);
+
+        if (updateVM.HoverFile != null)
+        {
+            if (!updateVM.HoverFile.FileSize(2))
+            {
+                ModelState.AddModelError("HoverFile", "Files cannot be more than 2mb");
+                return View(updateVM);
+
+            }
+            if (!updateVM.HoverFile.FileTypeAsync("image"))
+            {
+                ModelState.AddModelError("HoverFile", "Files must be image type!");
+                return View(updateVM);
+            }
+            var path = Path.Combine(_webHostEnvironment.WebRootPath, "cilent", "image", "products");
+            var fileName = await updateVM.HoverFile.SaveToAsync(path);
+
+            _productService.DeleteImagesService(path, updateVM.HoverUrl);
+
+            var deleteImage = await _context.ProductImages.FirstOrDefaultAsync(pi => pi.Url == updateVM.HoverUrl);
+            if (deleteImage != null)
+                _context.ProductImages.Remove(deleteImage);
+
+            var productImage = _productService.CreatImage(fileName, false, true, currentUser, ipAddress, product);
+            images.Add(productImage);
+        }
+
+
+        if (updateVM.AdditionFiles != null)
+        {
+            foreach (var files in updateVM.AdditionFiles)
+            {
+                if (!files.FileSize(2))
+                {
+                    ModelState.AddModelError("Files", "Files cannot be more than 2mb");
+                    return View(updateVM);
+                }
+
+                if (!files.FileTypeAsync("image"))
+                {
+                    ModelState.AddModelError("Files", "Files must be image type!");
+                    return View(updateVM);
+                }
+                var path = Path.Combine(_webHostEnvironment.WebRootPath, "cilent", "image", "products");
+                var fileName = await files.SaveToAsync(path);
+
+
+                var productImage = _productService.CreatImage(fileName, false, false, currentUser, ipAddress, product);
+
+                images.Add(productImage);
+            }
+        }
+
+        await _context.ProductImages.AddRangeAsync(images);
+
+
+        await _context.SaveChangesAsync();
+        return RedirectToAction("Index");
+    }
+
+
+
+
 
 
 }

@@ -14,6 +14,6 @@ public class BaseEntityConfiguration<TEntity> : IEntityTypeConfiguration<TEntity
         builder.Property(m => m.ModifiedBy).HasColumnType("varchar").HasMaxLength(300).IsRequired(false);
         builder.Property(m => m.Modified).HasColumnType("datetime").IsRequired(false);
         builder.Property(m => m.IsDeleted).HasColumnType("bit").IsRequired(true);
-        builder.Property(m => m.IPAddress).HasColumnType("varchar(100)").IsRequired(false);
+        builder.Property(m => m.IPAddress).HasColumnType("varchar(100)").IsRequired(true);
     }
 }

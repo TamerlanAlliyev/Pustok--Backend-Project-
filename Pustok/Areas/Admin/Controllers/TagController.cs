@@ -37,13 +37,13 @@ namespace Pustok.Areas.Admin.Controllers
                 return View(createVM);
             }
 
-            var ipAddress = HttpContext.Connection.RemoteIpAddress?.ToString();
+            var ipAddress = HttpContext.Connection.RemoteIpAddress?.ToString() ?? "Unknown IPAddress";
             var user = await _userManager.GetUserAsync(User);
             string CreatedBy = user?.FullName ?? "Unknown Person";
             Tag tag = new Tag
             {
                 Name = createVM.Name,
-                Created = DateTime.UtcNow,
+                Created = DateTime.UtcNow.AddHours(4),
                 CreatedBy = CreatedBy,
                 IPAddress = ipAddress,
             };
@@ -83,10 +83,10 @@ namespace Pustok.Areas.Admin.Controllers
             var user = await _userManager.GetUserAsync(User);
             string Modified = user?.FullName ?? "Unknown Person";
 
-            var ipAddress = HttpContext.Connection.RemoteIpAddress?.ToString();
+            var ipAddress = HttpContext.Connection.RemoteIpAddress?.ToString() ?? "Unknown IPAddress";
 
             _tag.Name=tag.Name;
-            _tag.Modified = DateTime.UtcNow;
+            _tag.Modified = DateTime.UtcNow.AddHours(4);
             _tag.ModifiedBy = Modified;
             _tag.IPAddress = ipAddress;
 
@@ -143,8 +143,9 @@ namespace Pustok.Areas.Admin.Controllers
             var user = await _userManager.GetUserAsync(User);
             string Modified = user?.FullName ?? "Unknown Person";
 
-            var ipAddress = HttpContext.Connection.RemoteIpAddress?.ToString();
-            tag.Modified = DateTime.UtcNow;
+            var ipAddress = HttpContext.Connection.RemoteIpAddress?.ToString() ?? "Unknown IPAddress";
+
+            tag.Modified = DateTime.UtcNow.AddHours(4);
             tag.ModifiedBy = Modified;
             tag.IPAddress = ipAddress;
             tag.IsDeleted = true;
@@ -166,8 +167,9 @@ namespace Pustok.Areas.Admin.Controllers
             var user = await _userManager.GetUserAsync(User);
             string Modified = user?.FullName ?? "Unknown Person";
 
-            var ipAddress = HttpContext.Connection.RemoteIpAddress?.ToString();
-            tag.Modified = DateTime.UtcNow;
+            var ipAddress = HttpContext.Connection.RemoteIpAddress?.ToString() ?? "Unknown IPAddress";
+
+            tag.Modified = DateTime.UtcNow.AddHours(4);
             tag.ModifiedBy = Modified;
             tag.IPAddress = ipAddress;
             tag.IsDeleted = false;

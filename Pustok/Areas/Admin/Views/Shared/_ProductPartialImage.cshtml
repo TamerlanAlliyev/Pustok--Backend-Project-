@@ -1,0 +1,12 @@
+﻿@model List<ProductImages>
+@foreach (var image in Model)
+{
+    <div class="image-file mt-3" style="margin-left: 25px;">
+        @* <a asp-action="DeleteImages" asp-route-id="@image.Id" class="btn btn-danger">X</a> *@
+        <a data-id="@image.Id" class="btn btn-danger deleteImage">X</a>
+
+        <p class="image-file" >
+            <img style="width:150px;height:150px; object-fit:cover;" src="~/cilent/image/products/@image.Url" />
+        </p>
+    </div>
+}

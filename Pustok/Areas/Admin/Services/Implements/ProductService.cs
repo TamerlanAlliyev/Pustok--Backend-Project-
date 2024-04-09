@@ -30,6 +30,63 @@ public class ProductService : IProductService
                                                                                     .ToListAsync();
 
 
+    public async Task<Product?> DetailGetAsync(int? id)
+    {
+        if (id < 1 || id == null)
+        {
+            return null;
+        }
+        var product = await _context.Products.Where(p => !p.IsDeleted)
+                                                   .Include(p => p.Images)
+                                                   .Include(p => p.Ratings)
+                                                   .Include(p => p.BasketList)
+                                                   .Include(p => p.WishList)
+                                                   .Include(p => p.ProductCategory)
+                                                      .ThenInclude(p => p.Category)
+                                                   .Include(p => p.ProductTag)
+                                                      .ThenInclude(p => p.Tag)
+                                                   .FirstOrDefaultAsync(p => p.Id == id);
+        if (product == null)
+        {
+            return null;
+        }
+        return product;
+    }
+
+    public ProductDetailVM ProductDetailVM(Product product)
+    {
+        ProductDetailVM vm = new ProductDetailVM
+        {
+            Id = product.Id,
+            Name = product.Name,
+            Description = product.Description,
+            ExTax = product.ExTax,
+            Price = product.Price,
+            DiscountPrice = product.DiscountPrice,
+            Count = product.Count,
+            RewardPoint = product.RewardPoint,
+            Ratings = product.Ratings,
+            ProductCategory = product.ProductCategory,
+            ProductTag = product.ProductTag,
+            BasketList = product.BasketList,
+            WishList = product.WishList,
+            ProductCode = product.ProductCode,
+            HeaderSlider = product.HeaderSlider,
+            Created = product.Created,
+            CreatedBy = product.CreatedBy,
+            Modified = product.Modified,
+            ModifiedBy = product.ModifiedBy,
+            IPAddress = product.IPAddress,
+            MainImage = product.Images.FirstOrDefault(pi => !pi.IsDeleted && pi.IsMain)?.Url ?? "",
+            HoverImage = product.Images.FirstOrDefault(pi => !pi.IsDeleted && pi.IsHover)?.Url ?? "",
+            AdditionalImages = product.Images.Where(pi => !pi.IsDeleted && !pi.IsMain && !pi.IsHover)
+                                   .Select(pi => pi.Url)
+                                   .ToList(),
+
+        };
+        return vm;
+    }
+
     public async Task<Product?> GetAsync(int? id)
     {
         if (id < 0 || id == null)
@@ -78,7 +135,7 @@ public class ProductService : IProductService
         category.IsDeleted = true;
         category.IPAddress = "";
         category.ModifiedBy = currentUser;
-        category.Modified = DateTime.UtcNow;
+        category.Modified = DateTime.UtcNow.AddHours(4);
 
         await _context.SaveChangesAsync();
 
@@ -100,7 +157,7 @@ public class ProductService : IProductService
         category.IsDeleted = false;
         category.IPAddress = "";
         category.ModifiedBy = currentUser;
-        category.Modified = DateTime.UtcNow;
+        category.Modified = DateTime.UtcNow.AddHours(4);
 
         await _context.SaveChangesAsync();
         return new OkResult();
@@ -177,7 +234,7 @@ public class ProductService : IProductService
 
 
 
-    public async Task<Product?> ProductUpdateGet(int id)
+    public async Task<Product?> ProductGetAsync(int id)
     {
         var product = await _context.Products
                         .Where(p => !p.IsDeleted)
@@ -251,7 +308,7 @@ public class ProductService : IProductService
 
 
 
- 
+
     public string? GetMainImageUrl(Product product)
     {
         if (product.Images != null && product.Images.Any(p => p.IsMain))
@@ -285,6 +342,20 @@ public class ProductService : IProductService
         return additionUrls;
     }
 
+
+
+    public void DeleteImagesService(string path, string fileName)
+    {
+
+        if (!string.IsNullOrEmpty(fileName))
+        {
+            var oldImagePath = Path.Combine(path, fileName);
+            if (File.Exists(oldImagePath))
+            {
+                File.Delete(oldImagePath);
+            }
+        }
+    }
 }
 
 
