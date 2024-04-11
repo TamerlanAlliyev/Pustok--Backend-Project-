@@ -8,6 +8,7 @@ namespace Pustok.Areas.Admin.ViewModels.ProductVM
     {
         public int Id { get; set; }
         public string Name { get; set; } = null!;
+        public string Author { get; set; } = null!;
         public string Description { get; set; } = null!;
         public decimal ExTax { get; set; }
         public decimal Price { get; set; }

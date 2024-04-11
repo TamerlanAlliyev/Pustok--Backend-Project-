@@ -446,6 +446,10 @@ namespace Pustok.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
+                    b.Property<string>("Author")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
                     b.Property<int>("Count")
                         .HasColumnType("int");
 
@@ -491,7 +495,7 @@ namespace Pustok.Migrations
 
                     b.Property<string>("ProductCode")
                         .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
+                        .HasColumnType("varchar(100)");
 
                     b.Property<int?>("RewardPoint")
                         .HasColumnType("int");

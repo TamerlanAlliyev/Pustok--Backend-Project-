@@ -15,8 +15,9 @@ namespace Pustok.Data.Configurations
 
 			builder.Property(p => p.Name).HasColumnType("nvarchar").HasMaxLength(200).IsRequired(true);
 			builder.Property(p => p.Description).HasColumnType("nvarchar").HasMaxLength(700).IsRequired(false);
-			builder.Property(p => p.ProductCode).HasColumnType("nvarchar").HasMaxLength(100).IsRequired(false);
-			builder.Property(p => p.ExTax).HasColumnType("decimal").IsRequired(true);
+			builder.Property(p => p.Author).HasColumnType("nvarchar").HasMaxLength(100).IsRequired(false);
+			builder.Property(p => p.ProductCode).HasColumnType("varchar").HasMaxLength(100).IsRequired(false);
+            builder.Property(p => p.ExTax).HasColumnType("decimal").IsRequired(true);
 			builder.Property(p => p.Price).HasColumnType("decimal").IsRequired(true);
 			builder.Property(p => p.DiscountPrice).HasColumnType("decimal").IsRequired(false);
 			builder.Property(p => p.RewardPoint).HasColumnType("int").IsRequired(false);

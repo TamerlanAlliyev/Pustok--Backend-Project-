@@ -1,5 +1,18 @@
 ﻿@await Html.PartialAsync("_MobileMenuPartialView")
-@await Html.PartialAsync("_BreadCrumbPartialView")
+
+<section class="breadcrumb-section">
+	<h2 class="sr-only">Site Breadcrumb</h2>
+	<div class="container">
+		<div class="breadcrumb-contents">
+			<nav aria-label="breadcrumb">
+				<ol class="breadcrumb">
+					<li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">Home</a></li>
+					<li class="breadcrumb-item active">Cart</li>
+				</ol>
+			</nav>
+		</div>
+	</div>
+</section>
 
 <main class="cart-page-main-block inner-page-sec-padding-bottom">
 	<div class="cart_area cart-area-padding  ">

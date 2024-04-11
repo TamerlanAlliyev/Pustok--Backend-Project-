@@ -11,6 +11,7 @@ public class ProductCreateVM
 {
     public string Name { get; set; } = null!;
     public string Description { get; set; } = null!;
+    public string Author { get; set; } = null!;
     public decimal ExTax { get; set; }
     public decimal Price { get; set; }
     public decimal? DiscountPrice { get; set; }

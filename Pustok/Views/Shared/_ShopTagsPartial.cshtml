@@ -1,0 +1,17 @@
+﻿@model ProductListVM
+
+
+<div class="single-block">
+    <h3 class="sidebar-title">Tags</h3>
+    <ul style ="max-height: 250px; overflow-y: auto;" class="sidebar-menu--shop menu-type-2">
+        @if (Model.Tags != null)
+        {
+            <li><a data-id="" class="tag-item" href="~/cilent/#">All Tag<span>(@Model.TagCount)</span></a></li>
+            foreach (var tag in Model.Tags)
+            {
+                <li><a data-id="@tag.Id" class="tag-item" href="~/cilent/#">@tag.Name<span>(@(tag.ProductTag.Count()))</span></a></li>
+            }
+        }
+    </ul>
+</div>
+@* <input id="SelectedTag" value="@Model.SelectedTag" /> *@

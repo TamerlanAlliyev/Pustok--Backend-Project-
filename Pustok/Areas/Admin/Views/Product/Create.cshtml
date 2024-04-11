@@ -22,7 +22,11 @@
                         <span class="text-danger" asp-validation-for="Count"></span>
                     </div>
                 </div>
-
+                <div class="form-group mb-3" style="width:350px">
+                    <label for="Author">Author</label>
+                    <input id="Author" type="text" class="form-control" asp-for="Author" />
+                    <span class="text-danger" asp-validation-for="Author"></span>
+                </div>
                 <div class="form-group mb-3" style="width:350px">
                     <label for="ProductCode">Product Code</label>
                     <input id="ProductCode" type="text" class="form-control" asp-for="ProductCode" />

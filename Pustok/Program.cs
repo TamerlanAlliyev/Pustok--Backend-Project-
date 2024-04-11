@@ -2,6 +2,8 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Pustok.Areas.Admin.Services.Implements;
 using Pustok.Areas.Admin.Services.Interfaces;
+using Pustok.Services.Interfaces;
+using Pustok.Services.Implements;
 using Pustok.Data;
 using Pustok.Helpers.Implements;
 using Pustok.Helpers.Interfaces;
@@ -21,8 +23,9 @@ public class Program
 			);
 
         builder.Services.AddTransient<IEmailService, EmailService>();
-		builder.Services.AddScoped<IProductService,ProductService>();
-		builder.Services.AddScoped<ICategoryService, CategoryService>();
+		builder.Services.AddScoped<Pustok.Areas.Admin.Services.Interfaces.IProductService, Pustok.Areas.Admin.Services.Implements.ProductService>();
+		builder.Services.AddScoped<Pustok.Services.Interfaces.IShopService, Pustok.Services.Implements.ShopService>();
+        builder.Services.AddScoped<ICategoryService, CategoryService>();
 		builder.Services.AddScoped<IFileService, FileService>();
 
         builder.Services.AddIdentity<AppUser, IdentityRole>(option =>

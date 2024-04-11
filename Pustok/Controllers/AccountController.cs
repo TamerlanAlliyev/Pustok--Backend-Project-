@@ -45,12 +45,7 @@ namespace Pustok.Controllers
                 }
             }
 
-            var roleResult = await _userManager.IsInRoleAsync(user, "Customer");
-            if (!roleResult)
-            {
-                ModelState.AddModelError("", "Username or email address not found.");
-                return View();
-            }
+
 
 
             var time = TimeZoneInfo.Local;

@@ -1,4 +1,6 @@
-﻿        <!-- Modal -->
+﻿@using Pustok.ViewModels.Products
+@model ProductListVM
+
 <div class="modal fade modal-quick-view" id="quickModal" tabindex="-1" role="dialog"
      aria-labelledby="quickModal" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -19,19 +21,19 @@
               "asNavFor": ".product-slider-nav"
               }'>
                             <div class="single-slide">
-                                <img src="~/cilent/image/products/product-details-1.jpg" alt="">
+                                <img src="image/products/product-details-1.jpg" alt="">
                             </div>
                             <div class="single-slide">
-                                <img src="~/cilent/image/products/product-details-2.jpg" alt="">
+                                <img src="image/products/product-details-2.jpg" alt="">
                             </div>
                             <div class="single-slide">
-                                <img src="~/cilent/image/products/product-details-3.jpg" alt="">
+                                <img src="image/products/product-details-3.jpg" alt="">
                             </div>
                             <div class="single-slide">
-                                <img src="~/cilent/image/products/product-details-4.jpg" alt="">
+                                <img src="image/products/product-details-4.jpg" alt="">
                             </div>
                             <div class="single-slide">
-                                <img src="~/cilent/image/products/product-details-5.jpg" alt="">
+                                <img src="image/products/product-details-5.jpg" alt="">
                             </div>
                         </div>
                         <!-- Product Details Slider Nav -->
@@ -48,29 +50,34 @@
               "focusOnSelect": true
               }'>
                             <div class="single-slide">
-                                <img src="~/cilent/image/products/product-details-1.jpg" alt="">
+                                <img src="image/products/product-details-1.jpg" alt="">
                             </div>
                             <div class="single-slide">
-                                <img src="~/cilent/image/products/product-details-2.jpg" alt="">
+                                <img src="image/products/product-details-2.jpg" alt="">
                             </div>
                             <div class="single-slide">
-                                <img src="~/cilent/image/products/product-details-3.jpg" alt="">
+                                <img src="image/products/product-details-3.jpg" alt="">
                             </div>
                             <div class="single-slide">
-                                <img src="~/cilent/image/products/product-details-4.jpg" alt="">
+                                <img src="image/products/product-details-4.jpg" alt="">
                             </div>
                             <div class="single-slide">
-                                <img src="~/cilent/image/products/product-details-5.jpg" alt="">
+                                <img src="image/products/product-details-5.jpg" alt="">
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-7 mt--30 mt-lg--30">
                         <div class="product-details-info pl-lg--30 ">
-                            <p class="tag-block">Tags: <a href="~/cilent/#">Movado</a>, <a href="~/cilent/#">Omega</a></p>
+                            <p class="tag-block">Tags: <a href="#">Movado</a>, <a href="#">Omega</a></p>
                             <h3 class="product-title">Beats EP Wired On-Ear Headphone-Black</h3>
                             <ul class="list-unstyled">
+                         @*        @if (Model.Modal != null)
+                                {
+                                    <li>Ex Tax: <span class="list-value"> $@Model.Modal.Price</span></li>
+
+                                } *@
                                 <li>Ex Tax: <span class="list-value"> £60.24</span></li>
-                                <li>Brands: <a href="~/cilent/#" class="list-value font-weight-bold"> Canon</a></li>
+                                <li>Brands: <a href="#" class="list-value font-weight-bold"> Canon</a></li>
                                 <li>Product Code: <span class="list-value"> model1</span></li>
                                 <li>Reward Points: <span class="list-value"> 200</span></li>
                                 <li>Availability: <span class="list-value"> In Stock</span></li>
@@ -88,8 +95,8 @@
                                     <span class="fas fa-star "></span>
                                 </div>
                                 <div class="review-widget">
-                                    <a href="~/cilent/#">(1 Reviews)</a> <span>|</span>
-                                    <a href="~/cilent/#">Write a review</a>
+                                    <a href="#">(1 Reviews)</a> <span>|</span>
+                                    <a href="#">Write a review</a>
                                 </div>
                             </div>
                             <article class="product-details-article">
@@ -108,14 +115,14 @@
                                     <input type="number" class="form-control text-center" value="1">
                                 </div>
                                 <div class="add-cart-btn">
-                                    <a href="~/cilent/#" class="btn btn-outlined--primary">
+                                    <a href="#" class="btn btn-outlined--primary">
                                         <span class="plus-icon">+</span>Add to Cart
                                     </a>
                                 </div>
                             </div>
                             <div class="compare-wishlist-row">
-                                <a href="~/cilent/#" class="add-link"><i class="fas fa-heart"></i>Add to Wish List</a>
-                                <a href="~/cilent/#" class="add-link"><i class="fas fa-random"></i>Add to Compare</a>
+                                <a href="#" class="add-link"><i class="fas fa-heart"></i>Add to Wish List</a>
+                                <a href="#" class="add-link"><i class="fas fa-random"></i>Add to Compare</a>
                             </div>
                         </div>
                     </div>
@@ -125,13 +132,22 @@
                 <div class="widget-social-share">
                     <span class="widget-label">Share:</span>
                     <div class="modal-social-share">
-                        <a href="~/cilent/#" class="single-icon"><i class="fab fa-facebook-f"></i></a>
-                        <a href="~/cilent/#" class="single-icon"><i class="fab fa-twitter"></i></a>
-                        <a href="~/cilent/#" class="single-icon"><i class="fab fa-youtube"></i></a>
-                        <a href="~/cilent/#" class="single-icon"><i class="fab fa-google-plus-g"></i></a>
+                        <a href="#" class="single-icon"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="single-icon"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="single-icon"><i class="fab fa-youtube"></i></a>
+                        <a href="#" class="single-icon"><i class="fab fa-google-plus-g"></i></a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+@* @if (Model.Modal.Images != null)
+{
+    @foreach (var image in Model.Modal.Images.Where(pi => !pi.IsDeleted && !pi.IsMain && !pi.IsHover).ToList())
+    {
+        <div class="single-slide">
+            <img src="~/cilent/image/products/@image.Url" alt="Image">
+        </div>
+    }
+} *@

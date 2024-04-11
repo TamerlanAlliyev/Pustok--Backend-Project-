@@ -59,6 +59,7 @@ public class ProductService : IProductService
         {
             Id = product.Id,
             Name = product.Name,
+            Author = product.Author,
             Description = product.Description,
             ExTax = product.ExTax,
             Price = product.Price,

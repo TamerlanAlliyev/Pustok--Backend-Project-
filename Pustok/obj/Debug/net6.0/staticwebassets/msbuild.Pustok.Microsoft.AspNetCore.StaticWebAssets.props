@@ -30960,12 +30960,12 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\cilent\image\others\home-side-promo.jpg))</OriginalItemSpec>
     </StaticWebAsset>
-    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\cilent\image\products\11135ce0-7587-4ab2-bc17-e7b4dc3dde70_h4g0cw18.png))">
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\cilent\image\products\0fd46a69-d8b8-4f92-8b58-58c339b48b6f_The Last Moonlight Dragon.jpg))">
       <SourceType>Package</SourceType>
       <SourceId>Pustok</SourceId>
       <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
       <BasePath>_content/Pustok</BasePath>
-      <RelativePath>cilent/image/products/11135ce0-7587-4ab2-bc17-e7b4dc3dde70_h4g0cw18.png</RelativePath>
+      <RelativePath>cilent/image/products/0fd46a69-d8b8-4f92-8b58-58c339b48b6f_The Last Moonlight Dragon.jpg</RelativePath>
       <AssetKind>All</AssetKind>
       <AssetMode>All</AssetMode>
       <AssetRole>Primary</AssetRole>
@@ -30974,14 +30974,14 @@
       <AssetTraitValue></AssetTraitValue>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\cilent\image\products\11135ce0-7587-4ab2-bc17-e7b4dc3dde70_h4g0cw18.png))</OriginalItemSpec>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\cilent\image\products\0fd46a69-d8b8-4f92-8b58-58c339b48b6f_The Last Moonlight Dragon.jpg))</OriginalItemSpec>
     </StaticWebAsset>
-    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\cilent\image\products\3140dde8-bfb0-4767-802d-d732e2b2a401_1.png))">
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\cilent\image\products\3b50fb8e-6fb8-4209-add3-d355c1c87b19_ez0ocm5p.png))">
       <SourceType>Package</SourceType>
       <SourceId>Pustok</SourceId>
       <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
       <BasePath>_content/Pustok</BasePath>
-      <RelativePath>cilent/image/products/3140dde8-bfb0-4767-802d-d732e2b2a401_1.png</RelativePath>
+      <RelativePath>cilent/image/products/3b50fb8e-6fb8-4209-add3-d355c1c87b19_ez0ocm5p.png</RelativePath>
       <AssetKind>All</AssetKind>
       <AssetMode>All</AssetMode>
       <AssetRole>Primary</AssetRole>
@@ -30990,14 +30990,14 @@
       <AssetTraitValue></AssetTraitValue>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\cilent\image\products\3140dde8-bfb0-4767-802d-d732e2b2a401_1.png))</OriginalItemSpec>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\cilent\image\products\3b50fb8e-6fb8-4209-add3-d355c1c87b19_ez0ocm5p.png))</OriginalItemSpec>
     </StaticWebAsset>
-    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\cilent\image\products\34d105e9-f7e1-497c-afe8-406d3d85c9b0_5gua5v5r.png))">
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\cilent\image\products\53abb831-1ccd-4743-a841-c9f71eb177c0_The Da Vinci Code.jpeg))">
       <SourceType>Package</SourceType>
       <SourceId>Pustok</SourceId>
       <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
       <BasePath>_content/Pustok</BasePath>
-      <RelativePath>cilent/image/products/34d105e9-f7e1-497c-afe8-406d3d85c9b0_5gua5v5r.png</RelativePath>
+      <RelativePath>cilent/image/products/53abb831-1ccd-4743-a841-c9f71eb177c0_The Da Vinci Code.jpeg</RelativePath>
       <AssetKind>All</AssetKind>
       <AssetMode>All</AssetMode>
       <AssetRole>Primary</AssetRole>
@@ -31006,14 +31006,14 @@
       <AssetTraitValue></AssetTraitValue>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\cilent\image\products\34d105e9-f7e1-497c-afe8-406d3d85c9b0_5gua5v5r.png))</OriginalItemSpec>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\cilent\image\products\53abb831-1ccd-4743-a841-c9f71eb177c0_The Da Vinci Code.jpeg))</OriginalItemSpec>
     </StaticWebAsset>
-    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\cilent\image\products\65f6a6b8-bfec-4bb5-baa1-71f94b92df0f_Screenshot 2024-04-04 115759.png))">
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\cilent\image\products\642b5d4a-e056-45d2-9ca3-a95fc9f4a8c2_kzsaa1cm.png))">
       <SourceType>Package</SourceType>
       <SourceId>Pustok</SourceId>
       <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
       <BasePath>_content/Pustok</BasePath>
-      <RelativePath>cilent/image/products/65f6a6b8-bfec-4bb5-baa1-71f94b92df0f_Screenshot 2024-04-04 115759.png</RelativePath>
+      <RelativePath>cilent/image/products/642b5d4a-e056-45d2-9ca3-a95fc9f4a8c2_kzsaa1cm.png</RelativePath>
       <AssetKind>All</AssetKind>
       <AssetMode>All</AssetMode>
       <AssetRole>Primary</AssetRole>
@@ -31022,14 +31022,14 @@
       <AssetTraitValue></AssetTraitValue>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\cilent\image\products\65f6a6b8-bfec-4bb5-baa1-71f94b92df0f_Screenshot 2024-04-04 115759.png))</OriginalItemSpec>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\cilent\image\products\642b5d4a-e056-45d2-9ca3-a95fc9f4a8c2_kzsaa1cm.png))</OriginalItemSpec>
     </StaticWebAsset>
-    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\cilent\image\products\6c2d660a-a034-401f-a02d-a30476a01c67_Group 36.png))">
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\cilent\image\products\80b55571-1c99-4a7a-bcfa-3168ffeb3a3f_Stardust.png))">
       <SourceType>Package</SourceType>
       <SourceId>Pustok</SourceId>
       <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
       <BasePath>_content/Pustok</BasePath>
-      <RelativePath>cilent/image/products/6c2d660a-a034-401f-a02d-a30476a01c67_Group 36.png</RelativePath>
+      <RelativePath>cilent/image/products/80b55571-1c99-4a7a-bcfa-3168ffeb3a3f_Stardust.png</RelativePath>
       <AssetKind>All</AssetKind>
       <AssetMode>All</AssetMode>
       <AssetRole>Primary</AssetRole>
@@ -31038,14 +31038,14 @@
       <AssetTraitValue></AssetTraitValue>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\cilent\image\products\6c2d660a-a034-401f-a02d-a30476a01c67_Group 36.png))</OriginalItemSpec>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\cilent\image\products\80b55571-1c99-4a7a-bcfa-3168ffeb3a3f_Stardust.png))</OriginalItemSpec>
     </StaticWebAsset>
-    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\cilent\image\products\70617bd1-f2ea-4297-a477-7b6a872909d3_Screenshot 2024-04-05 170909.png))">
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\cilent\image\products\9a7379ca-716c-4e33-9617-fbdad25ce743_The Last Moonlight Dragon.jpg))">
       <SourceType>Package</SourceType>
       <SourceId>Pustok</SourceId>
       <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
       <BasePath>_content/Pustok</BasePath>
-      <RelativePath>cilent/image/products/70617bd1-f2ea-4297-a477-7b6a872909d3_Screenshot 2024-04-05 170909.png</RelativePath>
+      <RelativePath>cilent/image/products/9a7379ca-716c-4e33-9617-fbdad25ce743_The Last Moonlight Dragon.jpg</RelativePath>
       <AssetKind>All</AssetKind>
       <AssetMode>All</AssetMode>
       <AssetRole>Primary</AssetRole>
@@ -31054,14 +31054,14 @@
       <AssetTraitValue></AssetTraitValue>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\cilent\image\products\70617bd1-f2ea-4297-a477-7b6a872909d3_Screenshot 2024-04-05 170909.png))</OriginalItemSpec>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\cilent\image\products\9a7379ca-716c-4e33-9617-fbdad25ce743_The Last Moonlight Dragon.jpg))</OriginalItemSpec>
     </StaticWebAsset>
-    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\cilent\image\products\74f82b77-7553-468f-9236-b214767ca01f_kzsaa1cm.png))">
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\cilent\image\products\a7955e2d-d430-4a6b-bfa0-ff6619d751fd_5gua5v5r.png))">
       <SourceType>Package</SourceType>
       <SourceId>Pustok</SourceId>
       <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
       <BasePath>_content/Pustok</BasePath>
-      <RelativePath>cilent/image/products/74f82b77-7553-468f-9236-b214767ca01f_kzsaa1cm.png</RelativePath>
+      <RelativePath>cilent/image/products/a7955e2d-d430-4a6b-bfa0-ff6619d751fd_5gua5v5r.png</RelativePath>
       <AssetKind>All</AssetKind>
       <AssetMode>All</AssetMode>
       <AssetRole>Primary</AssetRole>
@@ -31070,14 +31070,14 @@
       <AssetTraitValue></AssetTraitValue>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\cilent\image\products\74f82b77-7553-468f-9236-b214767ca01f_kzsaa1cm.png))</OriginalItemSpec>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\cilent\image\products\a7955e2d-d430-4a6b-bfa0-ff6619d751fd_5gua5v5r.png))</OriginalItemSpec>
     </StaticWebAsset>
-    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\cilent\image\products\8d29b7e4-2af0-4c84-b4b1-fcdf3023d21f_h4g0cw18.png))">
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\cilent\image\products\b1a40fd2-a1cb-4295-8370-6bb4267ee1b5_h4g0cw18.png))">
       <SourceType>Package</SourceType>
       <SourceId>Pustok</SourceId>
       <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
       <BasePath>_content/Pustok</BasePath>
-      <RelativePath>cilent/image/products/8d29b7e4-2af0-4c84-b4b1-fcdf3023d21f_h4g0cw18.png</RelativePath>
+      <RelativePath>cilent/image/products/b1a40fd2-a1cb-4295-8370-6bb4267ee1b5_h4g0cw18.png</RelativePath>
       <AssetKind>All</AssetKind>
       <AssetMode>All</AssetMode>
       <AssetRole>Primary</AssetRole>
@@ -31086,14 +31086,14 @@
       <AssetTraitValue></AssetTraitValue>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\cilent\image\products\8d29b7e4-2af0-4c84-b4b1-fcdf3023d21f_h4g0cw18.png))</OriginalItemSpec>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\cilent\image\products\b1a40fd2-a1cb-4295-8370-6bb4267ee1b5_h4g0cw18.png))</OriginalItemSpec>
     </StaticWebAsset>
-    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\cilent\image\products\ae63cb4e-c395-44f7-bf97-0809b7091573_ez0ocm5p.png))">
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\cilent\image\products\b6047ae6-c3e2-4c6e-99ee-5cda33321b7f_Stardust.png))">
       <SourceType>Package</SourceType>
       <SourceId>Pustok</SourceId>
       <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
       <BasePath>_content/Pustok</BasePath>
-      <RelativePath>cilent/image/products/ae63cb4e-c395-44f7-bf97-0809b7091573_ez0ocm5p.png</RelativePath>
+      <RelativePath>cilent/image/products/b6047ae6-c3e2-4c6e-99ee-5cda33321b7f_Stardust.png</RelativePath>
       <AssetKind>All</AssetKind>
       <AssetMode>All</AssetMode>
       <AssetRole>Primary</AssetRole>
@@ -31102,14 +31102,14 @@
       <AssetTraitValue></AssetTraitValue>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\cilent\image\products\ae63cb4e-c395-44f7-bf97-0809b7091573_ez0ocm5p.png))</OriginalItemSpec>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\cilent\image\products\b6047ae6-c3e2-4c6e-99ee-5cda33321b7f_Stardust.png))</OriginalItemSpec>
     </StaticWebAsset>
-    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\cilent\image\products\af86c33a-18f9-4c71-b520-8dd7a96f19bb_kzsaa1cm.png))">
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\cilent\image\products\b9ad5d9f-94f6-4734-94a0-98c2021b1cd0_The Da Vinci Code.jpeg))">
       <SourceType>Package</SourceType>
       <SourceId>Pustok</SourceId>
       <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
       <BasePath>_content/Pustok</BasePath>
-      <RelativePath>cilent/image/products/af86c33a-18f9-4c71-b520-8dd7a96f19bb_kzsaa1cm.png</RelativePath>
+      <RelativePath>cilent/image/products/b9ad5d9f-94f6-4734-94a0-98c2021b1cd0_The Da Vinci Code.jpeg</RelativePath>
       <AssetKind>All</AssetKind>
       <AssetMode>All</AssetMode>
       <AssetRole>Primary</AssetRole>
@@ -31118,14 +31118,14 @@
       <AssetTraitValue></AssetTraitValue>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\cilent\image\products\af86c33a-18f9-4c71-b520-8dd7a96f19bb_kzsaa1cm.png))</OriginalItemSpec>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\cilent\image\products\b9ad5d9f-94f6-4734-94a0-98c2021b1cd0_The Da Vinci Code.jpeg))</OriginalItemSpec>
     </StaticWebAsset>
-    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\cilent\image\products\b8ad5620-0d0a-4ebb-91d8-0ed92d4b3aed_1.png))">
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\cilent\image\products\bdf4a840-ce84-46d6-a5e4-0c02b904a836_The Da Vinci Code.jpeg))">
       <SourceType>Package</SourceType>
       <SourceId>Pustok</SourceId>
       <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
       <BasePath>_content/Pustok</BasePath>
-      <RelativePath>cilent/image/products/b8ad5620-0d0a-4ebb-91d8-0ed92d4b3aed_1.png</RelativePath>
+      <RelativePath>cilent/image/products/bdf4a840-ce84-46d6-a5e4-0c02b904a836_The Da Vinci Code.jpeg</RelativePath>
       <AssetKind>All</AssetKind>
       <AssetMode>All</AssetMode>
       <AssetRole>Primary</AssetRole>
@@ -31134,14 +31134,14 @@
       <AssetTraitValue></AssetTraitValue>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\cilent\image\products\b8ad5620-0d0a-4ebb-91d8-0ed92d4b3aed_1.png))</OriginalItemSpec>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\cilent\image\products\bdf4a840-ce84-46d6-a5e4-0c02b904a836_The Da Vinci Code.jpeg))</OriginalItemSpec>
     </StaticWebAsset>
-    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\cilent\image\products\d63d23d8-16b0-464e-adf6-67a206795d48_a6w9xy8g.png))">
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\cilent\image\products\be8549ac-7dd4-4739-8894-51de17b03ab6_colors.png))">
       <SourceType>Package</SourceType>
       <SourceId>Pustok</SourceId>
       <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
       <BasePath>_content/Pustok</BasePath>
-      <RelativePath>cilent/image/products/d63d23d8-16b0-464e-adf6-67a206795d48_a6w9xy8g.png</RelativePath>
+      <RelativePath>cilent/image/products/be8549ac-7dd4-4739-8894-51de17b03ab6_colors.png</RelativePath>
       <AssetKind>All</AssetKind>
       <AssetMode>All</AssetMode>
       <AssetRole>Primary</AssetRole>
@@ -31150,7 +31150,103 @@
       <AssetTraitValue></AssetTraitValue>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\cilent\image\products\d63d23d8-16b0-464e-adf6-67a206795d48_a6w9xy8g.png))</OriginalItemSpec>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\cilent\image\products\be8549ac-7dd4-4739-8894-51de17b03ab6_colors.png))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\cilent\image\products\cc65096c-b5b4-4b7c-834c-7b796430d85a_h4g0cw18.png))">
+      <SourceType>Package</SourceType>
+      <SourceId>Pustok</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/Pustok</BasePath>
+      <RelativePath>cilent/image/products/cc65096c-b5b4-4b7c-834c-7b796430d85a_h4g0cw18.png</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\cilent\image\products\cc65096c-b5b4-4b7c-834c-7b796430d85a_h4g0cw18.png))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\cilent\image\products\ce9b5ad1-c6fa-4673-9a2d-a56df9994922_a6w9xy8g.png))">
+      <SourceType>Package</SourceType>
+      <SourceId>Pustok</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/Pustok</BasePath>
+      <RelativePath>cilent/image/products/ce9b5ad1-c6fa-4673-9a2d-a56df9994922_a6w9xy8g.png</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\cilent\image\products\ce9b5ad1-c6fa-4673-9a2d-a56df9994922_a6w9xy8g.png))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\cilent\image\products\d65d7587-7a3c-4f38-93ba-3f3047f0c3f4_The Last Moonlight Dragon.jpg))">
+      <SourceType>Package</SourceType>
+      <SourceId>Pustok</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/Pustok</BasePath>
+      <RelativePath>cilent/image/products/d65d7587-7a3c-4f38-93ba-3f3047f0c3f4_The Last Moonlight Dragon.jpg</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\cilent\image\products\d65d7587-7a3c-4f38-93ba-3f3047f0c3f4_The Last Moonlight Dragon.jpg))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\cilent\image\products\d67ac2f7-48ad-4989-8f77-91ef28100818_Stardust.png))">
+      <SourceType>Package</SourceType>
+      <SourceId>Pustok</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/Pustok</BasePath>
+      <RelativePath>cilent/image/products/d67ac2f7-48ad-4989-8f77-91ef28100818_Stardust.png</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\cilent\image\products\d67ac2f7-48ad-4989-8f77-91ef28100818_Stardust.png))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\cilent\image\products\e103395e-3724-438f-bf8f-aba34316c69e_Stardust.png))">
+      <SourceType>Package</SourceType>
+      <SourceId>Pustok</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/Pustok</BasePath>
+      <RelativePath>cilent/image/products/e103395e-3724-438f-bf8f-aba34316c69e_Stardust.png</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\cilent\image\products\e103395e-3724-438f-bf8f-aba34316c69e_Stardust.png))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\cilent\image\products\e790e8a3-efae-4d4c-9c79-8d7d8ba350df_The Last Moonlight Dragon.jpg))">
+      <SourceType>Package</SourceType>
+      <SourceId>Pustok</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/Pustok</BasePath>
+      <RelativePath>cilent/image/products/e790e8a3-efae-4d4c-9c79-8d7d8ba350df_The Last Moonlight Dragon.jpg</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\cilent\image\products\e790e8a3-efae-4d4c-9c79-8d7d8ba350df_The Last Moonlight Dragon.jpg))</OriginalItemSpec>
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\cilent\image\products\product-10.jpg))">
       <SourceType>Package</SourceType>

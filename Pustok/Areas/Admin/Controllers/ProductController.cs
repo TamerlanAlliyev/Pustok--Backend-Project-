@@ -145,6 +145,7 @@ public class ProductController : Controller
         Product product = new Product
         {
             Name = productVM.Name,
+            Author = productVM.Author,
             ProductCode = productVM.ProductCode,
             Description = productVM.Description,
             RewardPoint = productVM.RewardPoint,
@@ -176,6 +177,7 @@ public class ProductController : Controller
                         CategoryId = category.Id,
                     });
                 }
+
             }
         }
 
@@ -418,11 +420,26 @@ public class ProductController : Controller
             {
                 if (category.IsChecked)
                 {
-                    productCategories.Add(new ProductCategory
+                    if (!_context.ProductCategories.Any(pc => pc.ProducId == product.Id && pc.CategoryId == category.Id))
                     {
-                        Product = product,
-                        CategoryId = category.Id,
-                    });
+                        productCategories.Add(new ProductCategory
+                        {
+                            Product = product,
+                            CategoryId = category.Id,
+                        });
+                    }
+
+                }
+                else
+                {
+                    var productCategory = await _context.ProductCategories
+                                          .Where(pc => pc.ProducId == product.Id && pc.CategoryId == category.Id)
+                                          .FirstOrDefaultAsync();
+
+                    if (productCategory != null)
+                    {
+                        _context.ProductCategories.Remove(productCategory);
+                    }
                 }
             }
         }
@@ -437,11 +454,23 @@ public class ProductController : Controller
             {
                 if (tag.IsChecked)
                 {
-                    productTags.Add(new ProductTag
+                    if (!_context.ProductTag.Any(pc => pc.ProductId == product.Id && pc.TagId == tag.Id))
                     {
-                        Product = product,
-                        TagId = tag.Id,
-                    });
+                        productTags.Add(new ProductTag
+                        {
+                            Product = product,
+                            TagId = tag.Id,
+                        });
+                    }
+
+                }
+                else
+                {
+                    var productTag = await _context.ProductTag.Where(pt => pt.ProductId == product.Id && pt.TagId == tag.Id).FirstOrDefaultAsync();
+                    if (productTag != null)
+                    {
+                        _context.ProductTag.Remove(productTag);
+                    }
                 }
             }
         }
