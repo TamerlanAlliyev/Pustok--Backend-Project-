@@ -1,0 +1,48 @@
+﻿@model List<BasketItemProductVM>
+
+     
+
+@if (Model != null && Model.Count > 0)
+{
+    @foreach (var prod in Model)
+    {
+        <div class="single-cart-block">
+            <div class="cart-product">
+                <a asp-action="Detail" asp-controller="Product" asp-route-id="@prod.Product.Id" class="image">
+                    <img style="width:100px;height:100px; object-fit:cover;" src="~/cilent/image/products/@(prod.Product.Images.FirstOrDefault(pi => !pi.IsDeleted && pi.IsHover)?.Url??"")" alt="">
+                </a>
+                <div class="content">
+                    <h3 class="title">
+                        <a asp-action="Detail" asp-controller="Product" asp-route-id="@prod.Product.Id">
+                            @prod.Product.Name
+                        </a>
+                    </h3>
+                    @if (prod.Product.DiscountPrice > 0 && prod.Product.DiscountPrice != null)
+                    {
+                        <span class="price"><span class="qty" style="font-size:15px;">@prod.Count × </span>$@prod.Product.DiscountPrice</span>
+                        <del class="price-old">$@prod.Product.Price</del>
+                        @if (prod.Product.DiscountPrice > 0 && prod.Product.DiscountPrice != null && prod.Product.Price > 0)
+                        {
+                            <span class="price-discount">@Math.Round((decimal)(prod.Product.Price - prod.Product.DiscountPrice) / prod.Product.Price * 100)%</span>
+                        }
+                    }
+                    else
+                    {
+                        <span class="price"><span class="qty" style="font-size:15px;">@prod.Count × </span>$@prod.Product.Price</span>
+                    }
+                </div>
+                <div style="margin-left:auto;">
+                    <a class="del-basket" data-id="@prod.Product.Id" style="background-color: transparent; border: none; cursor: pointer; padding: 5px;">
+                        <i style="color: #ff5a5f; font-size: 24px;" class="fas fa-times"></i>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+
+    }
+}
+else
+{
+    <p style="padding:0 40px ">No items in basket</p>
+}

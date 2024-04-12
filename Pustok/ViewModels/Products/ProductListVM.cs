@@ -1,4 +1,5 @@
 ﻿using Pustok.Models;
+using Pustok.ViewModels.Basket;
 using Pustok.ViewModels.Catagories;
 
 namespace Pustok.ViewModels.Products
@@ -16,6 +17,8 @@ namespace Pustok.ViewModels.Products
 		public Product? Modal { get; set; }
 		public List<Product> Products { get; set; } = null!;
 		public List<Category>? Categories { get; set; }
+
+		public List<BasketItemProductVM> baskets { get; set; } = null!;
 	}
 }
 

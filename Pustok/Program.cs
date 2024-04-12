@@ -22,6 +22,8 @@ public class Program
 			cfg.UseSqlServer(builder.Configuration.GetConnectionString("MSSQL"))
 			);
 
+		builder.Services.AddHttpContextAccessor();
+
         builder.Services.AddTransient<IEmailService, EmailService>();
 		builder.Services.AddScoped<Pustok.Areas.Admin.Services.Interfaces.IProductService, Pustok.Areas.Admin.Services.Implements.ProductService>();
 		builder.Services.AddScoped<Pustok.Services.Interfaces.IShopService, Pustok.Services.Implements.ShopService>();

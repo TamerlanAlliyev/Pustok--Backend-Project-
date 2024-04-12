@@ -20,7 +20,7 @@ namespace Pustok.ViewComponents
             _shopService = shopService;
         }
 
-        public async Task<IViewComponentResult> InvokeAsync(int? categoryId, int? tagId, int? minPrice, int? maxPrice, int page=2, int pageSize =1)
+        public async Task<IViewComponentResult> InvokeAsync(int? categoryId, int? tagId, int? minPrice, int? maxPrice, int page=1, int pageSize =3)
 		{
 
 
@@ -111,7 +111,7 @@ namespace Pustok.ViewComponents
 				Products = products,
 				TotalPageCount = count,
 				CurrentPage = page,
-				//SelectedCategory = categoryId,
+				SelectedCategory = categoryId
 				//SelectedTag = tagId
 				//Tags = null
 			};

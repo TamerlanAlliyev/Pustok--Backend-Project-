@@ -1,7 +1,7 @@
 ﻿@model ProductListVM
 @foreach (var product in Model.Products)
 {
-    <div class="col-lg-4 col-sm-6">
+    <div class="col-lg-4 col-sm-6 prod">
         <div class="product-card">
             <div class="product-grid-content">
                 <div class="product-header">
@@ -21,8 +21,8 @@
                                 <img style="width:200px;height:200px;object-fit:cover" src="~/cilent/image/products/@(product.Images.FirstOrDefault(pi => !pi.IsDeleted && pi.IsHover)?.Url)" alt="Hove Image">
                             </a>
                             <div class="hover-btns">
-                                <a href="~/cilent/cart.html" class="single-btn">
-                                    <i class="fas fa-shopping-basket"></i>
+                                <a class="single-btn ">
+                                    <i data-id="@product.Id" class="fas fa-shopping-basket basket"></i>
                                 </a>
                                 <a href="~/cilent/wishlist.html" class="single-btn">
                                     <i class="fas fa-heart"></i>
@@ -123,6 +123,7 @@
     </div>
 
 }
+
 <div class="row pt--30">
     <div class="col-md-12">
         <div class="pagination-block">
@@ -159,12 +160,40 @@
         </div>
     </div>
 </div>
+@*    <script>
+        var prods = document.querySelectorAll(".prod .basket");
 
+        prods.forEach(prod => {
+            prod.addEventListener('click', e => {
+                e.preventDefault();
+                console.log('click')
+            var id = prod.dataset.id;
+                fetch('Product/AddBasket/'+id)
+                    .then(res => {
+                        if (res.ok) {
+                            alert();
+                        }
+                    })
+                    .catch(err=>console.log(err))
+            })
+        })
+        
+    </script> *@
 
 @section Script {
 
 
-    <script>
+ 
+
+
+
+
+
+
+
+
+
+@*     <script>
 
 
 
@@ -194,6 +223,6 @@
         });
 
 
-    </script>
+    </script> *@
 
 }

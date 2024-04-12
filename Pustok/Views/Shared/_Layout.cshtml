@@ -1,4 +1,9 @@
-﻿<!DOCTYPE html>
+﻿@{
+    string basketCount = TempData["BasketItemCount"] != null ? TempData["BasketItemCount"].ToString() : "0";
+    int con = int.Parse(basketCount);
+}
+
+<!DOCTYPE html>
 <html lang="zxx">
 
 
@@ -11,6 +16,7 @@
     <link rel="stylesheet" type="text/css" media="screen" href="~/cilent/css/plugins.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="~/cilent/css/main.css" />
     <link rel="shortcut icon" type="image/x-icon" href="~/cilent/image/favicon.ico">
+    @await RenderSectionAsync("Styles", false)
 </head>
 
 <body>
@@ -51,7 +57,7 @@
 
                                     </li>
                                     <!-- Pages -->
-                             
+
                                     <li class="menu-item">
                                         <a asp-controller="Contac" asp-action="Index">Contact</a>
                                     </li>
@@ -85,7 +91,7 @@
                                                     <li><a asp-controller="Account" asp-action="Login">Login</a></li>
                                                     <li><a asp-controller="Account" asp-action="Register">Register</a></li>
                                                 }}
-                                           
+
                                             <li><a asp-controller="Cart" asp-action="Index">Cart</a></li>
                                             <li><a asp-controller="WishList" asp-action="Index">Wishlist</a></li>
 
@@ -233,14 +239,23 @@
                         <div class="col-lg-4">
                             <div class="main-navigation flex-lg-right">
                                 <div class="cart-widget">
-                                    
+
 
 
                                     <div class="cart-block">
-                                        <div class="cart-total">
-                                            <span class="text-number">
-                                                1
-                                            </span>
+                                        <div class="cart-total bask">
+                                            @if (con > 0)
+                                            {
+                                                <span class="text-number">
+
+                                                    @con
+                                                </span>
+
+                                            }
+                                            else
+                                            {
+                                                <span class="text-number">0</span>
+                                            }
                                             <span class="text-item">
                                                 Shopping Cart
                                             </span>
@@ -250,26 +265,12 @@
                                             </span>
                                         </div>
                                         <div class="cart-dropdown-block">
-                                            <div class=" single-cart-block ">
-                                                <div class="cart-product">
-                                                    <a href="~/cilent/product-details.html" class="image">
-                                                        <img src="~/cilent/image/products/cart-product-1.jpg" alt="">
-                                                    </a>
-                                                    <div class="content">
-                                                        <h3 class="title">
-                                                            <a href="~/cilent/product-details.html">
-                                                                Kodak PIXPRO
-                                                                Astro Zoom AZ421 16 MP
-                                                            </a>
-                                                        </h3>
-                                                        <p class="price"><span class="qty">1 ×</span> £87.34</p>
-                                                        <button class="cross-btn"><i class="fas fa-times"></i></button>
-                                                    </div>
-                                                </div>
+                                            <div id="miniCart">
+                                                @await Component.InvokeAsync("Basket")
                                             </div>
-                                            <div class=" single-cart-block ">
+                                            <div class="single-cart-block ">
                                                 <div class="btn-block">
-                                                    <a href="~/cilent/cart.html" class="btn">
+                                                    <a asp-action="Index" asp-controller="Cart" class="btn">
                                                         View Cart <i class="fas fa-chevron-right"></i>
                                                     </a>
                                                     <a href="~/cilent/checkout.html" class="btn btn--primary">
@@ -279,6 +280,13 @@
                                             </div>
                                         </div>
                                     </div>
+
+
+
+
+
+
+
                                 </div>
                             </div>
                         </div>
@@ -392,10 +400,113 @@
         </div>
     </footer>
     <!-- Use Minified Plugins Version For Fast Page Load -->
-    @await RenderSectionAsync("Script", false)
     <script src="~/cilent/js/plugins.js"></script>
     <script src="~/cilent/js/ajax-mail.js"></script>
     <script src="~/cilent/js/custom.js"></script>
+    @await RenderSectionAsync("Script", false)
+
+
+
+    <script>
+
+
+
+        document.addEventListener('click', async (event) => {
+            const target = event.target.closest('.del-basket');
+            if (target) {
+                event.preventDefault(); 
+
+                try {
+                    console.log('dlt');
+                    const productId = target.dataset.id;
+                    console.log(productId);
+
+                    const formData = new FormData();
+                    formData.append('id', productId);
+
+                    const deleteResponse = await fetch('/Product/BasketDelete', {
+                        method: 'POST',
+                        body: formData
+                    });
+
+                    let count = document.querySelector('.text-number').innerText;
+                    document.querySelector('.text-number').innerText = --count
+
+                    if (!deleteResponse.ok) {
+                        throw new Error(`HTTP error! status: ${deleteResponse.status}`);
+                    }
+
+                    const basketResponse = await fetch('/Product/GetBasket');
+                    if (!basketResponse.ok) {
+                        throw new Error(`HTTP error! status: ${basketResponse.status}`);
+                    }
+
+                    const updatedBasketData = await basketResponse.text();
+                    document.getElementById('miniCart').innerHTML = updatedBasketData;
+                } catch (error) {
+                    console.error('Error deleting product:', error);
+                }
+            }
+        });
+
+
+
+
+       
+
+
+
+        let basket = document.querySelector('.cart-block')
+        basket.addEventListener('mouseenter', () => {
+            console.log("cart-block")
+
+            fetch('/Product/GetBasket')
+                .then(res => res.text())
+                .then(res => {
+                    document.getElementById('miniCart').innerHTML = res;
+                })
+                .catch(e => console.log(e))
+
+        })
+
+
+
+
+
+
+
+
+        var tag = document.querySelectorAll(".tag-item");
+
+        tag.forEach(category => {
+            var id = category.dataset.id;
+            category.addEventListener("click", (e) => {
+                e.preventDefault();
+                console.log("click on tag:", id);
+
+                var formData = new FormData();
+                formData.append('tagId', id);
+
+                fetch('/Product/ProductCategoryFilter', {
+                    method: 'POST',
+                    body: formData
+                })
+                    .then(response => response.text())
+                    .then(x => {
+                        document.querySelector(".product").innerHTML = x;
+                    })
+                    .catch(error => {
+                        console.error("Error fetching products:", error);
+                    });
+            });
+        });
+
+
+
+
+
+
+    </script>
 </body>
 
 

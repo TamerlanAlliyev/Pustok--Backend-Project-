@@ -1,4 +1,8 @@
 ﻿@model ProductListVM
+@section Styles {
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
+
+}
 @await Html.PartialAsync("_MobileMenuPartialView")
 <section class="breadcrumb-section">
     <h2 class="sr-only">Site Breadcrumb</h2>
@@ -235,7 +239,7 @@
 
                     <!-- Tag -->
                     @await Html.PartialAsync("_ShopTagsPartial", Model)
- 
+
 
                     <!-- Price -->
                     <div class="single-block filter-price mt-5 d-flex flex-column align-items-center">
@@ -271,7 +275,7 @@
 
 
 
-    	<script>
+    <script>
 
 
 
@@ -349,6 +353,112 @@
                 });
         });
 
-	</script>
+    </script>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js">
+    </script>
+    <script>
+        var prods = document.querySelectorAll(".prod .basket");
+
+        prods.forEach(prod => {
+            prod.addEventListener('click', e => {
+                e.preventDefault();
+                console.log('click')
+                var id = prod.dataset.id;
+                fetch('Product/AddBasket/' + id)
+                    .then(res => {
+                        if (res.ok) {
+                            let count = document.querySelector('.text-number').innerText;
+                            document.querySelector('.text-number').innerText = ++count
+                            Command: toastr["success"]("Product added to cart")
+
+                            toastr.options = {
+                                "closeButton": true,
+                                "debug": false,
+                                "newestOnTop": false,
+                                "progressBar": false,
+                                "positionClass": "toast-top-right",
+                                "preventDuplicates": false,
+                                "onclick": null,
+                                "showDuration": "300",
+                                "hideDuration": "1000",
+                                "timeOut": "5000",
+                                "extendedTimeOut": "1000",
+                                "showEasing": "swing",
+                                "hideEasing": "linear",
+                                "showMethod": "fadeIn",
+                                "hideMethod": "fadeOut"
+                            }
+                        } else {
+                            Command: toastr["warning"]("An error occurred while adding the product to the cart...")
+
+                            toastr.options = {
+                                "closeButton": false,
+                                "debug": false,
+                                "newestOnTop": false,
+                                "progressBar": false,
+                                "positionClass": "toast-top-right",
+                                "preventDuplicates": false,
+                                "onclick": null,
+                                "showDuration": "300",
+                                "hideDuration": "1000",
+                                "timeOut": "5000",
+                                "extendedTimeOut": "1000",
+                                "showEasing": "swing",
+                                "hideEasing": "linear",
+                                "showMethod": "fadeIn",
+                                "hideMethod": "fadeOut"
+                            }
+                        }
+                    })
+                    .catch(err => console.log(err))
+            })
+        })
+
+    </script>
+
+
+    @*     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js">
+    </script>
+
+
+    <script>
+        var prods = document.querySelectorAll(".prod .basket");
+
+        prods.forEach(prod => {
+            prod.addEventListener('click', e => {
+                e.preventDefault();
+                console.log('click')
+                fetch(e.target.parentElement.href)
+                    .then(res => {
+                        if (res.ok) {
+                            Command: toastr["success"]("My name is Inigo Montoya. You killed my father. Prepare to die!")
+
+                            toastr.options = {
+                                "closeButton": true,
+                                "debug": false,
+                                "newestOnTop": false,
+                                "progressBar": false,
+                                "positionClass": "toast-top-right",
+                                "preventDuplicates": false,
+                                "onclick": null,
+                                "showDuration": "300",
+                                "hideDuration": "1000",
+                                "timeOut": "5000",
+                                "extendedTimeOut": "1000",
+                                "showEasing": "swing",
+                                "hideEasing": "linear",
+                                "showMethod": "fadeIn",
+                                "hideMethod": "fadeOut"
+                            }
+                        }
+                    })
+                    .catch(err => console.log(err))
+            })
+        })
+
+    </script> *@
+
 
 }
