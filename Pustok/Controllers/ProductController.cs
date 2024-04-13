@@ -8,16 +8,20 @@ using Pustok.ViewModels.Products;
 using System.Drawing.Printing;
 using Newtonsoft.Json;
 using Pustok.ViewModels.Basket;
+using Microsoft.AspNetCore.Identity;
+using System.Security.Claims;
+using Pustok.ViewModels.Wish;
 
 namespace Pustok.Controllers;
 
 public class ProductController : Controller
 {
     readonly PustokContext _context;
-
-    public ProductController(PustokContext context)
+    readonly UserManager<AppUser> _userManager;
+    public ProductController(PustokContext context, UserManager<AppUser> userManager)
     {
         _context = context;
+        _userManager = userManager;
     }
 
     public async Task<IActionResult> Index(int modalId)
@@ -129,9 +133,9 @@ public class ProductController : Controller
 
 
 
-    public IActionResult Filter(int? categoryId, int? tagId,int? minPrice,int? maxPrice)
+    public IActionResult Filter(int? categoryId, int? tagId, int? minPrice, int? maxPrice)
     {
-        return ViewComponent("Filter", new { categoryId=categoryId, tagId=tagId,minPrice = minPrice,maxPrice=maxPrice });
+        return ViewComponent("Filter", new { categoryId = categoryId, tagId = tagId, minPrice = minPrice, maxPrice = maxPrice });
     }
 
 
@@ -153,10 +157,207 @@ public class ProductController : Controller
 
 
 
-    public IActionResult Pagenate(int page , int pageSize=1)
+    public IActionResult Pagenate(int page, int pageSize = 1)
     {
         return ViewComponent("ProductListViewComponenet", new { page = page, pageSize = pageSize });
     }
+
+
+
+
+    public async Task<IActionResult> AddWish(int? id)
+    {
+        if (id == null || id <= 0)
+        {
+            return BadRequest();
+        }
+
+        if (!User.Identity.IsAuthenticated)
+        {
+            if (HttpContext.Request.Cookies.ContainsKey("wish"))
+            {
+                var wishCookieValue = HttpContext.Request.Cookies["wish"];
+                var wishItem = JsonConvert.DeserializeObject<List<WishVM>>(wishCookieValue);
+                var itemToRemove = wishItem.FirstOrDefault(item => item.Id == id);
+                if (itemToRemove != null)
+                {
+                    wishItem.Remove(itemToRemove);
+                    var updatedWishCookieValue = JsonConvert.SerializeObject(wishItem);
+                    HttpContext.Response.Cookies.Append("wish", updatedWishCookieValue, new CookieOptions
+                    {
+                        Expires = DateTime.Now.AddDays(30)
+                    });
+                }
+                else
+                {
+                    var productBasket = await _context.Products.Where(p => !p.IsDeleted).FirstOrDefaultAsync(p => p.Id == id);
+                    if (productBasket != null)
+                    {
+                        wishItem.Add(new WishVM { Id = (int)id });
+                        var updatedWishCookieValue = JsonConvert.SerializeObject(wishItem);
+                        HttpContext.Response.Cookies.Append("wish", updatedWishCookieValue, new CookieOptions
+                        {
+                            Expires = DateTime.Now.AddDays(30)
+                        });
+                    }
+                }
+            }
+            else
+            {
+                var productBasket = await _context.Products.Where(p => !p.IsDeleted).FirstOrDefaultAsync(p => p.Id == id);
+                if (productBasket != null)
+                {
+                    var wish = HttpContext.Request.Cookies["wish"];
+                    List<WishVM> wishItems = wish == null ? new List<WishVM>() : JsonConvert.DeserializeObject<List<WishVM>>(wish);
+                    var item = wishItems.SingleOrDefault(i => i.Id == id);
+                    if (item == null)
+                    {
+                        item = new WishVM { Id = (int)id };
+                        wishItems.Add(item);
+                        HttpContext.Response.Cookies.Append("wish", JsonConvert.SerializeObject(wishItems), new CookieOptions
+                        {
+                            Expires = DateTime.Now.AddDays(30)
+                        });
+                    }
+                }
+            }
+        }
+        else
+        {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var ipAddress = HttpContext.Connection.RemoteIpAddress?.ToString() ?? "Unknown IP Address";
+            var wish = await _context.Wishes.Where(w => w.ProductId == id && w.UserId == userId).FirstOrDefaultAsync();
+            if (wish != null)
+            {
+                _context.Wishes.Remove(wish);
+                await _context.SaveChangesAsync();
+            }
+            else
+            {
+                Wish newWish = new Wish
+                {
+                    ProductId = (int)id,
+                    UserId = userId,
+                    IsDeleted = false,
+                    CreatedBy = userId,
+                    Created = DateTime.UtcNow.AddHours(4),
+                    IPAddress = ipAddress,
+                };
+                await _context.Wishes.AddAsync(newWish);
+                await _context.SaveChangesAsync();
+            }
+        }
+        return Ok();
+    }
+
+
+
+
+
+
+    //public async Task<IActionResult> AddWish(int? id)
+    //{
+    //    if (id == null || id <= 0)
+    //    {
+    //        return BadRequest();
+    //    }
+
+    //    if (!User.Identity.IsAuthenticated)
+    //    {
+
+
+    //        if (HttpContext.Request.Cookies.ContainsKey("wish"))
+    //        {
+    //            var wishCookieValue = HttpContext.Request.Cookies["wish"];
+
+    //            var wishItem = JsonConvert.DeserializeObject<List<WishVM>>(wishCookieValue);
+
+
+    //            var itemToRemove = wishItem.FirstOrDefault(item => item.Id == id);
+    //            if (itemToRemove != null)
+    //            {
+    //                wishItem.Remove(itemToRemove);
+
+    //                var updatedWishCookieValue = JsonConvert.SerializeObject(wishItem);
+
+    //                HttpContext.Response.Cookies.Append("wish", updatedWishCookieValue, new CookieOptions
+    //                {
+    //                    Expires = DateTime.Now.AddDays(30)
+    //                });
+
+    //            }
+
+    //        }
+    //        else
+    //        {
+
+    //            var productBasket = await _context.Products.Where(p => !p.IsDeleted).FirstOrDefaultAsync(p => p.Id == id);
+
+    //            var wish = HttpContext.Request.Cookies["wish"];
+
+    //            List<WishVM> wishItems = wish == null ? new List<WishVM>() :
+    //                JsonConvert.DeserializeObject<List<WishVM>>(wish);
+
+    //            var item = wishItems.SingleOrDefault(i => i.Id == id);
+
+    //            if (item == null)
+    //            {
+    //                item = new WishVM
+    //                {
+    //                    Id = (int)id
+    //                };
+    //                wishItems.Add(item);
+    //            }
+
+    //            HttpContext.Response.Cookies.Append("wish", JsonConvert.SerializeObject(wishItems));
+    //        }
+
+    //    }
+    //    else
+    //    {
+    //        var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+    //        var ipAddress = HttpContext.Connection.RemoteIpAddress?.ToString() ?? "Unknown IP Address";
+
+    //        var wish = await _context.Wishes.Where(w => w.ProductId == id).FirstOrDefaultAsync();
+    //        if (wish != null)
+    //        {
+    //            _context.Wishes.Remove(wish);
+
+    //            await _context.SaveChangesAsync();
+    //        }
+    //        else
+    //        {
+    //            Wish newWish = new Wish
+    //            {
+    //                ProductId = (int)id,
+    //                UserId = userId,
+    //                IsDeleted = false,
+    //                CreatedBy = userId,
+    //                Created = DateTime.UtcNow.AddHours(4),
+    //                IPAddress = ipAddress,
+    //            };
+
+    //            await _context.Wishes.AddAsync(newWish);
+    //            await _context.SaveChangesAsync();
+    //        }
+
+    //    }
+
+    //    return Ok();
+    //}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -171,33 +372,72 @@ public class ProductController : Controller
             return BadRequest();
         }
 
-        var productBasket = await _context.Products.Where(p => !p.IsDeleted).FirstOrDefaultAsync(p => p.Id == id);
-
-        var basket = HttpContext.Request.Cookies["basket"];
-
-        List<BasketVM> basketItems = basket == null ? new List<BasketVM>() :
-            JsonConvert.DeserializeObject<List<BasketVM>>(basket);
-
-        var item = basketItems.SingleOrDefault(i => i.Id == id);
-
-        if (item == null)
+        if (!User.Identity.IsAuthenticated)
         {
-            item = new BasketVM
+            var productBasket = await _context.Products.Where(p => !p.IsDeleted).FirstOrDefaultAsync(p => p.Id == id);
+
+            var basket = HttpContext.Request.Cookies["basket"];
+
+            List<BasketVM> basketItems = basket == null ? new List<BasketVM>() :
+                JsonConvert.DeserializeObject<List<BasketVM>>(basket);
+
+            var item = basketItems.SingleOrDefault(i => i.Id == id);
+
+            if (item == null)
             {
-                Id = (int)id,
-                Count = 1,
-            };
-            basketItems.Add(item);
+                item = new BasketVM
+                {
+                    Id = (int)id,
+                    Count = 1,
+                };
+                basketItems.Add(item);
+            }
+            else
+            {
+                item.Count++;
+            }
+
+            HttpContext.Response.Cookies.Append("basket", JsonConvert.SerializeObject(basketItems));
         }
         else
         {
-            item.Count++;
-        }
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var ipAddress = HttpContext.Connection.RemoteIpAddress?.ToString() ?? "Unknown IP Address";
 
-        HttpContext.Response.Cookies.Append("basket", JsonConvert.SerializeObject(basketItems));
+            if (await _context.Baskets.AnyAsync(b => b.ProductId == id))
+            {
+                var bask = await _context.Baskets.Where(b => b.ProductId == id).FirstOrDefaultAsync();
+                bask.Count++;
+                bask.IPAddress = ipAddress;
+                bask.UserId = userId;
+                bask.ModifiedBy = userId;
+                bask.Modified = DateTime.UtcNow.AddHours(4);
+
+                await _context.SaveChangesAsync();
+            }
+            else
+            {
+                Basket basket = new Basket
+                {
+                    Count = 1,
+                    ProductId = (int)id,
+                    UserId = userId,
+                    IsDeleted = false,
+                    CreatedBy = userId,
+                    Created = DateTime.UtcNow.AddHours(4),
+                    IPAddress = ipAddress,
+                };
+
+                await _context.Baskets.AddAsync(basket);
+                await _context.SaveChangesAsync();
+            }
+
+        }
 
         return Ok();
     }
+
+
 
 
     public IActionResult GetBasket()
@@ -206,33 +446,65 @@ public class ProductController : Controller
     }
 
 
-    public IActionResult BasketDelete(int id)
+
+
+
+
+
+
+
+
+
+
+
+
+    public async Task<IActionResult> BasketDelete(int id)
     {
-        int productIdToDelete = id;
-
-        if (HttpContext.Request.Cookies.ContainsKey("basket"))
+        if (!User.Identity.IsAuthenticated)
         {
-            var basketCookieValue = HttpContext.Request.Cookies["basket"];
 
-            var basketItems = JsonConvert.DeserializeObject<List<BasketVM>>(basketCookieValue);
-
-
-            var itemToRemove = basketItems.FirstOrDefault(item => item.Id == productIdToDelete);
-            if (itemToRemove != null)
+            if (HttpContext.Request.Cookies.ContainsKey("basket"))
             {
-                basketItems.Remove(itemToRemove);
+                var basketCookieValue = HttpContext.Request.Cookies["basket"];
 
-                var updatedBasketCookieValue = JsonConvert.SerializeObject(basketItems);
+                var basketItems = JsonConvert.DeserializeObject<List<BasketVM>>(basketCookieValue);
 
-                HttpContext.Response.Cookies.Append("basket", updatedBasketCookieValue, new CookieOptions
+
+                var itemToRemove = basketItems.FirstOrDefault(item => item.Id == id);
+                if (itemToRemove != null)
                 {
-                    Expires = DateTime.Now.AddDays(30)
-                });
+                    basketItems.Remove(itemToRemove);
+
+                    var updatedBasketCookieValue = JsonConvert.SerializeObject(basketItems);
+
+                    HttpContext.Response.Cookies.Append("basket", updatedBasketCookieValue, new CookieOptions
+                    {
+                        Expires = DateTime.Now.AddDays(30)
+                    });
+
+                }
 
             }
-
+        }
+        else
+        {
+            if (await _context.Baskets.AnyAsync(b => b.ProductId == id))
+            {
+                var basket = await _context.Baskets.FirstOrDefaultAsync(b => b.ProductId == id);
+                _context.Baskets.Remove(basket);
+                await _context.SaveChangesAsync();
+            }
         }
         return ViewComponent("Basket");
     }
+
+
+
+
+
+
+
+
+
 
 }

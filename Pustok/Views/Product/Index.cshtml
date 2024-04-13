@@ -204,29 +204,14 @@
                 <form asp-action="Filter" method="post" class="inner-page-sidebar">
 
 
-                    <!-- Accordion -->
-                    @* @await Html.PartialAsync("_ShopCategoriesPartial", Model) *@
-
 
                     <!-- Tag -->
                     @* @await Html.PartialAsync("_ShopTagsPartial", Model) *@
                     <div class="Filers">
 
                         @await Component.InvokeAsync("Filter")
+
                     </div>
-
-
-                    <!-- Price -->
-                    @*       <div class="single-block filter-price mt-5 d-flex flex-column align-items-center">
-                    <h3 class="sidebar-title w-100">Filter by Price</h3>
-                    <div class="range-slider pt-30 d-flex gap-5 ">
-                    <input type="number" id="minPrice" name="minPrice" placeholder="Min Price" class="form-control my-3 mr-2 " />
-                    <input type="number" id="maxPrice" name="maxPrice" placeholder="Max Price" class="form-control my-3 ml-2 " />
-                    </div>
-                    <a class="btn btn--primary w-10 " id="submit"> Filter</a>
-                    </div> *@
-
-
 
 
                     <!-- Promotion Block -->

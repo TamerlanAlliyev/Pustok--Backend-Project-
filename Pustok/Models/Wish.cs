@@ -6,7 +6,6 @@ namespace Pustok.Models
 {
 	public class Wish : BaseAuditable
 	{
-		public int Count { get; set; }
 		public int ProductId { get; set; }
 		public Product Product { get; set; } = null!;
 		public string UserId { get; set; } = null!;

@@ -11,7 +11,6 @@ namespace Pustok.Data.Configurations
 		{
 			base.Configure(builder);
 
-			builder.Property(b => b.Count).HasColumnType("int").HasMaxLength(250).IsRequired(true);
 		}
 	}
 }

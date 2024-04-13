@@ -6,6 +6,11 @@
     <div class="shop-product-wrap grid with-pagination row space-db--30 shop-border">
 
 
+    @if (Model.Products.Count()==0)
+    {
+        <h4 style="text-align:center;">No products found according to filtering...</h4>
+    }
+
         @foreach (var product in Model.Products)
         {
 
@@ -29,8 +34,8 @@
                                         <a class="single-btn prod">
                                             <i data-id="@product.Id" class="fas fa-shopping-basket basket"></i>
                                         </a>
-                                        <a href="wishlist.html" class="single-btn">
-                                            <i class="fas fa-heart"></i>
+                                        <a class="single-btn">
+                                        <i data-id="@product.Id" class="fas fa-heart wish"></i>
                                         </a>
                                         <a href="compare.html" class="single-btn">
                                             <i class="fas fa-random"></i>
@@ -162,7 +167,6 @@
                             <a class="single-btn num-btn" data-id="@i">@i</a>
                         </li>
 
-                        @* <li class="active"><a class="single-btn" asp-route-page="@i">@i</a></li> *@
                     }
 
 
@@ -229,4 +233,37 @@
     }
 
     reattachEventListeners();
+
+
+
+
+
+
+
+
+
+    function reattachEventListener() {
+        document.querySelectorAll('.wish').forEach(button => {
+            button.addEventListener('click', (e) => {
+                e.preventDefault();
+                console.log('Basket element clicked:', e.target);
+
+
+                var id = e.target.dataset.id;
+
+
+                fetch('Product/AddWish/' + id)
+                    .then(res => {
+                        if (res.ok) {
+                            toastr["success"]("Product added to WishList");
+                        } else {
+                            toastr["warning"]("An error occurred while adding the product to the WishList...");
+                        }
+                    })
+                    .catch(err => console.error(err));
+            });
+        });
+    }
+    reattachEventListener();
+
 </script>

@@ -1,0 +1,44 @@
+﻿@model List<WishItemProductVM>
+
+
+@if (Model.Count() == 0 || Model == null)
+{
+    <tr>
+        <h5>
+            There are no products in the Wish List...
+        </h5>
+    </tr>
+}
+else
+{
+    @foreach (var product in Model)
+    {
+        <tr class="table-hover">
+            <td class="pro-thumbnail">
+                <a asp-controller="Product" asp-action="Detail" asp-route-id="@product.Product.Id">
+                    <img style="width:100px;height:100px; object-fit:cover;" src="~/cilent/image/products/@(product.Product.Images.FirstOrDefault(pi => !pi.IsDeleted && pi.IsHover)?.Url??"")" alt="Product">
+                </a>
+            </td>
+            <td class="pro-title"><a asp-controller="Product" asp-action="Detail" asp-route-id="@product.Product.Id">@product.Product.Name</a></td>
+            <td class="pro-price">
+                <span>
+                    @if (product.Product.DiscountPrice > 0 && product.Product.DiscountPrice != null)
+                    {
+                        <span class="price">$@product.Product.DiscountPrice</span>
+                        <del class="price-old">$@product.Product.Price</del>
+                        @if (product.Product.DiscountPrice > 0 && product.Product.DiscountPrice != null && product.Product.Price > 0)
+                        {
+                            <span class="price-discount">@Math.Round((decimal)(product.Product.Price - product.Product.DiscountPrice) / product.Product.Price * 100)%</span>
+                        }
+                    }
+                    else
+                    {
+                        <span class="price">$@product.Product.Price</span>
+                    }
+                </span>
+            </td>
+            <td class="pro-remove"><a href="~/cilent/#"><i class="far fa-trash-alt"></i></a></td>
+        </tr>
+    }
+}
+

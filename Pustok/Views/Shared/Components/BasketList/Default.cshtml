@@ -1,0 +1,116 @@
+﻿@model List<BasketItemProductVM>
+
+@foreach (var product in Model)
+{
+    <tr>
+        <td class="pro-remove" data-id="@product.Product.Id" data-count="@product.Count">
+            <a href="#"><i class="far fa-trash-alt"></i></a>
+        </td>
+
+        <td class="pro-thumbnail">
+            <a href="~/cilent/#">
+                <img style="width:100px;height:100px; object-fit:cover;" src="~/cilent/image/products/@(product.Product.Images.FirstOrDefault(pi => !pi.IsDeleted && pi.IsHover)?.Url??"")" alt="Product">
+            </a>
+        </td>
+        <td class="pro-title"><a href="~/cilent/#">@product.Product.Name</a></td>
+        <td class="pro-price">
+            @if (product.Product.DiscountPrice > 0 && product.Product.DiscountPrice != null)
+            {
+                <span class="price">$@product.Product.DiscountPrice</span>
+                <del class="price-old">$@product.Product.Price</del>
+                @if (product.Product.DiscountPrice > 0 && product.Product.DiscountPrice != null && product.Product.Price > 0)
+                {
+                    <span class="price-discount">@Math.Round((decimal)(product.Product.Price - product.Product.DiscountPrice) / product.Product.Price * 100)%</span>
+                }
+            }
+            else
+            {
+                <span class="price">$@product.Product.Price</span>
+            }
+        </td>
+        <td class="pro-quantity">
+            <div class="pro-qty">
+                <div class="count-input-block">
+                    <input type="number" class="form-control text-center"
+                           value="@product.Count">
+                </div>
+            </div>
+        </td>
+
+        <td class="pro-subtotal">
+
+            @if (product.Product.DiscountPrice > 0 && product.Product.DiscountPrice != null)
+            {
+                <span>$@(product.Product.DiscountPrice * product.Count)</span>
+            }
+            else
+            {
+                <span>$@(product.Product.Price * product.Count)</span>
+            }
+        </td>
+
+    </tr>
+}
+
+<tr>
+    <td colspan="6" class="actions">
+        <div class="coupon-block">
+            <div class="coupon-text">
+                <label for="coupon_code">Coupon:</label>
+                <input type="text" name="coupon_code" class="input-text"
+                       id="coupon_code" value="" placeholder="Coupon code">
+            </div>
+            <div class="coupon-btn">
+                <input type="submit" class="btn btn-outlined"
+                       name="apply_coupon" value="Apply coupon">
+            </div>
+        </div>
+        <div class="update-block text-right">
+            <input type="submit" class="btn btn-outlined update-cart-top" name="update_cart"
+                   value="Update cart">
+            <input type="hidden" id="_wpnonce" name="_wpnonce"
+                   value="05741b501f"><input type="hidden"
+                                             name="_wp_http_referer" value="/petmark/cart/">
+        </div>
+    </td>
+</tr>
+
+
+
+<script>
+
+    // document.addEventListener('click', async (event) => {
+    //     const target = event.target.closest('.update-cart-top');
+    //     if (target) {
+    //         event.preventDefault();
+    //         console.log('click')
+    //         try {
+    //             let btnCount = target.dataset.count;
+    //             var formData = new FormData();
+    //             formData.append('id', id);
+    //             console.log('del' + btnCount)
+
+    //             const deleteResponse = await fetch('/Product/BasketDelete', {
+    //                 method: 'POST',
+    //                 body: formData
+    //             });
+    //             if (!deleteResponse.ok) {
+    //                 throw new Error(`HTTP error! status: ${deleteResponse.status}`);
+    //             }
+
+    //             let count = document.querySelector('.text-number').innerText;
+    //             document.querySelector('.text-number').innerText = count - btnCount
+
+    //             const basketResponse = await fetch('/Cart/GetBasket');
+    //             if (!basketResponse.ok) {
+    //                 throw new Error(`HTTP error! status: ${basketResponse.status}`);
+    //             }
+
+    //             const updatedBasketData = await basketResponse.text();
+    //             document.getElementById('basket-list').innerHTML = updatedBasketData;
+    //         } catch (error) {
+    //             console.error('Error deleting product:', error);
+    //         }
+    //     }
+    // });
+</script>

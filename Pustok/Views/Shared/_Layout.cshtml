@@ -404,15 +404,6 @@
 
 
     <script>
-
-
-
-        
-
-
-
-
-
         document.addEventListener('click', async (event) => {
             const target = event.target.closest('.del-basket');
             if (target) {
@@ -423,6 +414,8 @@
                     const productId = target.dataset.id;
                     console.log(productId);
 
+                    let btnCount = target.dataset.count;
+
                     const formData = new FormData();
                     formData.append('id', productId);
 
@@ -431,8 +424,9 @@
                         body: formData
                     });
 
+                    console.log(btnCount)
                     let count = document.querySelector('.text-number').innerText;
-                    document.querySelector('.text-number').innerText = --count
+                    document.querySelector('.text-number').innerText = count - btnCount
 
                     if (!deleteResponse.ok) {
                         throw new Error(`HTTP error! status: ${deleteResponse.status}`);
@@ -453,11 +447,6 @@
 
 
 
-
-       
-
-
-
         let basket = document.querySelector('.cart-block')
         basket.addEventListener('mouseenter', () => {
             console.log("cart-block")
@@ -470,42 +459,6 @@
                 .catch(e => console.log(e))
 
         })
-
-
-
-
-
-
-
-
-        // var tag = document.querySelectorAll(".tag-item");
-
-        // tag.forEach(category => {
-        //     var id = category.dataset.id;
-        //     category.addEventListener("click", (e) => {
-        //         e.preventDefault();
-        //         console.log("click on tag:", id);
-
-        //         var formData = new FormData();
-        //         formData.append('tagId', id);
-
-        //         fetch('/Product/ProductCategoryFilter', {
-        //             method: 'POST',
-        //             body: formData
-        //         })
-        //             .then(response => response.text())
-        //             .then(x => {
-        //                 document.querySelector(".product").innerHTML = x;
-        //             })
-        //             .catch(error => {
-        //                 console.error("Error fetching products:", error);
-        //             });
-        //     });
-        // });
-
-
-
-
 
 
     </script>
