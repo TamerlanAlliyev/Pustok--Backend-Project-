@@ -13,7 +13,9 @@ namespace Pustok.ViewModels.Products
 		public int? SelectedTag{ get; set; }
 		public int TagCount { get; set; }
         public int ProductCount { get; set; }
-		public List<Tag>? Tags { get; set; }
+		public int? minPrice { get; set; } 
+        public int? maxPrice { get; set; }
+        public List<Tag>? Tags { get; set; }
 		public Product? Modal { get; set; }
 		public List<Product> Products { get; set; } = null!;
 		public List<Category>? Categories { get; set; }

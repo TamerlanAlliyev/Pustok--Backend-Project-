@@ -476,3 +476,60 @@ reattachPaginationEventListeners();
 
 
 
+
+
+@* <script>
+
+    var cat = document.querySelectorAll(".category-item");
+
+    cat.forEach(category => {
+        var id = category.dataset.id;
+        category.addEventListener("click", (e) => {
+            e.preventDefault();
+            console.log("click on category:", id);
+
+            var formData = new FormData();
+            formData.append('categoryId', id);
+
+            fetch('/Product/Filter', {
+                method: 'POST',
+                body: formData
+            })
+                .then(response => response.text())
+                .then(x => {
+                    document.querySelector(".Filers").innerHTML = x;
+                })
+                .catch(error => {
+                    console.error("Error fetching products:", error);
+                });
+        });
+    });
+
+    var tag = document.querySelectorAll(".tag-item");
+
+    tag.forEach(category => {
+        var id = category.dataset.id;
+        category.addEventListener("click", (e) => {
+            e.preventDefault();
+            console.log("click on tag:", id);
+
+            var formData = new FormData();
+            formData.append('tagId', id);
+
+            fetch('/Product/Filter', {
+                method: 'POST',
+                body: formData
+            })
+                .then(response => response.text())
+                .then(x => {
+                    document.querySelector(".Filers").innerHTML = x;
+                })
+                .catch(error => {
+                    console.error("Error fetching products:", error);
+                });
+        });
+    });
+
+</script> *@
+
+

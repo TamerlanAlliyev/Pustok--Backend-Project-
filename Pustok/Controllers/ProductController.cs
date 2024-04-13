@@ -120,8 +120,30 @@ public class ProductController : Controller
     public IActionResult ProductCategoryFilter(int? categoryId, int? tagId, int? minPrice, int? maxPrice, int page = 1, int pageSize = 1)
     {
 
-        return ViewComponent("ProductsViewComponent", new { categoryId, tagId, minPrice, maxPrice, page, pageSize });
+        return ViewComponent("ProductListViewComponenet", new { categoryId, tagId, minPrice, maxPrice, page, pageSize });
     }
+
+
+
+
+
+
+
+    public IActionResult Filter(int? categoryId, int? tagId,int? minPrice,int? maxPrice)
+    {
+        return ViewComponent("Filter", new { categoryId=categoryId, tagId=tagId,minPrice = minPrice,maxPrice=maxPrice });
+    }
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -135,16 +157,6 @@ public class ProductController : Controller
     {
         return ViewComponent("ProductListViewComponenet", new { page = page, pageSize = pageSize });
     }
-
-
-
-
-
-
-
-
-
-
 
 
 

@@ -26,7 +26,7 @@
 
 
 
-            <div class="col-lg-9 order-lg-2" >
+            <div class="col-lg-9 order-lg-2">
 
 
                 <div class="shop-toolbar with-sidebar mb--30">
@@ -184,15 +184,17 @@
                         </div>
                     </div>
                 </div>
+                <div id="product-pagination" class="product-list">
 
-                @*    Product List  &  Pagination*@
-                @await Component.InvokeAsync("ProductListViewComponenet")
-
-
-                @*    Modal  *@
-                @await Html.PartialAsync("_ProductModalPartialView", Model)
+                    @*    Product List  &  Pagination*@
+                    @await Component.InvokeAsync("ProductListViewComponenet")
 
 
+                    @*    Modal  *@
+                    @await Html.PartialAsync("_ProductModalPartialView", Model)
+
+
+                </div>
             </div>
 
 
@@ -203,22 +205,26 @@
 
 
                     <!-- Accordion -->
-                    @await Html.PartialAsync("_ShopCategoriesPartial", Model)
+                    @* @await Html.PartialAsync("_ShopCategoriesPartial", Model) *@
 
 
                     <!-- Tag -->
-                    @await Html.PartialAsync("_ShopTagsPartial", Model)
+                    @* @await Html.PartialAsync("_ShopTagsPartial", Model) *@
+                    <div class="Filers">
+
+                        @await Component.InvokeAsync("Filter")
+                    </div>
 
 
                     <!-- Price -->
-                    <div class="single-block filter-price mt-5 d-flex flex-column align-items-center">
-                        <h3 class="sidebar-title w-100">Filter by Price</h3>
-                        <div class="range-slider pt-30 d-flex gap-5 ">
-                            <input type="number" id="minPrice" name="minPrice" placeholder="Min Price" class="form-control my-3 mr-2 " />
-                            <input type="number" id="maxPrice" name="maxPrice" placeholder="Max Price" class="form-control my-3 ml-2 " />
-                        </div>
-                        <a class="btn btn--primary w-10 " id="submit"> Filter</a>
+                    @*       <div class="single-block filter-price mt-5 d-flex flex-column align-items-center">
+                    <h3 class="sidebar-title w-100">Filter by Price</h3>
+                    <div class="range-slider pt-30 d-flex gap-5 ">
+                    <input type="number" id="minPrice" name="minPrice" placeholder="Min Price" class="form-control my-3 mr-2 " />
+                    <input type="number" id="maxPrice" name="maxPrice" placeholder="Max Price" class="form-control my-3 ml-2 " />
                     </div>
+                    <a class="btn btn--primary w-10 " id="submit"> Filter</a>
+                    </div> *@
 
 
 
@@ -248,79 +254,79 @@
 
 
 
-        var cat = document.querySelectorAll(".category-item");
+        // var cat = document.querySelectorAll(".category-item");
 
-        cat.forEach(category => {
-            var id = category.dataset.id;
-            category.addEventListener("click", (e) => {
-                e.preventDefault();
-                console.log("click on category:", id);
+        // cat.forEach(category => {
+        //     var id = category.dataset.id;
+        //     category.addEventListener("click", (e) => {
+        //         e.preventDefault();
+        //         console.log("click on category:", id);
 
-                var formData = new FormData();
-                formData.append('categoryId', id);
+        //         var formData = new FormData();
+        //         formData.append('categoryId', id);
 
-                fetch('/Product/ProductCategoryFilter', {
-                    method: 'POST',
-                    body: formData
-                })
-                    .then(response => response.text())
-                    .then(x => {
-                        document.querySelector(".product").innerHTML = x;
-                    })
-                    .catch(error => {
-                        console.error("Error fetching products:", error);
-                    });
-            });
-        });
+        //         fetch('/Product/ProductCategoryFilter', {
+        //             method: 'POST',
+        //             body: formData
+        //         })
+        //             .then(response => response.text())
+        //             .then(x => {
+        //                 document.querySelector(".product").innerHTML = x;
+        //             })
+        //             .catch(error => {
+        //                 console.error("Error fetching products:", error);
+        //             });
+        //     });
+        // });
 
-        var tag = document.querySelectorAll(".tag-item");
+        // var tag = document.querySelectorAll(".tag-item");
 
-        tag.forEach(category => {
-            var id = category.dataset.id;
-            category.addEventListener("click", (e) => {
-                e.preventDefault();
-                console.log("click on tag:", id);
+        // tag.forEach(category => {
+        //     var id = category.dataset.id;
+        //     category.addEventListener("click", (e) => {
+        //         e.preventDefault();
+        //         console.log("click on tag:", id);
 
-                var formData = new FormData();
-                formData.append('tagId', id);
+        //         var formData = new FormData();
+        //         formData.append('tagId', id);
 
-                fetch('/Product/ProductCategoryFilter', {
-                    method: 'POST',
-                    body: formData
-                })
-                    .then(response => response.text())
-                    .then(x => {
-                        document.querySelector(".product").innerHTML = x;
-                    })
-                    .catch(error => {
-                        console.error("Error fetching products:", error);
-                    });
-            });
-        });
+        //         fetch('/Product/ProductCategoryFilter', {
+        //             method: 'POST',
+        //             body: formData
+        //         })
+        //             .then(response => response.text())
+        //             .then(x => {
+        //                 document.querySelector(".product").innerHTML = x;
+        //             })
+        //             .catch(error => {
+        //                 console.error("Error fetching products:", error);
+        //             });
+        //     });
+        // });
 
-        var submit = document.getElementById('submit');
+        // var submit = document.getElementById('submit');
 
-        submit.addEventListener('click', (e) => {
-            e.preventDefault();
-            var minPrice = document.getElementById('minPrice').value;
-            var maxPrice = document.getElementById('maxPrice').value;
+        // submit.addEventListener('click', (e) => {
+        //     e.preventDefault();
+        //     var minPrice = document.getElementById('minPrice').value;
+        //     var maxPrice = document.getElementById('maxPrice').value;
 
-            var formData = new FormData();
-            formData.append('minPrice', minPrice);
-            formData.append('maxPrice', maxPrice);
+        //     var formData = new FormData();
+        //     formData.append('minPrice', minPrice);
+        //     formData.append('maxPrice', maxPrice);
 
-            fetch('/Product/ProductCategoryFilter', {
-                method: 'POST',
-                body: formData
-            })
-                .then(response => response.text())
-                .then(x => {
-                    document.querySelector(".product").innerHTML = x;
-                })
-                .catch(error => {
-                    console.error("Error fetching products:", error);
-                });
-        });
+        //     fetch('/Product/ProductCategoryFilter', {
+        //         method: 'POST',
+        //         body: formData
+        //     })
+        //         .then(response => response.text())
+        //         .then(x => {
+        //             document.querySelector(".product").innerHTML = x;
+        //         })
+        //         .catch(error => {
+        //             console.error("Error fetching products:", error);
+        //         });
+        // });
 
     </script>
 
