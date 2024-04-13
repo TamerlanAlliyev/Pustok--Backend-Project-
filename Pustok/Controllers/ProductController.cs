@@ -120,8 +120,35 @@ public class ProductController : Controller
     public IActionResult ProductCategoryFilter(int? categoryId, int? tagId, int? minPrice, int? maxPrice, int page = 1, int pageSize = 1)
     {
 
-        return ViewComponent("ProductListViewComponenet", new { categoryId, tagId, minPrice, maxPrice, page, pageSize });
+        return ViewComponent("ProductsViewComponent", new { categoryId, tagId, minPrice, maxPrice, page, pageSize });
     }
+
+
+
+
+
+
+
+
+
+    public IActionResult Pagenate(int page , int pageSize=1)
+    {
+        return ViewComponent("ProductListViewComponenet", new { page = page, pageSize = pageSize });
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -160,28 +187,12 @@ public class ProductController : Controller
         return Ok();
     }
 
-    //public async Task<IActionResult> GetBasket()
-    //{
-    //    var basket = JsonConvert.DeserializeObject<List<BasketVM>>(HttpContext.Request.Cookies["basket"]);
-    //    List<BasketItemProductVM> vm = new List<BasketItemProductVM>();
-    //    foreach (var item in basket)
-    //    {
-    //        vm.Add(new BasketItemProductVM
-    //        {
-    //            Count = item.Count,
-    //            Product = await _context.Products
-    //.Where(p => !p.IsDeleted && p.Id == item.Id)
-    //.Include(p => p.Images)
-    //.FirstOrDefaultAsync()
-    //    }); 
-    //    }
 
-    //    return PartialView("_BasketPartial", vm);
-    //}
     public IActionResult GetBasket()
     {
         return ViewComponent("Basket");
     }
+
 
     public IActionResult BasketDelete(int id)
     {
@@ -193,7 +204,7 @@ public class ProductController : Controller
 
             var basketItems = JsonConvert.DeserializeObject<List<BasketVM>>(basketCookieValue);
 
-           
+
             var itemToRemove = basketItems.FirstOrDefault(item => item.Id == productIdToDelete);
             if (itemToRemove != null)
             {
@@ -207,7 +218,7 @@ public class ProductController : Controller
                 });
 
             }
-            
+
         }
         return ViewComponent("Basket");
     }

@@ -30,8 +30,9 @@ namespace Pustok.ViewComponents
             }
             else
             {
-                return View(new List<BasketItemProductVM>()); // Eğer sepet boşsa boş bir liste döndür
+                return View(new List<BasketItemProductVM>());
             }
+
 
             List<BasketItemProductVM> products = new List<BasketItemProductVM>();
             foreach (var item in items)
@@ -46,16 +47,22 @@ namespace Pustok.ViewComponents
                     products.Add(new BasketItemProductVM
                     {
                         Count = item.Count,
-                        Product = product
+                        Product = product,
                     });
+                   
                 }
+                
             }
+
 
             if (products.Count == 0)
             {
                 return View(new List<BasketItemProductVM>()); 
             }
-            TempData["BasketItemCount"] = products.Count();
+
+            TempData["BasketItemCount"] = products.Sum(p=>p.Count);
+
+
             return View(products);
         }
     }

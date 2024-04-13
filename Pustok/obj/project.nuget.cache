@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "VIpv978vKjLx9oZ8siwNyiEM6qFFPMuIUcUMoDTIlrpWC7KxxNjin0+nI/yQuA+gdbFQdPGE+GwwsPI0vAbuuQ==",
+  "dgSpecHash": "VPpN442iBO630hnZRgag04OcAge+fWV5EIWWIMGa4IIKSGmTOI/GYvmAeFtvETT9L8dJMvpR6GOmbh1uav828g==",
   "success": true,
-  "projectFilePath": "C:\\Users\\ROG\\Desktop\\Tamerlan\\CODE ACADEMY\\BACK-END\\Project\\Back-End Project\\Pustok\\Pustok\\Pustok.csproj",
+  "projectFilePath": "C:\\Users\\ROG\\Desktop\\Tamerlan\\CODE ACADEMY\\BACK-END\\Project\\Back-End Project\\Demo\\Pustok\\Pustok\\Pustok.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ROG\\.nuget\\packages\\humanizer\\2.14.1\\humanizer.2.14.1.nupkg.sha512",
     "C:\\Users\\ROG\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
