@@ -3,267 +3,179 @@
 
 
 
-    <div class="shop-product-wrap grid with-pagination row space-db--30 shop-border">
+<div class="shop-product-wrap grid with-pagination row space-db--30 shop-border  ">
 
 
-    @if (Model.Products.Count()==0)
+    @if (Model.Products.Count() == 0)
     {
         <h4 style="text-align:center;">No products found according to filtering...</h4>
     }
 
-        @foreach (var product in Model.Products)
-        {
+    @foreach (var product in Model.Products)
+    {
 
-            <div class="col-lg-4 col-sm-6">
-                <div class="product-card">
-                    <div class="product-grid-content">
+        <div class="col-lg-4 col-sm-6">
+            <div class="product-card">
+                <div class="product-grid-content">
+                    <div class="product-header">
+                        <a href="#" class="author">
+                            @product.Author
+                        </a>
+                        <h3><a asp-action="Detail" asp-route-id="@product.Id">@product.Name</a></h3>
+                    </div>
+                    <div class="product-card--body">
+                        <div class="card-image">
+                            <img style="width:200px;height:200px;object-fit:cover" src="~/cilent/image/products/@(product.Images.FirstOrDefault(pi => !pi.IsDeleted && pi.IsMain)?.Url)" alt="Main Image">
+                            <div class="hover-contents">
+                                <a asp-action="Detail" asp-route-id="@product.Id" class="hover-image">
+                                    <img style="width:200px;height:200px;object-fit:cover" src="~/cilent/image/products/@(product.Images.FirstOrDefault(pi => !pi.IsDeleted && pi.IsHover)?.Url)" alt="Hove Image">
+                                </a>
+                                <div class="hover-btns prod">
+                                    <a class="single-btn baskets" data-id="@product.Id">
+                                        <i data-id="@product.Id" class="fas fa-shopping-basket"></i>
+                                    </a>
+                                    <a class="single-btn wishs" data-id="@product.Id">
+                                        <i data-id="@product.Id" class="fas fa-heart "></i>
+                                    </a>
+                                    <a href="compare.html" class="single-btn">
+                                        <i class="fas fa-random"></i>
+                                    </a>
+                                    <a href="#" data-toggle="modal" data-target="#quickModal"
+                                       class="single-btn">
+                                        <i class="fas fa-eye"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="price-block">
+
+
+                            @if (product.DiscountPrice > 0 && product.DiscountPrice != null)
+                            {
+                                <span class="price">$@product.DiscountPrice</span>
+                                <del class="price-old">$@product.Price</del>
+                                @if (product.DiscountPrice > 0 && product.DiscountPrice != null && product.Price > 0)
+                                {
+                                    <span class="price-discount">@Math.Round((decimal)(product.Price - product.DiscountPrice) / product.Price * 100)%</span>
+                                }
+                            }
+                            else
+                            {
+                                <span class="price">$@product.Price</span>
+                            }
+
+                        </div>
+
+                    </div>
+                </div>
+                <div class="product-list-content">
+
+                    <div class="card-image">
+                        <img style="width:200px;height:200px;object-fit:cover" src="~/cilent/image/products/@(product.Images.FirstOrDefault(pi => !pi.IsDeleted && pi.IsMain)?.Url)" alt="Main Image">
+                    </div>
+
+                    <div class="product-card--body">
                         <div class="product-header">
                             <a href="#" class="author">
                                 @product.Author
                             </a>
-                            <h3><a asp-action="Detail" asp-route-id="@product.Id">@product.Name</a></h3>
+                            <h3>
+                                <a href="product-details.html" tabindex="0">
+                                    @product.Name
+                                </a>
+                            </h3>
                         </div>
-                        <div class="product-card--body">
-                            <div class="card-image">
-                                <img style="width:200px;height:200px;object-fit:cover" src="~/cilent/image/products/@(product.Images.FirstOrDefault(pi => !pi.IsDeleted && pi.IsMain)?.Url)" alt="Main Image">
-                                <div class="hover-contents">
-                                    <a asp-action="Detail" asp-route-id="@product.Id" class="hover-image">
-                                        <img style="width:200px;height:200px;object-fit:cover" src="~/cilent/image/products/@(product.Images.FirstOrDefault(pi => !pi.IsDeleted && pi.IsHover)?.Url)" alt="Hove Image">
-                                    </a>
-                                    <div class="hover-btns">
-                                        <a class="single-btn prod">
-                                            <i data-id="@product.Id" class="fas fa-shopping-basket basket"></i>
-                                        </a>
-                                        <a class="single-btn">
-                                        <i data-id="@product.Id" class="fas fa-heart wish"></i>
-                                        </a>
-                                        <a href="compare.html" class="single-btn">
-                                            <i class="fas fa-random"></i>
-                                        </a>
-                                        <a href="#" data-toggle="modal" data-target="#quickModal"
-                                           class="single-btn">
-                                            <i class="fas fa-eye"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
+                        <article>
+                            <h2 class="sr-only">Card List Article</h2>
+                            <p>
+                                @product.Description
+                            </p>
+                        </article>
 
-                            <div class="price-block">
+                        <div class="price-block">
 
 
-                                @if (product.DiscountPrice > 0 && product.DiscountPrice != null)
+                            @if (product.DiscountPrice > 0 && product.DiscountPrice != null)
+                            {
+                                <span class="price">$@product.DiscountPrice</span>
+                                <del class="price-old">$@product.Price</del>
+                                @if (product.DiscountPrice > 0 && product.DiscountPrice != null && product.Price > 0)
                                 {
-                                    <span class="price">$@product.DiscountPrice</span>
-                                    <del class="price-old">$@product.Price</del>
-                                    @if (product.DiscountPrice > 0 && product.DiscountPrice != null && product.Price > 0)
-                                    {
-                                        <span class="price-discount">@Math.Round((decimal)(product.Price - product.DiscountPrice) / product.Price * 100)%</span>
-                                    }
+                                    <span class="price-discount">@Math.Round((decimal)(product.Price - product.DiscountPrice) / product.Price * 100)%</span>
                                 }
-                                else
-                                {
-                                    <span class="price">$@product.Price</span>
-                                }
+                            }
+                            else
+                            {
+                                <span class="price">$@product.Price</span>
+                            }
 
-                            </div>
 
                         </div>
-                    </div>
-                    <div class="product-list-content">
-
-                        <div class="card-image">
-                            <img style="width:200px;height:200px;object-fit:cover" src="~/cilent/image/products/@(product.Images.FirstOrDefault(pi => !pi.IsDeleted && pi.IsMain)?.Url)" alt="Main Image">
-                        </div>
-
-                        <div class="product-card--body">
-                            <div class="product-header">
-                                <a href="#" class="author">
-                                    @product.Author
-                                </a>
-                                <h3>
-                                    <a href="product-details.html" tabindex="0">
-                                        @product.Name
-                                    </a>
-                                </h3>
-                            </div>
-                            <article>
-                                <h2 class="sr-only">Card List Article</h2>
-                                <p>
-                                    @product.Description
-                                </p>
-                            </article>
-
-                            <div class="price-block">
 
 
-                                @if (product.DiscountPrice > 0 && product.DiscountPrice != null)
-                                {
-                                    <span class="price">$@product.DiscountPrice</span>
-                                    <del class="price-old">$@product.Price</del>
-                                    @if (product.DiscountPrice > 0 && product.DiscountPrice != null && product.Price > 0)
-                                    {
-                                        <span class="price-discount">@Math.Round((decimal)(product.Price - product.DiscountPrice) / product.Price * 100)%</span>
-                                    }
-                                }
-                                else
-                                {
-                                    <span class="price-discount">20%</span>
-                                }
 
-
-                            </div>
-
-
-                            <div class="rating-block">
-                                <span class="fas fa-star star_on"></span>
-                                <span class="fas fa-star star_on"></span>
-                                <span class="fas fa-star star_on"></span>
-                                <span class="fas fa-star star_on"></span>
-                                <span class="fas fa-star "></span>
-                            </div>
-
-
-                            <div class="btn-block">
-                                <a href="#" class="btn btn-outlined">Add To Cart</a>
-                                <a href="#" class="card-link">
-                                    <i class="fas fa-heart"></i> Add To
-                                    Wishlist
-                                </a>
-                                <a href="#" class="card-link">
-                                    <i class="fas fa-random"></i> Add To
-                                    Cart
-                                </a>
-                            </div>
+                        <div class="btn-block">
+                            <a href="#" class="btn btn-outlined">Add To Cart</a>
+                            <a href="#" class="card-link">
+                                <i class="fas fa-heart"></i> Add To
+                                Wishlist
+                            </a>
+                            <a href="#" class="card-link">
+                                <i class="fas fa-random"></i> Add To
+                                Cart
+                            </a>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
 
-        }
+    }
 
-    </div>
-
-
-
-    <!-- Pagination Block -->
-    <div class="row pt--30">
-        <div class="col-md-12">
-            <div class="pagination-block">
-
-                <ul class="pagination-btns flex-center">
-
-
-                    @if (Model.CurrentPage != 1)
-                    {
-                        <li>
-                            <a data-id="@(Model.CurrentPage - 1)" class="single-btn prev-btn ">
-                                |<i class="zmdi zmdi-chevron-left"></i>
-                            </a>
-                        </li>
-                    }
-                    @for (int i = 1; i <= Model.TotalPageCount; i++)
-                    {
-                        <li class="page-item @(Model.CurrentPage == i ? "active" : "")">
-                            <a class="single-btn num-btn" data-id="@i">@i</a>
-                        </li>
-
-                    }
+</div>
 
 
 
-                    @if (Model.CurrentPage != Model.TotalPageCount)
-                    {
-                        <li>
-                            <a data-id="@(Model.CurrentPage + 1)" class="single-btn next-btn">
-                                <i class="zmdi zmdi-chevron-right  asd"></i>|
-                            </a>
-                        </li>
-                    }
+<!-- Pagination Block -->
+<div class="row pt--30">
+    <div class="col-md-12">
+        <div class="pagination-block">
+
+            <ul class="pagination-btns flex-center">
 
 
-                </ul>
+                @if (Model.CurrentPage != 1)
+                {
+                    <li>
+                        <a data-id="@(Model.CurrentPage - 1)" class="single-btn prev-btn">
+                            |<i class="zmdi zmdi-chevron-left"></i>
+                        </a>
+                    </li>
+                }
+                @for (int i = 1; i <= Model.TotalPageCount; i++)
+                {
+                    <li class="num-btn page-item @(Model.CurrentPage == i ? "active" : "")" data-id="@i">
+                        <a class="single-btn">@i</a>
+                    </li>
 
-            </div>
+                }
+
+
+
+                @if (Model.CurrentPage != Model.TotalPageCount)
+                {
+                    <li class="next-btn" data-id="@(Model.CurrentPage + 1)">
+                        <a class="single-btn ">
+                            <i class="zmdi zmdi-chevron-right"></i>|
+                        </a>
+                    </li>
+                }
+
+
+            </ul>
+
         </div>
     </div>
+</div>
 
-
-
-
-<script>
-    function reattachEventListeners() {
-        document.querySelectorAll('.basket').forEach(button => {
-            button.addEventListener('click', (e) => {
-                e.preventDefault(); 
-                console.log('Basket element clicked:', e.target);
-
-            
-                var id = e.target.dataset.id;
-
-            
-                fetch('Product/AddBasket/' + id)
-                    .then(res => {
-                        if (res.ok) {
-                            let count = document.querySelector('.text-number').innerText;
-                            document.querySelector('.text-number').innerText = ++count;
-                            toastr["success"]("Product added to cart");
-                        } else {
-                            toastr["warning"]("An error occurred while adding the product to the cart...");
-                        }
-                    })
-                    .catch(err => console.error(err)); 
-            });
-        });
-
-        document.querySelectorAll('.pagination-block .single-btn').forEach(button => {
-            button.addEventListener('click', (e) => {
-                let id = e.target.dataset.id;
-                console.log('Pagination button clicked:', id);
-
-                fetch(`/Product/Pagenate?page=${id}`)
-                    .then(res => res.text())
-                    .then(res => {
-                        document.getElementById('product-pagination').innerHTML = res;
-
-                        reattachEventListeners();
-                    })
-                    .catch(e => console.error(e));
-            });
-        });
-    }
-
-    reattachEventListeners();
-
-
-
-
-
-
-
-
-
-    function reattachEventListener() {
-        document.querySelectorAll('.wish').forEach(button => {
-            button.addEventListener('click', (e) => {
-                e.preventDefault();
-                console.log('Basket element clicked:', e.target);
-
-
-                var id = e.target.dataset.id;
-
-
-                fetch('Product/AddWish/' + id)
-                    .then(res => {
-                        if (res.ok) {
-                            toastr["success"]("Product added to WishList");
-                        } else {
-                            toastr["warning"]("An error occurred while adding the product to the WishList...");
-                        }
-                    })
-                    .catch(err => console.error(err));
-            });
-        });
-    }
-    reattachEventListener();
-
-</script>

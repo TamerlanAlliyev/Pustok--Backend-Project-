@@ -13,10 +13,6 @@ public class HeaderSliderConfiguration : BaseEntityConfiguration<HeaderSlider>
 
 		builder.HasKey(hs => hs.Id);
 
-		builder.Property(hs => hs.Name).HasColumnType("nvarchar").HasMaxLength(250).IsRequired(true);
-		builder.Property(hs => hs.Description).HasColumnType("nvarchar").HasMaxLength(700).IsRequired(true);
-		builder.Property(hs => hs.ImageUrl).HasColumnType("varchar").HasMaxLength(250).IsRequired(true);
-		builder.Property(hs => hs.Price).HasColumnType("decimal").IsRequired(true);
 
 		builder.HasOne(hs => hs.Product)
 	   .WithOne(hs => hs.HeaderSlider)

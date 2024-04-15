@@ -22,9 +22,11 @@ namespace Pustok.Data.Configurations
 			builder.Property(p => p.DiscountPrice).HasColumnType("decimal").IsRequired(false);
 			builder.Property(p => p.RewardPoint).HasColumnType("int").IsRequired(false);
 			builder.Property(p => p.Count).HasColumnType("int").IsRequired(true);
-			//builder.Property(p => p.Availability).HasColumnType("bit");
+			builder.Property(p => p.ClicketCount).HasColumnType("int").IsRequired(false);
+            //builder.Property(p => p.Availability).HasColumnType("bit");
+            
 
-			builder.ToTable("Products");
+            builder.ToTable("Products");
 
 			builder.HasMany(t => t.ProductTag)
 				.WithOne(p => p.Product);

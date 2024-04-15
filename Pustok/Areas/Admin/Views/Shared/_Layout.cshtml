@@ -87,19 +87,6 @@
                 </div>
             </li>
 
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="~/admin/#product" data-toggle="collapse" data-target="#collapseFooterNavbar" aria-expanded="false" aria-controls="collapseFooterNavbar">
-                    <i class="fas fa-fw fa-cog"></i>
-                    <span>Footer Navbar</span>
-                </a>
-                <div id="collapseFooterNavbar" class="collapse" aria-labelledby="headingFooterNavbar" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Custom Components:</h6>
-                        <a class="collapse-item" asp-controller="FooterNavbar" asp-action="Index">Footer-Navbar List</a>
-                        <a class="collapse-item" asp-controller="FooterNavbar" asp-action="Create">Footer-Navbar Create</a>
-                    </div>
-                </div>
-            </li>
 
             <li class="nav-item">
                 <a class="nav-link collapsed" href="~/admin/#product" data-toggle="collapse" data-target="#collapseSize" aria-expanded="false" aria-controls="collapseSize">
@@ -115,7 +102,53 @@
                     </div>
                 </div>
             </li>
+           @*   <li class="nav-item">
+                <a class="nav-link collapsed" href="~/admin/#product" data-toggle="collapse" data-target="#collapseSize" aria-expanded="false" aria-controls="collapseSize">
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>Slider</span>
+                </a>
+                <div id="collapseSize" class="collapse" aria-labelledby="headingSize" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Custom Components:</h6>
+                        <a class="collapse-item" asp-controller="Slider" asp-action="Index">Slider List</a>
+                        <a class="collapse-item" asp-controller="Slider" asp-action="Create">Slider Create</a>
+                        <a class="collapse-item" asp-controller="Slider" asp-action="DeletedList">Slider Delete Lists</a>
+                    </div>
+                </div>
+            </li>
+ *@
 
+            
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="~/admin/#product" data-toggle="collapse" data-target="#collapseFooterNavbar" aria-expanded="false" aria-controls="collapseFooterNavbar">
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>Slider Navbar</span>
+                </a>
+                <div id="collapseFooterNavbar" class="collapse" aria-labelledby="headingFooterNavbar" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Custom Components:</h6>
+                       <a class="collapse-item" asp-controller="Slider" asp-action="Index">Slider List</a>
+                        <a class="collapse-item" asp-controller="Slider" asp-action="Create">Slider Create</a>
+                    </div>
+                </div>
+            </li>
+
+
+
+        @*      <li class="nav-item">
+     <a class="nav-link collapsed" href="~/admin/#product" data-toggle="collapse" data-target="#collapseSize" aria-expanded="false" aria-controls="collapseSize">
+         <i class="fas fa-fw fa-cog"></i>
+         <span>Tags</span>
+     </a>
+     <div id="collapseSize" class="collapse" aria-labelledby="headingSize" data-parent="#accordionSidebar">
+         <div class="bg-white py-2 collapse-inner rounded">
+             <h6 class="collapse-header">Custom Components:</h6>
+             <a class="collapse-item" asp-controller="Tag" asp-action="Index">Tag List</a>
+             <a class="collapse-item" asp-controller="Tag" asp-action="Create">Tag Create</a>
+             <a class="collapse-item" asp-controller="Tag" asp-action="DeletedList">Tag Delete Lists</a>
+         </div>
+     </div>
+ </li> *@
             <div class="text-center d-none d-md-inline">
                 <button class="rounded-circle border-0" id="sidebarToggle"></button>
             </div>

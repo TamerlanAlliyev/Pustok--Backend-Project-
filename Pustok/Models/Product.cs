@@ -14,6 +14,7 @@ namespace Pustok.Models
         public string ProductCode { get; set; } = null!;
         public int? RewardPoint { get; set; }
         public int Count { get; set; }
+        public int? ClicketCount { get; set; }
         //public bool Availability { get; set; }
         public HeaderSlider? HeaderSlider { get; set; }
         public ICollection<ProductTag> ProductTag { get; set; } = null!;

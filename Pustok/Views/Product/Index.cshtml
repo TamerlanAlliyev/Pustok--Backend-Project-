@@ -184,7 +184,7 @@
                         </div>
                     </div>
                 </div>
-                <div id="product-pagination" class="product-list">
+                <div class="product-list prod-lists">
 
                     @*    Product List  &  Pagination*@
                     @await Component.InvokeAsync("ProductListViewComponenet")
@@ -230,6 +230,18 @@
 @section BrandSlider {
     @await Html.PartialAsync("_BrandSliderPartialView")
 }
+
+
+
+
+
+
+
+
+
+
+
+
 
 @section Script {
 
@@ -317,8 +329,90 @@
 
 
 
+@* 
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var filterContainer = document.querySelector(".Filers");
+            var productList = document.querySelector(".product-list");
 
+            // Filtreleme işlemi sonrası sayfa yenilendiğinde olay dinleyicilerini yeniden bağlama
+            function reattachEventListeners() {
+                basketEventListeners();
+                wishEventListener();
+            }
 
+            filterContainer.addEventListener("click", function (e) {
+                if (e.target.classList.contains("category-item") || e.target.classList.contains("tag-item")) {
+                    var id = e.target.dataset.id;
+                    var tagId = e.target.dataset.tagid || null; // Eğer tag itemse tagId al, değilse null
+                    var categoryId = document.getElementById('SelectedCategory').value;
+
+                    var formData = new FormData();
+                    formData.append('categoryId', categoryId);
+                    if (tagId !== null) {
+                        formData.append('tagId', tagId);
+                    }
+
+                    fetch('/Product/ProductCategoryFilter', {
+                        method: 'POST',
+                        body: formData
+                    })
+                        .then(response => response.text())
+                        .then(x => {
+                            productList.innerHTML = x;
+                            reattachEventListeners(); // Yeniden yüklendikten sonra olay dinleyicilerini tekrar bağla
+                        })
+                        .catch(error => {
+                            console.error("Error fetching products:", error);
+                        });
+                } else if (e.target.classList.contains("btn-submit")) {
+                    var minPrice = document.getElementById('minPrice').value;
+                    var maxPrice = document.getElementById('maxPrice').value;
+                    var tagId = document.getElementById('SelectedTag').value;
+                    var categoryId = document.getElementById('SelectedCategory').value;
+
+                    var formData = new FormData();
+                    formData.append('minPrice', minPrice);
+                    formData.append('maxPrice', maxPrice);
+                    formData.append('tagId', tagId);
+                    formData.append('categoryId', categoryId);
+
+                    fetch('/Product/ProductCategoryFilter', {
+                        method: 'POST',
+                        body: formData
+                    })
+                        .then(response => response.text())
+                        .then(x => {
+                            productList.innerHTML = x;
+                            reattachEventListeners(); // Yeniden yüklendikten sonra olay dinleyicilerini tekrar bağla
+                        })
+                        .catch(error => {
+                            console.error("Error fetching products:", error);
+                        });
+                } else if (e.target.classList.contains("btn-clear")) {
+                    var formData = new FormData();
+                    formData.append('minPrice', null);
+                    formData.append('maxPrice', null);
+                    formData.append('tagId', null);
+                    formData.append('categoryId', null);
+
+                    fetch('/Product/ProductCategoryFilter', {
+                        method: 'POST',
+                        body: formData
+                    })
+                        .then(response => response.text())
+                        .then(x => {
+                            productList.innerHTML = x;
+                            reattachEventListeners(); // Yeniden yüklendikten sonra olay dinleyicilerini tekrar bağla
+                        })
+                        .catch(error => {
+                            console.error("Error fetching products:", error);
+                        });
+                }
+            });
+        });
+    </script>
+ *@
 
 
 
@@ -329,114 +423,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js">
     </script>
     <script>
-        // let productView = document.getElementById('product-View')
-
-        // productView.addEventListener('click', e => {
-        //     e.preventDefault();
-        //     console.log('productView')
-
-
-        //     if (e.srcElement.classList.contains('.prod .basket')){
-        //         console.log('basket')
-        //     }
-        // })
-
-
-
-
-
-
-
-
-        let productView = document.getElementById('product-View');
-
-        productView.addEventListener('click', e => {
-            e.preventDefault();
-            console.log('productView');
-
-            // Check if the clicked element has both "prod" and "basket" classes
-            if (e.target.classList.contains('prod') && e.target.classList.contains('basket')) {
-                console.log('basket');
-            }
-        });
-
-
-
-
-
-        var prods = document.querySelectorAll(".prod .basket");
-
-        prods.forEach(prod => {
-            prod.addEventListener('click', e => {
-                e.preventDefault();
-                console.log('click')
-                var id = prod.dataset.id;
-                fetch('Product/AddBasket/' + id)
-                    .then(res => {
-                        if (res.ok) {
-                            let count = document.querySelector('.text-number').innerText;
-                            document.querySelector('.text-number').innerText = ++count
-                            Command: toastr["success"]("Product added to cart")
-
-                            toastr.options = {
-                                "closeButton": true,
-                                "debug": false,
-                                "newestOnTop": false,
-                                "progressBar": false,
-                                "positionClass": "toast-top-right",
-                                "preventDuplicates": false,
-                                "onclick": null,
-                                "showDuration": "300",
-                                "hideDuration": "1000",
-                                "timeOut": "5000",
-                                "extendedTimeOut": "1000",
-                                "showEasing": "swing",
-                                "hideEasing": "linear",
-                                "showMethod": "fadeIn",
-                                "hideMethod": "fadeOut"
-                            }
-                        } else {
-                            Command: toastr["warning"]("An error occurred while adding the product to the cart...")
-
-                            toastr.options = {
-                                "closeButton": false,
-                                "debug": false,
-                                "newestOnTop": false,
-                                "progressBar": false,
-                                "positionClass": "toast-top-right",
-                                "preventDuplicates": false,
-                                "onclick": null,
-                                "showDuration": "300",
-                                "hideDuration": "1000",
-                                "timeOut": "5000",
-                                "extendedTimeOut": "1000",
-                                "showEasing": "swing",
-                                "hideEasing": "linear",
-                                "showMethod": "fadeIn",
-                                "hideMethod": "fadeOut"
-                            }
-                        }
-                    })
-                    .catch(err => console.log(err))
-            })
-        })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
         // var prods = document.querySelectorAll(".prod .basket");
@@ -498,6 +484,7 @@
 
     </script>
 
-
+  
 
 }
+

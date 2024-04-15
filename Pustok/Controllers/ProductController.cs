@@ -94,6 +94,16 @@ public class ProductController : Controller
         {
             return View("Error404");
         }
+        if (product.ClicketCount == null)
+        {
+            product.ClicketCount = 1;
+        }
+        else
+        {
+            product.ClicketCount++;
+        }
+        _context.Products.Update(product);
+        await _context.SaveChangesAsync();
 
         var categoryIds = product.ProductCategory.Select(pc => pc.Category.Id).ToList();
 
@@ -116,6 +126,7 @@ public class ProductController : Controller
             relatedProducts = relatedProducts
         };
 
+    
         return View(products);
     }
 
@@ -249,111 +260,6 @@ public class ProductController : Controller
         }
         return Ok();
     }
-
-
-
-
-
-
-    //public async Task<IActionResult> AddWish(int? id)
-    //{
-    //    if (id == null || id <= 0)
-    //    {
-    //        return BadRequest();
-    //    }
-
-    //    if (!User.Identity.IsAuthenticated)
-    //    {
-
-
-    //        if (HttpContext.Request.Cookies.ContainsKey("wish"))
-    //        {
-    //            var wishCookieValue = HttpContext.Request.Cookies["wish"];
-
-    //            var wishItem = JsonConvert.DeserializeObject<List<WishVM>>(wishCookieValue);
-
-
-    //            var itemToRemove = wishItem.FirstOrDefault(item => item.Id == id);
-    //            if (itemToRemove != null)
-    //            {
-    //                wishItem.Remove(itemToRemove);
-
-    //                var updatedWishCookieValue = JsonConvert.SerializeObject(wishItem);
-
-    //                HttpContext.Response.Cookies.Append("wish", updatedWishCookieValue, new CookieOptions
-    //                {
-    //                    Expires = DateTime.Now.AddDays(30)
-    //                });
-
-    //            }
-
-    //        }
-    //        else
-    //        {
-
-    //            var productBasket = await _context.Products.Where(p => !p.IsDeleted).FirstOrDefaultAsync(p => p.Id == id);
-
-    //            var wish = HttpContext.Request.Cookies["wish"];
-
-    //            List<WishVM> wishItems = wish == null ? new List<WishVM>() :
-    //                JsonConvert.DeserializeObject<List<WishVM>>(wish);
-
-    //            var item = wishItems.SingleOrDefault(i => i.Id == id);
-
-    //            if (item == null)
-    //            {
-    //                item = new WishVM
-    //                {
-    //                    Id = (int)id
-    //                };
-    //                wishItems.Add(item);
-    //            }
-
-    //            HttpContext.Response.Cookies.Append("wish", JsonConvert.SerializeObject(wishItems));
-    //        }
-
-    //    }
-    //    else
-    //    {
-    //        var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-    //        var ipAddress = HttpContext.Connection.RemoteIpAddress?.ToString() ?? "Unknown IP Address";
-
-    //        var wish = await _context.Wishes.Where(w => w.ProductId == id).FirstOrDefaultAsync();
-    //        if (wish != null)
-    //        {
-    //            _context.Wishes.Remove(wish);
-
-    //            await _context.SaveChangesAsync();
-    //        }
-    //        else
-    //        {
-    //            Wish newWish = new Wish
-    //            {
-    //                ProductId = (int)id,
-    //                UserId = userId,
-    //                IsDeleted = false,
-    //                CreatedBy = userId,
-    //                Created = DateTime.UtcNow.AddHours(4),
-    //                IPAddress = ipAddress,
-    //            };
-
-    //            await _context.Wishes.AddAsync(newWish);
-    //            await _context.SaveChangesAsync();
-    //        }
-
-    //    }
-
-    //    return Ok();
-    //}
-
-
-
-
-
-
-
-
-
 
 
 

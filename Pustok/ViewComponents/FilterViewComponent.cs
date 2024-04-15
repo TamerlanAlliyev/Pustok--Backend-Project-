@@ -4,6 +4,8 @@ using Pustok.Data;
 using Pustok.Models;
 using Pustok.Services.Interfaces;
 using Pustok.ViewModels.Products;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace Pustok.ViewComponents
 {
@@ -23,23 +25,22 @@ namespace Pustok.ViewComponents
             IQueryable<Tag> tagsQuery = _context.Tags.Where(t => !t.IsDeleted).Include(t => t.ProductTag).ThenInclude(pt => pt.Product);
             IQueryable<Category> categoriesQuery = _context.Categories.Where(c => !c.IsDeleted).Include(c => c.ProductCategory).ThenInclude(pc => pc.Product);
 
-            if (categoryId != null)
-            {
-                tagsQuery = tagsQuery.Where(t => t.ProductTag.Any(pt => pt.Product.ProductCategory.Any(pc => pc.CategoryId == categoryId)));
-            }
-
             if (minPrice != null)
             {
-                // Min fiyat filtresi için her iki sorguya da uygula
                 tagsQuery = tagsQuery.Where(t => t.ProductTag.Any(pt => pt.Product.Price >= minPrice));
                 categoriesQuery = categoriesQuery.Where(c => c.ProductCategory.Any(pc => pc.Product.Price >= minPrice));
             }
 
             if (maxPrice != null)
             {
-                // Max fiyat filtresi için her iki sorguya da uygula
                 tagsQuery = tagsQuery.Where(t => t.ProductTag.Any(pt => pt.Product.Price <= maxPrice));
                 categoriesQuery = categoriesQuery.Where(c => c.ProductCategory.Any(pc => pc.Product.Price <= maxPrice));
+            }
+
+            if (categoryId != null)
+            {
+                tagsQuery = tagsQuery.Where(t => t.ProductTag.Any(pt => pt.Product.ProductCategory.Any(pc => pc.CategoryId == categoryId)));
+                categoriesQuery = categoriesQuery.Where(c => c.ProductCategory.Any(pc => pc.CategoryId == categoryId));
             }
 
             var tags = await tagsQuery.ToListAsync();

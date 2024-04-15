@@ -1,0 +1,35 @@
+﻿@{
+    var products = ViewData["Product"] as List<Product>;
+}
+
+@* @if (products != null)
+{
+    @foreach (var product in products)
+    {
+        <li style="border-bottom:1px solid #CBCBCB; border-top:1px solid #CBCBCB; padding:5px">
+            <a>
+                <img src="~/cilent/image/products/@(product.Images.FirstOrDefault(pi => !pi.IsDeleted && pi.IsMain)?.Url)" style="width:28px; height:28px; margin:5px 38px 5px 20px;object-fit:contain" alt="Image" />
+            </a>
+            <a>@product.Name</a>
+        </li>
+    }
+}
+ *@
+
+
+
+
+
+@if (products != null)
+{
+    @foreach (var product in products)
+    {
+
+        <li style="border-bottom:1px solid #CBCBCB; border-top:1px solid #CBCBCB; padding:5px">
+            <a asp-action="Detail" asp-controller="Product" asp-route-id="@product.Id">
+                <img src="~/cilent/image/products/@(product.Images.FirstOrDefault(pi => !pi.IsDeleted && pi.IsMain)?.Url)" style="width:38px; height:38px; margin:5px 38px 5px 20px;object-fit:contain" alt="Image" />
+            </a>
+            <a asp-action="Detail" asp-controller="Product" asp-route-id="@product.Id"> @product.Name</a>
+        </li>
+    }
+}

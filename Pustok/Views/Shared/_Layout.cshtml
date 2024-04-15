@@ -27,7 +27,7 @@
                     <div class="row align-items-center">
                         <div class="col-lg-3 ">
                             @* asp-controller="home" asp-action="index" *@
-                            <a  class="site-brand">
+                            <a class="site-brand">
                                 <img src="~/cilent/image/logo.png" alt="">
                             </a>
                         </div>
@@ -230,9 +230,19 @@
                                 </div>
                             </nav>
                         </div>
+
+
                         <div class="col-lg-5">
                             <div class="header-search-block">
-                                <input type="text" placeholder="Search entire store here">
+                                <input type="text" placeholder="Search entire store here" id="search-product">
+
+
+                                <ul style="background-color:#ededed; overflow:hidden; position: absolute; z-index:10; width:100%;border:1px solid #CBCBCB; border-radius:8px; margin:10px; padding:0 10px;" id="SearchList">
+
+                                    @await Component.InvokeAsync("Search")
+                                   
+                                </ul>
+
                                 <button>Search</button>
                             </div>
                         </div>
@@ -403,11 +413,415 @@
 
 
 
+    <!--  FILTER :  CATEGORY + TAG + PRICE -->
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var filterContainer = document.querySelector(".Filers");
+            var productList = document.querySelector(".product-list");
+
+            filterContainer.addEventListener("click", function (e) {
+                if (e.target.classList.contains("category-item")) {
+                    var id = e.target.dataset.id;
+                    console.log("click on category:", id);
+
+                    var formData = new FormData();
+                    formData.append('categoryId', id);
+
+                    fetch('/Product/Filter', {
+                        method: 'POST',
+                        body: formData
+                    })
+                        .then(response => response.text())
+                        .then(x => {
+                            filterContainer.innerHTML = x;
+                        })
+                        .catch(error => {
+                            console.error("Error fetching products:", error);
+                        });
+
+                    fetch('/Product/ProductCategoryFilter', {
+                        method: 'POST',
+                        body: formData
+                    })
+                        .then(response => response.text())
+                        .then(x => {
+                            productList.innerHTML = x;
+                        })
+                        .catch(error => {
+                            console.error("Error fetching products:", error);
+                        });
+                } else if (e.target.classList.contains("tag-item")) {
+                    var id = e.target.dataset.id;
+                    var categoryId = document.getElementById('SelectedCategory').value
+                    console.log("click on tag:", id);
+
+                    var formData = new FormData();
+                    formData.append('tagId', id);
+                    formData.append('categoryId', categoryId);
+
+                    fetch('/Product/Filter', {
+                        method: 'POST',
+                        body: formData
+                    })
+                        .then(response => response.text())
+                        .then(x => {
+                            filterContainer.innerHTML = x;
+                        })
+                        .catch(error => {
+                            console.error("Error fetching products:", error);
+                        });
+
+                    fetch('/Product/ProductCategoryFilter', {
+                        method: 'POST',
+                        body: formData
+                    })
+                        .then(response => response.text())
+                        .then(x => {
+                            productList.innerHTML = x;
+                        })
+                        .catch(error => {
+                            console.error("Error fetching products:", error);
+                        });
+                } else if (e.target.classList.contains("btn-submit")) {
+                    var submitButton = document.querySelector('.btn-submit');
+                    console.log('btn-submit')
+                    submitButton.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        console.log('click')
+
+                        var minPrice = document.getElementById('minPrice').value;
+                        var maxPrice = document.getElementById('maxPrice').value;
+
+                        console.log(minPrice);
+
+                        var tagId = document.getElementById('SelectedTag').value
+                        var categoryId = document.getElementById('SelectedCategory').value
+                        console.log("click on tag:", tagId);
+
+                        var formData = new FormData();
+                        formData.append('minPrice', minPrice);
+                        formData.append('maxPrice', maxPrice);
+                        formData.append('tagId', tagId);
+                        formData.append('categoryId', categoryId);
+
+                        fetch('/Product/Filter', {
+                            method: 'POST',
+                            body: formData
+                        })
+                            .then(response => response.text())
+                            .then(x => {
+                                filterContainer.innerHTML = x;
+                            })
+                            .catch(error => {
+                                console.error("Error fetching products:", error);
+                            });
+
+                        fetch('/Product/ProductCategoryFilter', {
+                            method: 'POST',
+                            body: formData
+                        })
+                            .then(response => response.text())
+                            .then(x => {
+                                productList.innerHTML = x;
+                            })
+                            .catch(error => {
+                                console.error("Error fetching products:", error);
+                            });
+                    });
+                } else if (e.target.classList.contains("btn-clear")) {
+                    var submitButton = document.querySelector('.btn-clear');
+                    console.log('btn-clear')
+                    submitButton.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        console.log('click')
+
+                        var formData = new FormData();
+                        formData.append('minPrice', null);
+                        formData.append('maxPrice', null);
+                        formData.append('tagId', null);
+                        formData.append('categoryId', null);
+
+                        fetch('/Product/Filter', {
+                            method: 'POST',
+                            body: formData
+                        })
+                            .then(response => response.text())
+                            .then(x => {
+                                filterContainer.innerHTML = x;
+                            })
+                            .catch(error => {
+                                console.error("Error fetching products:", error);
+                            });
+
+                        fetch('/Product/ProductCategoryFilter', {
+                            method: 'POST',
+                            body: formData
+                        })
+                            .then(response => response.text())
+                            .then(x => {
+                                productList.innerHTML = x;
+                            })
+                            .catch(error => {
+                                console.error("Error fetching products:", error);
+                            });
+                    });
+                }
+            });
+        });
+    </script>
+    <!--  FILTER :  CATEGORY + TAG + PRICE   -->
+    <!--  PRODUCT lIST + PAGENATION  -->
+
+
+    <script>
+
+        const inputElement = document.getElementById('search-product');
+
+        inputElement.addEventListener('input', function (event) {
+            const text = event.target.value;
+            console.log(text);
+
+            fetch(`/Home/Search?text=${text}`)
+                .then(res => res.text())
+                .then(res => {
+                    console.log(res);
+                    document.getElementById('SearchList').innerHTML = res;
+                    // addEventListeners();
+                })
+                .catch(e => console.error(e));
+        });
+
+
+
+
+
+
+
+        let numBtnListeners = [];
+        let prevBtnListener;
+        let nextBtnListener;
+
+        document.addEventListener('DOMContentLoaded', () => {
+            addEventListeners();
+            console.log()
+        });
+
+        function addEventListeners() {
+            addNumBtnListeners();
+            addPrevBtnListener();
+            addNextBtnListener();
+            basketEventListeners();
+            wishEventListener();
+        }
+
+        function addNumBtnListeners() {
+            numBtnListeners.forEach(listener => {
+                listener.element.removeEventListener('click', listener.handler);
+            });
+
+            numBtnListeners = [];
+
+            let numBtns = document.querySelectorAll('.prod-lists .num-btn');
+            numBtns.forEach(btn => {
+                let handler = e => {
+                    e.preventDefault();
+                    console.log('asd');
+                    let id = btn.dataset.id;
+                    console.log(id);
+                    fetch(`/Product/Pagenate?page=${id}`)
+                        .then(res => res.text())
+                        .then(res => {
+                            console.log(res);
+                            document.querySelector('.prod-lists').innerHTML = res;
+                            addEventListeners();
+                        })
+                        .catch(e => console.error(e));
+                };
+                btn.addEventListener('click', handler);
+                numBtnListeners.push({ element: btn, handler: handler });
+            });
+        }
+
+        function addPrevBtnListener() {
+            if (prevBtnListener) {
+                prevBtnListener.element.removeEventListener('click', prevBtnListener.handler);
+            }
+
+            let prevBtn = document.querySelector('.prod-lists .prev-btn');
+            if (prevBtn) {
+                let handler = e => {
+                    e.preventDefault();
+                    console.log('asd');
+                    let id = prevBtn.dataset.id;
+                    console.log(id);
+                    fetch(`/Product/Pagenate?page=${id}`)
+                        .then(res => res.text())
+                        .then(res => {
+                            console.log(res);
+                            document.querySelector('.prod-lists').innerHTML = res;
+                            addEventListeners();
+                        })
+                        .catch(e => console.error(e));
+                };
+                prevBtn.addEventListener('click', handler);
+                prevBtnListener = { element: prevBtn, handler: handler };
+            }
+        }
+
+        function addNextBtnListener() {
+            if (nextBtnListener) {
+                nextBtnListener.element.removeEventListener('click', nextBtnListener.handler);
+            }
+
+            let nextBtn = document.querySelector('.prod-lists .next-btn');
+            if (nextBtn) {
+                let handler = e => {
+                    e.preventDefault();
+                    console.log('asd');
+                    let id = nextBtn.dataset.id;
+                    console.log(id);
+                    fetch(`/Product/Pagenate?page=${id}`)
+                        .then(res => res.text())
+                        .then(res => {
+                            console.log(res);
+                            document.querySelector('.prod-lists').innerHTML = res;
+                            addEventListeners();
+                        })
+                        .catch(e => console.error(e));
+                };
+                nextBtn.addEventListener('click', handler);
+                nextBtnListener = { element: nextBtn, handler: handler };
+            }
+        }
+
+        function basketEventListeners() {
+            document.querySelectorAll('.baskets').forEach(button => {
+                button.addEventListener('click', handleBasketClick);
+            });
+        }
+
+        function handleBasketClick(e) {
+            e.preventDefault();
+            console.log('Basket element clicked:', e.target);
+
+            var id = e.target.dataset.id;
+
+            fetch('Product/AddBasket/' + id)
+                .then(res => {
+                    if (res.ok) {
+                        let count = document.querySelector('.text-number').innerText;
+                        document.querySelector('.text-number').innerText = ++count;
+                        toastr["success"]("Product added to cart");
+                    } else {
+                        toastr["warning"]("An error occurred while adding the product to the cart...");
+                    }
+                })
+                .catch(err => console.error(err));
+        }
+
+        function wishEventListener() {
+            document.querySelectorAll('.wishs').forEach(button => {
+                button.addEventListener('click', handleWishClick);
+            });
+        }
+
+        function handleWishClick(e) {
+            e.preventDefault();
+            console.log('Wish element clicked:', e.target);
+
+            var id = e.target.dataset.id;
+
+            fetch('Product/AddWish/' + id)
+                .then(res => {
+                    if (res.ok) {
+                        toastr["success"]("Product added to WishList");
+                    } else {
+                        toastr["warning"]("An error occurred while adding the product to the WishList...");
+                    }
+                })
+                .catch(err => console.error(err));
+        }
+    </script>
+
+    <!--   PRODUCT lIST + PAGENATION  -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script>
+        function reattachEventListeners() {
+            document.querySelectorAll('.basket').forEach(button => {
+                button.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    console.log('Basket element clicked:', e.target);
+
+
+                    var id = e.target.dataset.id;
+
+
+                    fetch('Product/AddBasket/' + id)
+                        .then(res => {
+                            if (res.ok) {
+                                let count = document.querySelector('.text-number').innerText;
+                                document.querySelector('.text-number').innerText = ++count;
+                                toastr["success"]("Product added to cart");
+                            } else {
+                                toastr["warning"]("An error occurred while adding the product to the cart...");
+                            }
+                        })
+                        .catch(err => console.error(err));
+                });
+            });
+
+        }
+
+        reattachEventListeners();
+
+
+        function reattachEventListener() {
+            document.querySelectorAll('.wish').forEach(button => {
+                button.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    console.log('Basket element clicked:', e.target);
+
+
+                    var id = e.target.dataset.id;
+
+
+                    fetch('Product/AddWish/' + id)
+                        .then(res => {
+                            if (res.ok) {
+                                toastr["success"]("Product added to WishList");
+                            } else {
+                                toastr["warning"]("An error occurred while adding the product to the WishList...");
+                            }
+                        })
+                        .catch(err => console.error(err));
+                });
+            });
+        }
+        reattachEventListener();
+
+    </script>
+
+
     <script>
         document.addEventListener('click', async (event) => {
             const target = event.target.closest('.del-basket');
             if (target) {
-                event.preventDefault(); 
+                event.preventDefault();
 
                 try {
                     console.log('dlt');
@@ -462,6 +876,8 @@
 
 
     </script>
+
+
 </body>
 
 

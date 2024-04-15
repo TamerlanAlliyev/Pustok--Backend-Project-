@@ -129,7 +129,7 @@ namespace Pustok.Controllers
                 return View(registerVM);
             }
 
-            var roleResult = await _userManager.AddToRoleAsync(user, "Admin");
+            var roleResult = await _userManager.AddToRoleAsync(user, "Customer");
 
             if (!roleResult.Succeeded)
             {

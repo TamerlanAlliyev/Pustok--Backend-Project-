@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -15,6 +16,7 @@ namespace Pustok.Areas.Admin.Controllers;
 
 
 [Area("Admin")]
+[Authorize(Roles = "Admin")]
 public class ProductController : Controller
 {
 
@@ -153,7 +155,7 @@ public class ProductController : Controller
             ExTax = productVM.ExTax,
             Price = productVM.Price,
             DiscountPrice = productVM.DiscountPrice,
-            Created = DateTime.UtcNow,
+            Created = DateTime.UtcNow.AddHours(4),
             CreatedBy = currentUser,
             IPAddress = ipAddress,
             IsDeleted = false,

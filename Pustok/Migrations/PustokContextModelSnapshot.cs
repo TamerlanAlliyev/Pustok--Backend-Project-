@@ -395,19 +395,9 @@ namespace Pustok.Migrations
                         .HasMaxLength(300)
                         .HasColumnType("varchar(300)");
 
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasMaxLength(700)
-                        .HasColumnType("nvarchar(700)");
-
                     b.Property<string>("IPAddress")
                         .IsRequired()
                         .HasColumnType("varchar(100)");
-
-                    b.Property<string>("ImageUrl")
-                        .IsRequired()
-                        .HasMaxLength(250)
-                        .HasColumnType("varchar(250)");
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
@@ -418,14 +408,6 @@ namespace Pustok.Migrations
                     b.Property<string>("ModifiedBy")
                         .HasMaxLength(300)
                         .HasColumnType("varchar(300)");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(250)
-                        .HasColumnType("nvarchar(250)");
-
-                    b.Property<decimal>("Price")
-                        .HasColumnType("decimal");
 
                     b.Property<int>("ProductId")
                         .HasColumnType("int");
@@ -449,6 +431,9 @@ namespace Pustok.Migrations
                     b.Property<string>("Author")
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
+
+                    b.Property<int?>("ClicketCount")
+                        .HasColumnType("int");
 
                     b.Property<int>("Count")
                         .HasColumnType("int");

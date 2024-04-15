@@ -1,0 +1,149 @@
+﻿@model List<Product>
+
+
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800 mt-3">Products</h1>
+    <p class="mb-4">
+    </p>
+
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Categories Example</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
+                    <div class="col-sm-12">
+                        <table class="table table-bordered table-hover  dataTable align-text-center" id="dataTable" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%;">
+                            <thead>
+
+                                <tr role="row" style="text-align:center;">
+                                    <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 100px;">Image</th>
+                                    @* <th class="sorting sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 223.333px;  text-align:center;">Name</th> *@
+                                    <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 350px;">Name</th>
+                                    <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 120px;">Author</th>
+                                    <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 120px;">Product Code</th>
+                                    <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 100px;">ExTax</th>
+                                    <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 100px;">Price</th>
+                                    <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 80px;">Offer</th>
+                                    <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 80px;">Count</th>
+                                    <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 10px;">Detail</th>
+                                    <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 10px;">Edit</th>
+                                    <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 150px;">Delete from selected</th>
+                            </thead>
+                            <tfoot>
+                                <tr style="text-align:center;">
+                                    <th rowspan="1" colspan="1">Image</th>
+                                    <th rowspan="1" colspan="1">Name</th>
+                                    <th rowspan="1" colspan="1">Author</th>
+                                    <th rowspan="1" colspan="1">Product Code</th>
+                                    <th rowspan="1" colspan="1">ExTax</th>
+                                    <th rowspan="1" colspan="1">Price</th>
+                                    <th rowspan="1" colspan="1">Offer</th>
+                                    <th rowspan="1" colspan="1">Count</th>
+                                    <th rowspan="1" colspan="1">Detail</th>
+                                    <th rowspan="1" colspan="1">Edit</th>
+                                    <th rowspan="1" colspan="1">Delete from selected</th>
+                            </tfoot>
+                            <tbody style="text-align:center;">
+
+                                @foreach (Product product in Model)
+                                {
+                                    <tr class="even  align-items-center">
+                                        <td class="d-flex align-items-center justify-content-center" style="vertical-align: middle;">
+                                            <img class="d-flex align-items-center justify-content-center" style="width:100%; max-height:100px; vertical-align: middle" src="~/cilent/image/products/@product.Images.FirstOrDefault()?.Url" alt="Product Image" />
+                                        </td>
+                                        <td style="vertical-align: middle;" class="align-items-center">@product.Name</td>
+                                        <td style="vertical-align: middle;" class="align-items-center">@product.Author</td>
+                                        <td style="vertical-align: middle;" class="align-items-center">@product.ProductCode</td>
+                                        <td style="vertical-align: middle;" class="align-items-center">$@product.ExTax</td>
+                                        @if (product.DiscountPrice > 0 && product.DiscountPrice != null)
+                                        {
+                                            <td style="vertical-align: middle;" class="align-items-center"><a style="font-size:18px;color:green; margin:0 5px 0 0">$@product.DiscountPrice</a><del style="font-size:14px;">@product.Price</del></td>
+                                            @if (product.DiscountPrice > 0 && product.DiscountPrice != null && product.Price > 0)
+                                            {
+                                                <td style="vertical-align: middle; color:red;" class="align-items-center">
+                                                    @Math.Round((decimal)(product.Price - product.DiscountPrice) / product.Price * 100)%
+                                                </td>
+                                            }
+                                            else
+                                            {
+                                                <td style="vertical-align: middle;" class="align-items-center">
+                                                    0%
+                                                </td>
+                                            }
+
+                                        }
+                                        else
+                                        {
+                                            <td style="vertical-align: middle;" class="align-items-center"><a style="font-size:18px;color:green; margin:0 5px 0 0">$@product.Price</a></td>
+                                            <td style="vertical-align: middle;" class="align-items-center">No Discount</td>
+                                        }
+                                        <td style="vertical-align: middle;" class="align-items-center">@product.Count</td>
+                                        <td style="vertical-align: middle;" class="align-items-center">
+                                            <a asp-area="Admin" asp-controller="Product" asp-action="Detail" asp-route-id="@product.Id" class="btn btn-sm btn-primary">Detail</a>
+                                        </td>
+                                        <td style="vertical-align: middle;" class="align-items-center">
+                                            <a asp-area="Admin" asp-controller="Product" asp-action="Update" asp-route-id="@product.Id" class="btn btn-sm btn-warning">Edit</a>
+                                        </td>
+                                        <td style="vertical-align: middle;" class="align-items-center">
+                                            <a href="#" class="btn btn-sm btn-danger delete-product" data-id="@product.Id">Remove</a>
+                                        </td>
+                                    </tr>
+                                }
+
+
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+@section Script {
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var deleteLinks = document.querySelectorAll(".delete-product");
+
+            deleteLinks.forEach(function (link) {
+                link.addEventListener("click", function (e) {
+                    e.preventDefault();
+
+                    var productId = link.getAttribute("data-id");
+
+                    fetch(`/Admin/Slider/Delete/${productId}`, {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json"
+                        }
+                    })
+                        .then(function (response) {
+                            if (response.ok) {
+                                link.closest("tr").remove();
+                            } else {
+                                console.error("Failed to delete product!");
+                            }
+                        })
+                        .catch(function (error) {
+                            console.error("Error:", error);
+                            alert("An error occurred while deleting product!");
+                        });
+                });
+            });
+        });
+    </script>
+    <script src="~/admin/vendor/jquery/jquery.min.js"></script>
+
+    <!-- Page level plugins -->
+    <script src="~/admin/vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="~/admin/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="~/admin/js/demo/datatables-demo.js"></script>
+}

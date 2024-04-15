@@ -1,0 +1,120 @@
+﻿          @model List<SliderCreateVM>
+
+
+<form method="post">
+    <div class="container-fluid">
+
+        <!-- Page Heading -->
+        <h1 class="h3 mb-2 text-gray-800 mt-3">Products</h1>
+        <p class="mb-4">
+        </p>
+
+        <!-- DataTales Example -->
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Categories Example</h6>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
+                        <div class="col-sm-12">
+                            <table class="table table-bordered table-hover  dataTable align-text-center" id="dataTable" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%;">
+                                <thead>
+
+                                    <tr role="row" style="text-align:center;">
+                                        <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 100px;">Image</th>
+                                        @* <th class="sorting sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style="width: 223.333px;  text-align:center;">Name</th> *@
+                                        <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 350px;">Name</th>
+                                        <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 120px;">Author</th>
+                                        <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 120px;">Product Code</th>
+                                        <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 100px;">ExTax</th>
+                                        <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 100px;">Price</th>
+                                        <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 80px;">Offer</th>
+                                        <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 80px;">Count</th>
+                                        <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 10px;">Detail</th>
+                                </thead>
+                                <tfoot>
+                                    <tr style="text-align:center;">
+                                        <th rowspan="1" colspan="1">Image</th>
+                                        <th rowspan="1" colspan="1">Name</th>
+                                        <th rowspan="1" colspan="1">Author</th>
+                                        <th rowspan="1" colspan="1">Product Code</th>
+                                        <th rowspan="1" colspan="1">ExTax</th>
+                                        <th rowspan="1" colspan="1">Price</th>
+                                        <th rowspan="1" colspan="1">Offer</th>
+                                        <th rowspan="1" colspan="1">Count</th>
+                                        <th rowspan="1" colspan="1">Detail</th>
+                                </tfoot>
+                                <tbody style="text-align:center;">
+                  
+
+                                    @for (int i = 0; i < Model.Count; i++)
+
+                                    {
+                                        <tr class="even  align-items-center">
+                                            <td class="d-flex align-items-center justify-content-center" style="vertical-align: middle;">
+                                                <img class="d-flex align-items-center justify-content-center" style="width:100%; max-height:100px; vertical-align: middle" src="~/cilent/image/products/@Model[i].Products.Images.FirstOrDefault()?.Url" alt="Product Image" />
+
+                                            </td>
+                                            <td style="vertical-align: middle;" class="align-items-center">@Model[i].Products.Name</td>
+                                            <td style="vertical-align: middle;" class="align-items-center">@Model[i].Products.Author</td>
+                                        <td style="vertical-align: middle;" class="align-items-center">@Model[i].Products.ProductCode</td>
+                                            <td style="vertical-align: middle;" class="align-items-center">$@Model[i].Products.ExTax</td>
+                                            @if (Model[i].Products.DiscountPrice > 0 && Model[i].Products.DiscountPrice != null)
+                                            {
+                                                <td style="vertical-align: middle;" class="align-items-center"><a style="font-size:18px;color:green; margin:0 5px 0 0">$@Model[i].Products.DiscountPrice</a><del style="font-size:14px;">@Model[i].Products.Price</del></td>
+                                                @if (Model[i].Products.DiscountPrice > 0 && Model[i].Products.DiscountPrice != null && Model[i].Products.Price > 0)
+                                                {
+                                                    <td style="vertical-align: middle; color:red;" class="align-items-center">
+                                                        @Math.Round((decimal)(Model[i].Products.Price - Model[i].Products.DiscountPrice) / Model[i].Products.Price * 100)%
+                                                    </td>
+                                                }
+                                                else
+                                                {
+                                                    <td style="vertical-align: middle;" class="align-items-center">
+                                                        0%
+                                                    </td>
+                                                }
+
+                                            }
+                                            else
+                                            {
+                                                <td style="vertical-align: middle;" class="align-items-center"><a style="font-size:18px;color:green; margin:0 5px 0 0">$@Model[i].Products.Price</a></td>
+                                                <td style="vertical-align: middle;" class="align-items-center">No Discount</td>
+                                            }
+                                            <td style="vertical-align: middle;" class="align-items-center">
+                                                <a asp-area="Admin" asp-controller="product.Products" asp-action="Detail" asp-route-id="@Model[i].Products.Id" class="btn btn-sm btn-primary">Detail</a>
+                                            </td>
+                                            <td style="vertical-align: middle;" class="align-items-center">
+                                                <input style="width:30px;height:30px;" type="checkbox" asp-for="@Model[i].IsCheked" class="form-check-input" />
+                                                <input type="hidden" value="@Model[i].Products.Id" asp-for="@Model[i].ProductId" />
+                                            </td>
+                                        </tr>
+                                    }
+
+
+
+
+                            </table>
+                        </div>
+                        <button class="btn-primary" type="submit">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</form>
+
+
+@section Script {
+
+    <script src="~/admin/vendor/jquery/jquery.min.js"></script>
+
+    <!-- Page level plugins -->
+    <script src="~/admin/vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="~/admin/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="~/admin/js/demo/datatables-demo.js"></script>
+}

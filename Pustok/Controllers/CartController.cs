@@ -3,6 +3,8 @@ using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 using Pustok.Data;
 using Pustok.ViewModels.Basket;
+using Pustok.ViewModels.Wish;
+using System.Security.Claims;
 
 namespace Pustok.Controllers;
 
@@ -24,4 +26,10 @@ public class CartController : Controller
     {
         return ViewComponent("BasketList");
     }
+
+
+
+
+
+
 }

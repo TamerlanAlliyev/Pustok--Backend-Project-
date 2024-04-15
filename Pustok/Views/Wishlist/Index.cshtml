@@ -1,47 +1,80 @@
 ﻿@await Html.PartialAsync("_MobileMenuPartialView")
 <section class="breadcrumb-section">
-	<h2 class="sr-only">Site Breadcrumb</h2>
-	<div class="container">
-		<div class="breadcrumb-contents">
-			<nav aria-label="breadcrumb">
-				<ol class="breadcrumb">
-					<li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">Home</a></li>
-					<li class="breadcrumb-item active">Wishlist</li>
-				</ol>
-			</nav>
-		</div>
-	</div>
+    <h2 class="sr-only">Site Breadcrumb</h2>
+    <div class="container">
+        <div class="breadcrumb-contents">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">Home</a></li>
+                    <li class="breadcrumb-item active">Wishlist</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
 </section>
 <div class="cart_area inner-page-sec-padding-bottom">
-	<div class="container">
-		<div class="row">
-			<div class="col-12">
-				<form action="">
-					<!-- Cart Table -->
-					<div class="cart-table table-responsive">
-						<table class="table">
-							<thead>
-								<tr>
-									<th class="pro-thumbnail">Image</th>
-									<th class="pro-title">Product</th>
-									<th class="pro-price">Price</th>
-									<th class="pro-remove">Remove</th>
-								</tr>
-							</thead>
-							<tbody>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <form action="">
+                    <!-- Cart Table -->
+                    <div class="cart-table table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th class="pro-thumbnail">Image</th>
+                                    <th class="pro-title">Product</th>
+                                    <th class="pro-price">Price</th>
+                                    <th class="pro-remove">Remove</th>
+                                </tr>
+                            </thead>
+                            <tbody id="wish-list">
 
-								@await Component.InvokeAsync("Wish")
+                                @await Component.InvokeAsync("Wish")
 
 
-							</tbody>
-						</table>
-					</div>
-				</form>
-			</div>
-		</div>
-	</div>
+                            </tbody>
+                        </table>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 </div>
 
 @section BrandSlider {
     @await Html.PartialAsync("_BrandSliderPartialView")
+}
+
+@section Script {
+    <script>
+
+        document.addEventListener('click', async (event) => {
+            const target = event.target.closest('.pro-remove');
+            if (target) {
+                event.preventDefault();
+                console.log('click');
+                try {
+                    let id = target.dataset.id;
+                    var formData = new FormData();
+                    formData.append('id', id);
+
+                    const deleteResponse = await fetch('/WishList/RemoveWish', {
+                        method: 'POST',
+                        body: formData
+                    });
+                    if (!deleteResponse.ok) {
+                        throw new Error(`HTTP error! status: ${deleteResponse.status}`);
+                    }
+
+                    const Response = await deleteResponse.text();
+                    console.log(Response);
+                    document.getElementById('wish-list').innerHTML = Response;
+                } catch (error) {
+                    console.error('Error deleting product:', error);
+                }
+            }
+        });
+
+    </script>
 }

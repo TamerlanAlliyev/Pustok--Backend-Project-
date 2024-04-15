@@ -1,0 +1,255 @@
+﻿@model HomeHeadProductsVM
+
+<div class="tab-pane show active" id="shop" role="tabpanel" aria-labelledby="shop-tab">
+    <div class="product-slider multiple-row  slider-border-multiple-row  sb-slick-slider"
+         data-slick-setting='{
+                            "autoplay": true,
+                            "autoplaySpeed": 8000,
+                            "slidesToShow": 5,
+                            "rows":1,
+                            "dots":true
+                        }' data-slick-responsive='[
+                            {"breakpoint":1200, "settings": {"slidesToShow": 3} },
+                            {"breakpoint":768, "settings": {"slidesToShow": 2} },
+                            {"breakpoint":480, "settings": {"slidesToShow": 1} },
+                            {"breakpoint":320, "settings": {"slidesToShow": 1} }
+                        ]'>
+
+
+        @foreach (var product in Model.DiscountedProducts)
+        {
+            <div class="single-slide">
+                <div class="product-card" style="width:200px;">
+                    <div class="product-header">
+                        <a href="#" class="author">
+                            @product.Author
+                        </a>
+                        <h3>
+                            <a asp-action="Detail" asp-controller="Product" asp-route-id="@product.Id" style="height:50px;">
+                                @product.Name
+                            </a>
+                        </h3>
+                    </div>
+                    <div class="product-card--body">
+                        <div class="card-image">
+                            <img style="width:215px;height:215px;object-fit:cover" src="~/cilent/image/products/@(product.Images.FirstOrDefault(pi => !pi.IsDeleted && pi.IsHover)?.Url)" alt="">
+                            <div class="hover-contents">
+                                <a asp-action="Detail" asp-controller="Product" asp-route-id="@product.Id" class="hover-image">
+                                    <img style="width:215px;height:215px;object-fit:cover" src="~/cilent/image/products/@(product.Images.FirstOrDefault(pi => !pi.IsDeleted && pi.IsMain)?.Url)" alt="">
+                                </a>
+                                <div class="hover-btns">
+                                    <a class="single-btn prod">
+                                        <i data-id="@product.Id" class="fas fa-shopping-basket basket"></i>
+                                    </a>
+                                    <a class="single-btn">
+                                        <i data-id="@product.Id" class="fas fa-heart wish"></i>
+                                    </a>
+                                    <a href="compare.html" class="single-btn">
+                                        <i class="fas fa-random"></i>
+                                    </a>
+                                    <a href="#" data-toggle="modal" data-target="#quickModal"
+                                       class="single-btn">
+                                        <i class="fas fa-eye"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="price-block">
+
+                            @if (product.DiscountPrice > 0 && product.DiscountPrice != null)
+                            {
+                                <span class="price">$@product.DiscountPrice</span>
+                                <del class="price-old">$@product.Price</del>
+                                @if (product.DiscountPrice > 0 && product.DiscountPrice != null && product.Price > 0)
+                                {
+                                    <span class="price-discount">@Math.Round((decimal)(product.Price - product.DiscountPrice) / product.Price * 100)%</span>
+                                }
+                            }
+                            else
+                            {
+                                <span class="price">$@product.Price</span>
+                            }
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        }
+
+
+
+    </div>
+</div>
+
+
+
+
+
+<div class="tab-pane" id="men" role="tabpanel" aria-labelledby="men-tab">
+    <div class="product-slider multiple-row  slider-border-multiple-row  sb-slick-slider" 
+         data-slick-setting='{
+                                        "autoplay": true,
+                                        "autoplaySpeed": 8000,
+                                        "slidesToShow": 5,
+                                        "rows":2,
+                                        "dots":true
+                                    }' data-slick-responsive='[
+                                        {"breakpoint":1200, "settings": {"slidesToShow": 3} },
+                                        {"breakpoint":768, "settings": {"slidesToShow": 2} },
+                                        {"breakpoint":480, "settings": {"slidesToShow": 1} },
+                                        {"breakpoint":320, "settings": {"slidesToShow": 1} }
+                                    ]'>
+
+
+        @foreach (var product in Model.NewArrivals)
+        {
+
+
+        <div class="single-slide "  >
+                <div class="product-card" style="width:200px;">
+                    <div class="product-header">
+                        <a href="#" class="author">
+                            @product.Author
+                        </a>
+                        <h3>
+                            <a asp-action="Detail" asp-controller="Product" asp-route-id="@product.Id" style="height:50px;">
+                                @product.Name
+                            </a>
+                        </h3>
+                    </div>
+                    <div class="product-card--body">
+                        <div class="card-image">
+                            <img style="width:215px;height:215px;object-fit:cover" src="~/cilent/image/products/@(product.Images.FirstOrDefault(pi => !pi.IsDeleted && pi.IsHover)?.Url)" alt="">
+                            <div class="hover-contents">
+                                <a asp-action="Detail" asp-controller="Product" asp-route-id="@product.Id" class="hover-image">
+                                    <img style="width:215px;height:215px;object-fit:cover" src="~/cilent/image/products/@(product.Images.FirstOrDefault(pi => !pi.IsDeleted && pi.IsMain)?.Url)" alt="">
+                                </a>
+                                <div class="hover-btns">
+                                    <a class="single-btn prod">
+                                        <i data-id="@product.Id" class="fas fa-shopping-basket basket"></i>
+                                    </a>
+                                    <a class="single-btn">
+                                        <i data-id="@product.Id" class="fas fa-heart wish"></i>
+                                    </a>
+                                    <a href="compare.html" class="single-btn">
+                                        <i class="fas fa-random"></i>
+                                    </a>
+                                    <a href="#" data-toggle="modal" data-target="#quickModal"
+                                       class="single-btn">
+                                        <i class="fas fa-eye"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="price-block">
+
+                            @if (product.DiscountPrice > 0 && product.DiscountPrice != null)
+                            {
+                                <span class="price">$@product.DiscountPrice</span>
+                                <del class="price-old">$@product.Price</del>
+                                @if (product.DiscountPrice > 0 && product.DiscountPrice != null && product.Price > 0)
+                                {
+                                    <span class="price-discount">@Math.Round((decimal)(product.Price - product.DiscountPrice) / product.Price * 100)%</span>
+                                }
+                            }
+                            else
+                            {
+                                <span class="price">$@product.Price</span>
+                            }
+
+                        </div>
+                    </div>
+                </div>
+        </div>
+        
+    
+    }
+
+
+
+    </div>
+</div>
+
+
+
+
+
+<div class="tab-pane" id="woman" role="tabpanel" aria-labelledby="woman-tab">
+    <div class="product-slider multiple-row  slider-border-multiple-row  sb-slick-slider"
+         data-slick-setting='{
+                                        "autoplay": true,
+                                        "autoplaySpeed": 8000,
+                                        "slidesToShow": 5,
+                                        "rows":2,
+                                        "dots":true
+                                    }' data-slick-responsive='[
+                                        {"breakpoint":1200, "settings": {"slidesToShow": 3} },
+                                        {"breakpoint":768, "settings": {"slidesToShow": 2} },
+                                        {"breakpoint":480, "settings": {"slidesToShow": 1} },
+                                        {"breakpoint":320, "settings": {"slidesToShow": 1} }
+                                    ]'>
+        @foreach (var product in Model.MostProducts)
+        {
+            <div class="single-slide">
+                <div class="product-card" style="width:200px;">
+                    <div class="product-header">
+                        <a href="#" class="author">
+                            @product.Author
+                        </a>
+                        <h3>
+                            <a asp-action="Detail" asp-controller="Product" asp-route-id="@product.Id" style="height:50px;">
+                                @product.Name
+                            </a>
+                        </h3>
+                    </div>
+                    <div class="product-card--body">
+                        <div class="card-image">
+                            <img style="width:215px;height:215px;object-fit:cover" src="~/cilent/image/products/@(product.Images.FirstOrDefault(pi => !pi.IsDeleted && pi.IsHover)?.Url)" alt="">
+                            <div class="hover-contents">
+                                <a asp-action="Detail" asp-controller="Product" asp-route-id="@product.Id" class="hover-image">
+                                    <img style="width:215px;height:215px;object-fit:cover" src="~/cilent/image/products/@(product.Images.FirstOrDefault(pi => !pi.IsDeleted && pi.IsMain)?.Url)" alt="">
+                                </a>
+                                <div class="hover-btns">
+                                    <a class="single-btn prod">
+                                        <i data-id="@product.Id" class="fas fa-shopping-basket basket"></i>
+                                    </a>
+                                    <a class="single-btn">
+                                        <i data-id="@product.Id" class="fas fa-heart wish"></i>
+                                    </a>
+                                    <a href="compare.html" class="single-btn">
+                                        <i class="fas fa-random"></i>
+                                    </a>
+                                    <a href="#" data-toggle="modal" data-target="#quickModal"
+                                       class="single-btn">
+                                        <i class="fas fa-eye"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="price-block">
+
+                            @if (product.DiscountPrice > 0 && product.DiscountPrice != null)
+                            {
+                                <span class="price">$@product.DiscountPrice</span>
+                                <del class="price-old">$@product.Price</del>
+                                @if (product.DiscountPrice > 0 && product.DiscountPrice != null && product.Price > 0)
+                                {
+                                    <span class="price-discount">@Math.Round((decimal)(product.Price - product.DiscountPrice) / product.Price * 100)%</span>
+                                }
+                            }
+                            else
+                            {
+                                <span class="price">$@product.Price</span>
+                            }
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        }
+    </div>
+</div>
