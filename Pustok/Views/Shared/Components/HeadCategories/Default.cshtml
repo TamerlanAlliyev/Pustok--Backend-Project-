@@ -1,0 +1,48 @@
+﻿@{
+    var ParentCategories = ViewData["ParentCategories"] as List<Category>;
+    var Categories = ViewData["Categories"] as List<Category>;
+}
+
+
+<div>
+
+    <a class="category-trigger" style="cursor:pointer;">
+        <i class="fa fa-bars"></i>Browse
+        categories
+    </a>
+    <ul class="category-menu">
+
+
+        @foreach (var parent in ParentCategories)
+        {
+            if (parent.ChildCategories == null)
+            {
+                <li class="cat-item category-item" data-id="@parent.Id">
+                    <a href="~/cilent/#">
+                        @parent.Name
+                    </a>
+                </li>
+            }
+            else
+            {
+
+                <li class="cat-item has-children category-item" data-id="@parent.Id">
+
+                    <a href="~/cilent/#">@parent.Name</a>
+
+                    @foreach (var sub in Categories.Where(c => !c.IsDeleted && c.ParentCategoryId == parent.Id).ToList())
+                    {
+                        <ul class="sub-menu ">
+                            <li class="category-item" data-id="@parent.Id"><a >@sub.Name</a></li>
+                        </ul>
+                    }
+
+
+                </li>
+            }
+        }
+
+
+
+    </ul>
+</div>
